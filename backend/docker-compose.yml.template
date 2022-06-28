@@ -1,0 +1,8 @@
+version: '3.5'
+
+services:
+    app:
+      image: 'ch.levelup.kaesseli/kaesseli-api:latest'
+      container_name: kaesseli
+      ports:
+        - 8080:8080
