@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("com.google.gms.google-services")
 }
 
 version = "1.0"
@@ -59,4 +60,7 @@ android {
         minSdk = 21
         targetSdk = 32
     }
+}
+dependencies {
+    implementation("com.google.firebase:firebase-messaging-ktx:23.0.6")
 }

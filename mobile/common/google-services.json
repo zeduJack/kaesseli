@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "1043193265686",
+    "project_id": "kaesseli",
+    "storage_bucket": "kaesseli.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043193265686:android:f0edc5acd0c0a5e6b97f37",
+        "android_client_info": {
+          "package_name": "ch.levelup.kaesseli"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1043193265686-ch77m9u47pn5jth3rs25s3h2hpajfiit.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBMItwahsRExxc0pVK1q6N2wjGlfLjIkc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043193265686-ch77m9u47pn5jth3rs25s3h2hpajfiit.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043193265686:android:591d279a36470d02b97f37",
+        "android_client_info": {
+          "package_name": "ch.levelup.kaesseli.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1043193265686-ch77m9u47pn5jth3rs25s3h2hpajfiit.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBMItwahsRExxc0pVK1q6N2wjGlfLjIkc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043193265686-ch77m9u47pn5jth3rs25s3h2hpajfiit.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
