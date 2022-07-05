@@ -9,3 +9,7 @@
 3. Start your docker-compose ./gradlew dockerComposeUp
 4. Check if the image is running docker ps
 5. Stop the containers ./gradlew dockerComposeDown
+
+## Setup Firebase account
+
+Follow the guidelines in https://firebase.google.com/docs/admin/setup/#java_1
