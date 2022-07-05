@@ -41,7 +41,6 @@ tasks.withType<Test> {
 
 docker {
 	val archiveBaseName = tasks.getByName<BootJar>("bootJar").archiveBaseName.get()
-	name = "${project.group}/$archiveBaseName"
-	tag("my-registry", "$archiveBaseName/${project.version}")
+	name = "${project.group}/kaesseli-api"
 	files("build/libs/$archiveBaseName-${project.version}.jar")
 }

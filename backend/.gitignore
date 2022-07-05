@@ -19,3 +19,7 @@ gradle-app.setting
 
 # Cache of project
 .gradletasknamecache
+
+# Kaesseli specific ignores
+docker-compose.yml
+data/testdb.mv.db
