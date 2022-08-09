@@ -9,6 +9,7 @@ plugins {
 	id("org.flywaydb.flyway") version "8.5.13"
 	kotlin("jvm") version "1.6.21"
 	kotlin("plugin.spring") version "1.6.21"
+	id("org.jetbrains.kotlin.plugin.jpa") version "1.5.21"
 }
 
 group = "ch.levelup.kaesseli"
