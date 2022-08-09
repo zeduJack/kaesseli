@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="ch.levelup.kaesseli.android.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_dummyFragment"
+            app:destination="@id/dummyFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/dummyFragment"
+        android:name="ch.levelup.kaesseli.android.DummyFragment"
+        android:label="DummyFragment" >
+        <action
+            android:id="@+id/action_dummyFragment_to_dummy2Fragment"
+            app:destination="@id/dummy2Fragment" />
+        <action
+            android:id="@+id/action_dummyFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@android:anim/fade_in" />
+    </fragment>
+    <fragment
+        android:id="@+id/dummy2Fragment"
+        android:name="ch.levelup.kaesseli.android.Dummy2Fragment"
+        android:label="Dummy2Fragment" />
+</navigation>
