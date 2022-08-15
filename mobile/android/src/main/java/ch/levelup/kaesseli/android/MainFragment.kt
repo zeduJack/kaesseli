@@ -55,11 +55,17 @@ class MainFragment : Fragment() {
                                 Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                                 Text("Like")
                             }
-                            Button(onClick = { findNavController().navigate(R.id.action_mainFragment_to_dummyFragment) }) {
-                                Text(text = "go to dummy")
+                            Button(onClick = { findNavController().navigate(R.id.codeSubmission) }) {
+                                Text(text = "Code submission")
                             }
-                            Button(onClick = { findNavController().navigate(R.id.dummy2Fragment) }) {
-                                Text(text = "go to dummy-2")
+                            Button(onClick = { findNavController().navigate(R.id.register) }) {
+                                Text(text = "Register")
+                            }
+                            Button(onClick = { findNavController().navigate(R.id.overview) }) {
+                                Text(text = "Overview")
+                            }
+                            Button(onClick = { findNavController().navigate(R.id.balance) }) {
+                                Text(text = "Balance")
                             }
                         }
                     }

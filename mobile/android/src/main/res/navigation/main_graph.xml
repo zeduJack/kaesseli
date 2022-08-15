@@ -7,27 +7,45 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="ch.levelup.kaesseli.android.MainFragment"
-        android:label="MainFragment" >
+        android:label="MainFragment"/>
+    <fragment
+        android:id="@+id/codeSubmission"
+        android:name="ch.levelup.kaesseli.android.CodeSubmission"
+        android:label="CodeSubmission">
         <action
-            android:id="@+id/action_mainFragment_to_dummyFragment"
-            app:destination="@id/dummyFragment"
+            android:id="@+id/action_codeSubmission_to_overview"
+            app:destination="@id/overview"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+
+        <action
+            android:id="@+id/action_codeSubmission_to_register"
+            app:destination="@id/register"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
-        android:id="@+id/dummyFragment"
-        android:name="ch.levelup.kaesseli.android.DummyFragment"
-        android:label="DummyFragment" >
+        android:id="@+id/register"
+        android:name="ch.levelup.kaesseli.android.Register"
+        android:label="Register">
         <action
-            android:id="@+id/action_dummyFragment_to_dummy2Fragment"
-            app:destination="@id/dummy2Fragment" />
-        <action
-            android:id="@+id/action_dummyFragment_to_mainFragment"
-            app:destination="@id/mainFragment"
-            app:enterAnim="@android:anim/fade_in" />
+            android:id="@+id/action_register_to_overview"
+            app:destination="@id/overview"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
-        android:id="@+id/dummy2Fragment"
-        android:name="ch.levelup.kaesseli.android.Dummy2Fragment"
-        android:label="Dummy2Fragment" />
+        android:id="@+id/overview"
+        android:name="ch.levelup.kaesseli.android.Overview"
+        android:label="Overview">
+        <action
+            android:id="@+id/action_overview_to_balance"
+            app:destination="@id/balance"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/balance"
+        android:name="ch.levelup.kaesseli.android.Balance"
+        android:label="Balance" />
 </navigation>
