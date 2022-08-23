@@ -1,8 +1,27 @@
-version: '3.5'
-
 services:
-    app:
-      image: 'ch.levelup.kaesseli/kaesseli-api:latest'
-      container_name: kaesseli
-      ports:
-        - 8080:8080
+  app:
+    image: 'ch.levelup.kaesseli/kaesseli-api:latest'
+    container_name: kaesseli
+    ports:
+      - 8080:8080
+  postgres:
+    container_name: kaesselidb
+    image: postgres
+    environment:
+      POSTGRES_DB: kaesseli
+      POSTGRES_USER: dbuser
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_ROOT_PASSWORD: mysecretpassword
+    ports:
+      - 5432:5432
+    volumes:
+      - postgresdb-data:/var/lib/postgres
+volumes:
+  postgresdb-data:
+networks:
+  appNetwork:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.20.2.0/16"
