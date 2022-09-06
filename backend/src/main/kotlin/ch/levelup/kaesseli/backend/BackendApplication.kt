@@ -6,12 +6,10 @@ import com.google.firebase.FirebaseOptions
 import org.slf4j.LoggerFactory
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-import org.springframework.data.annotation.Id
-import org.springframework.data.jdbc.repository.query.Query
-import org.springframework.data.relational.core.mapping.Table
-import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RestController
 
 
 @SpringBootApplication
@@ -19,7 +17,7 @@ class BackendApplication
 
 fun main(args: Array<String>) {
 	runApplication<BackendApplication>(*args)
-	initiateFirebase()
+	//initiateFirebase()
 }
 
 private fun initiateFirebase() {

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kaesseli
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: kaesseli
+  template:
+    metadata:
+      labels:
+        app: kaesseli
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+        - name: kaesseli-api
+          image: kaesseliacr.azurecr.io/kaesseli-api:latest
+          ports:
+            - containerPort: 8080
+              name: kaesseli-port
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kaesseli-front
+spec:
+  selector:
+    app: kaesseli
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: kaesseli-port
+      name: web-port
+  type: LoadBalancer
