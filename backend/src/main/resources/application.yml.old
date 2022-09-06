@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: &dbURL jdbc:postgresql://kaesselidb:5432/kaesseli
+    username: &dbUser dbuser
+    password: &dbPassword mysecretpassword
+  flyway:
+    locations: classpath:db/migrations
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      platform: postgres

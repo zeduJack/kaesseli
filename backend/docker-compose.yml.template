@@ -4,6 +4,8 @@ services:
     container_name: kaesseli
     ports:
       - 8080:8080
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=kaesseli-firebase-adminsdk.json
   postgres:
     container_name: kaesselidb
     image: postgres
