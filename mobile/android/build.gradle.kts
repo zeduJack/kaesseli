@@ -8,6 +8,7 @@ plugins {
 // https://developer.android.com/jetpack/androidx/releases/compose-kotlin
 // https://kotlinlang.org/docs/releases.html#release-details
 val composeVersion = "1.2.0-rc02"
+val composeNavVersion = "2.5.2"
 
 android {
     compileSdk = 32
@@ -41,8 +42,6 @@ android {
 }
 
 dependencies {
-    val navVersion = "2.5.1"
-
     implementation(project(":common"))
     implementation("com.google.android.material:material:1.6.1")
     implementation("androidx.appcompat:appcompat:1.4.2")
@@ -54,6 +53,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.test.ext:junit-ktx:1.1.3")
     implementation("androidx.test:monitor:1.5.0")
+    // Jetpack Compose navigation
+    implementation("androidx.navigation:navigation-compose:$composeNavVersion")
 
     // Added for Tests
     testImplementation("junit:junit:4.13.2")
@@ -62,8 +63,4 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
     debugImplementation("androidx.compose.ui:ui-tooling:$composeVersion")
     debugImplementation("androidx.compose.ui:ui-test-manifest:$composeVersion")
-
-    // Fragment navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
-    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 }
