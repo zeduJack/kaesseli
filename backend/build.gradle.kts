@@ -74,3 +74,8 @@ docker {
 	name = "kaesseli-api"
 	files("build/libs/$archiveBaseName-${project.version}.jar")
 }
+flyway {
+	url = "jdbc:postgresql://localhost:5432/kaesseli"
+	user = "dbuser"
+	password = "mysecretpassword"
+}
