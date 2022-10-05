@@ -13,10 +13,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ch.levelup.kaesseli.state.AddCountry
+import ch.levelup.kaesseli.state.AppState
+import ch.levelup.kaesseli.android.Store
 
 @Composable
 fun OverviewScreen(
-    onNavigateToBalance: () -> Unit
+    onNavigateToBalance: () -> Unit,
+    appState: AppState
 ) {
     Column(modifier = Modifier.padding(16.dp)) {
         Text(
@@ -24,23 +28,25 @@ fun OverviewScreen(
             style = TextStyle(fontSize = 21.sp)
         )
 
-        val countryList = mutableListOf("Child 1", "Child 2", "Child 3")
-
         val listModifier = Modifier
             .background(Color.Gray)
             .padding(10.dp)
 
         val textStyle = TextStyle(fontSize = 20.sp, color = Color.White)
 
-
         LazyColumn(modifier = listModifier) {
-            items(countryList) { country ->
+
+            items(appState.countries) { country ->
                 Text(text = country, style = textStyle)
             }
         }
 
         Button(onClick = onNavigateToBalance) {
             Text(text = "balance")
+        }
+
+        Button(onClick = { Store.instance.dispatch(AddCountry("test")) }) {
+            Text(text = "Add country")
         }
     }
 }
