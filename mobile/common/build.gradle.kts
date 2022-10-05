@@ -1,10 +1,15 @@
+// if gradle has some problems do in terminal:
+// ./gradlew --refresh-dependencies
+
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    kotlin("plugin.serialization").version("1.6.21") // this is the kotlin versoin
 }
 
 version = "1.0"
+val ktorVersion = project.findProperty("kaesseli.ktor.version")
 
 kotlin {
     android()
@@ -21,15 +26,33 @@ kotlin {
             baseName = "common"
         }
     }
-    
+
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.3")
+                api("org.reduxkotlin:redux-kotlin-thunk:0.5.5")
+                api("org.reduxkotlin:redux-kotlin-threadsafe:0.5.5")
+
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation("io.ktor:ktor-client-cio:$ktorVersion")
+                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
+                implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+                implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
+            }
+        }
+
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation("io.ktor:ktor-client-android:$ktorVersion")
+
+            }
+        }
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting
