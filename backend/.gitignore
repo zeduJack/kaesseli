@@ -26,3 +26,4 @@ gradle-app.setting
 # Kaesseli specific ignores
 docker-compose.yml
 data/testdb.mv.db
+secrets

@@ -29,6 +29,9 @@ private fun initiateFirebase() {
 	FirebaseApp.initializeApp(options)
 }
 
+
+
+
 @RestController
 class MessageResource(val service: MessageService) {
 	@PostMapping("token/{token}")
@@ -46,5 +49,21 @@ class MessageService() {
 	fun sendMessage(token: String) {
 		LOG.warn("Token received {}", token)
 		Firebase().pushMessage(token)
+	}
+}
+
+@Service
+class FirebaseUserManagement() {
+
+	private val LOG = LoggerFactory.getLogger(this::class.java)
+
+	fun deleteFirebaseUser(uid: String): Boolean {
+		val success = Firebase().deleteFirebaseUser(uid)
+		LOG.debug("Deleted user with UID: $uid. Status: $success")
+		return success
+	}
+
+	fun logOutUser(uid: String) {
+		Firebase().revokeFirebaseToken(uid)
 	}
 }

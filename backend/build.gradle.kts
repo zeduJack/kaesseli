@@ -25,7 +25,7 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("com.google.firebase:firebase-admin:9.0.0")
+	implementation("com.google.firebase:firebase-admin:9.1.0")
 
 	//test debug
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
@@ -69,6 +69,7 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+	environment("GOOGLE_APPLICATION_CREDENTIALS","secrets/kaesseli-firebase-adminsdk.json")
 }
 
 docker {
