@@ -98,3 +98,12 @@ Follow the guidelines in https://firebase.google.com/docs/admin/setup/#java_1
 3. Start your docker-compose ./gradlew dockerComposeUp
 4. Check if the image is running docker ps
 5. Stop the containers ./gradlew dockerComposeDown
+
+## Setup Firebase account
+For Unix and Mac:  
+export GOOGLE_APPLICATION_CREDENTIALS="/path/to/kaesseli-18cf8-firebase-adminsdk-6uil0-12fca9f9e3.json"  
+
+To run the test cases, place the service account json file inside this folder using the following name:  
+your project folder/backend/secrets/kaesseli-firebase-adminsdk.json 
+
+See also the guidelines in https://firebase.google.com/docs/admin/setup/#java_1
