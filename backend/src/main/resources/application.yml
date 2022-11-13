@@ -1,20 +1,19 @@
 spring:
   datasource:
-    platform: postgres
-    #driverClassName: org.mariadb.jdbc.Driver
-    #url: &dbURL jdbc:mariadb://localhost:3306/kaesseli
-    url: &dbURL jdbc:postgresql://localhost:5432/kaesseli
-    username: &dbUser dbuser
-    password: &dbPassword mysecretpassword
+    url: jdbc:postgresql://kaesselidb.postgres.database.azure.com:5432/kaesseli
+    username: kaesseli@kaesselidb
+    password: VsMWZo45cavna7WM!
+    driver-class-name: org.postgresql.Driver
   flyway:
     locations: classpath:db/migrations
-    url: &dbURL jdbc:postgresql://localhost:5432/kaesseli
-    user: &dbUser dbuser
-    pass: &dbPassword mysecretpassword
+    enabled: true
   jpa:
     properties:
       hibernate:
-        #dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
+    show-sql: true
+  sql:
+    init:
+      platform: postgres

@@ -1,6 +1,5 @@
 package ch.levelup.kaesseli.backend.account
 
-import ch.levelup.kaesseli.backend.usergroup.UserGroup
 import java.math.BigDecimal
 import java.time.LocalDateTime
 import javax.persistence.*
@@ -17,6 +16,6 @@ data class Account (
 
     val type: String,
     val saldo: BigDecimal,
-    val displayName: String,
-    val userUserGroup: UserGroup
+    val displayName: String
+
 )

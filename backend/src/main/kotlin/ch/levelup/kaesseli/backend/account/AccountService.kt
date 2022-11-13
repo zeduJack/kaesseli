@@ -22,8 +22,7 @@ class AccountService (private val accountRepository: AccountRepository) {
             val updateAccount: Account = currentAccount.copy(
                 type = newAccount.type,
                 saldo = newAccount.saldo,
-                displayName = newAccount.displayName,
-                userUserGroup = newAccount.userUserGroup
+                displayName = newAccount.displayName
             )
             ResponseEntity.ok().body(accountRepository.save(updateAccount))
         }.orElse(ResponseEntity.notFound().build())
