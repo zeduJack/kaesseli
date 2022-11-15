@@ -12,5 +12,6 @@ data class AppState(
     val user: User = User(),
     val userGroup: String = "",
     val stringUser: String = "Init",
-    val userGroups: List<String> = listOf("Familie 1", "Familie 2", "Nachbarschaft 3")
+    val userGroups: List<String> = listOf("Familie 1", "Familie 2", "Nachbarschaft 3"),
+    val groupMembers: List<String> = listOf("Melanie", "Choesang", "Zeljko", "Sarah")
 )
