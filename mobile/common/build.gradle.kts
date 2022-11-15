@@ -30,6 +30,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                api(project(":shared"))
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.3")
                 api("com.1gravity:redux-kotlin-threadsafe:0.5.10")
 

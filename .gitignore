@@ -9,3 +9,7 @@
 
 ### OSX ###
 .DS_Store
+
+.gradle
+build
+local.properties
