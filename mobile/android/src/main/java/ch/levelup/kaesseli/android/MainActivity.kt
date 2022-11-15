@@ -8,16 +8,12 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
 import ch.levelup.kaesseli.state.AppState
-import ch.levelup.kaesseli.Greeting
 import ch.levelup.kaesseli.android.navigation.Navigation
-import ch.levelup.kaesseli.android.navigation.Screen
+import ch.levelup.kaesseli.android.navigation.ScreenNavigation
 import ch.levelup.kaesseli.android.ui.theme.JetpackComposeTestTheme
 import org.reduxkotlin.StoreSubscription
-
-fun greet(): String {
-    return Greeting().greeting()
-}
 
 class MainActivity : AppCompatActivity() {
     private lateinit var unsubscribe: StoreSubscription
@@ -27,10 +23,11 @@ class MainActivity : AppCompatActivity() {
         val state: MutableState<AppState> = mutableStateOf(Store.instance.getState())
 
         setContent {
-            var startDestination by remember { mutableStateOf(Screen.MainScreen.route) }
+            val navController = rememberNavController()
+            var startDestination by remember { mutableStateOf(ScreenNavigation.LoginScreen.route) }
 
             if (false) {
-                startDestination = Screen.RegisterScreen.route
+                startDestination = ScreenNavigation.RegisterScreen.route
             }
 
             JetpackComposeTestTheme {
@@ -39,13 +36,18 @@ class MainActivity : AppCompatActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Navigation(startDestination, state.value)
+                    Navigation(navController, startDestination, state.value)
                 }
             }
-        }
 
-        unsubscribe = Store.instance.subscribe {
-            state.value = Store.instance.state
+            unsubscribe = Store.instance.subscribe {
+                if (Store.instance.state.navigation != "" &&
+                    Store.instance.state.navigation != navController.currentDestination?.route
+                ) {
+                    navController.navigate(route = Store.instance.state.navigation)
+                }
+                state.value = Store.instance.state
+            }
         }
     }
 

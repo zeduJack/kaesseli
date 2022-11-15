@@ -10,11 +10,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ch.levelup.kaesseli.Greeting
 import ch.levelup.kaesseli.android.Store
-import ch.levelup.kaesseli.android.greet
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.SetString
-import ch.levelup.kaesseli.user.User
 import ch.levelup.kaesseli.user.UserNetworkThunks
 
 @Composable
@@ -28,73 +27,82 @@ fun MainScreen(
     onNavigateToNetworkView: () -> Unit,
 
     ) {
-    Row(modifier = Modifier.fillMaxWidth()) {
-        if (appState.fetchingData) {
-            LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
-        }
-    }
-
-    Row(modifier = Modifier.fillMaxWidth()) {
-        if (appState.errorMessage != null && appState.errorMessage != "") {
-            Text(
-                text = appState.errorMessage!!,
-                color = Color.Red,
-                fontSize = 30.sp
-            )
-        }
-    }
-
     Column(
         Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.Start
     ) {
-        Text(text = greet())
-        Button(
-            onClick = { Store.instance.dispatch(SetString("Button clicked")) },
-            // Uses ButtonDefaults.ContentPadding by default
-            contentPadding = PaddingValues(
-                start = 20.dp,
-                top = 12.dp,
-                end = 20.dp,
-                bottom = 12.dp
-            )
+
+        Column(
+            Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Inner content including an icon and a text label
-            Icon(
-                Icons.Filled.Favorite,
-                contentDescription = "Favorite",
-                modifier = Modifier.size(ButtonDefaults.IconSize)
-            )
-            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-            Text("Like")
-        }
-        Button(onClick = onNavigateToCodeSubmission) {
-            Text(text = "Code submission")
-        }
-        Button(onClick = onNavigateToRegister) {
-            Text(text = "Register")
-        }
-        Button(onClick = onNavigateToOverview) {
-            Text(text = "Overview")
-        }
-        Button(onClick = onNavigateToBalance) {
-            Text(text = "Balance")
-        }
-        Button(onClick = onNavigateToRecompositionTest) {
-            Text(text = "Recompositon Test")
-        }
-        Button(onClick = {
-            Store.instance.dispatch(
-                UserNetworkThunks.createUser(
-                    null
+            Row(modifier = Modifier.fillMaxWidth()) {
+                if (appState.fetchingData) {
+                    LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+                }
+            }
+
+            Row(modifier = Modifier.fillMaxWidth()) {
+                if (appState.errorMessage != null && appState.errorMessage != "") {
+                    Text(
+                        text = appState.errorMessage!!,
+                        color = Color.Red,
+                        fontSize = 20.sp
+                    )
+                }
+            }
+
+            Text(text = appState.welcomeMessage)
+
+            Text(text = Greeting().greeting())
+            Button(
+                onClick = { Store.instance.dispatch(SetString("Button clicked")) },
+                // Uses ButtonDefaults.ContentPadding by default
+                contentPadding = PaddingValues(
+                    start = 20.dp,
+                    top = 12.dp,
+                    end = 20.dp,
+                    bottom = 12.dp
                 )
-            )
-        }) {
-            Text(text = "Do network request")
-        }
-        Button(onClick = onNavigateToNetworkView) {
-            Text(text = "Network view")
+            ) {
+                // Inner content including an icon and a text label
+                Icon(
+                    Icons.Filled.Favorite,
+                    contentDescription = "Favorite",
+                    modifier = Modifier.size(ButtonDefaults.IconSize)
+                )
+                Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+                Text("Like")
+            }
+            Button(onClick = onNavigateToCodeSubmission) {
+                Text(text = "Code submission")
+            }
+            Button(onClick = onNavigateToRegister) {
+                Text(text = "Register")
+            }
+            Button(onClick = onNavigateToOverview) {
+                Text(text = "Overview")
+            }
+            Button(onClick = onNavigateToBalance) {
+                Text(text = "Balance")
+            }
+            Button(onClick = onNavigateToRecompositionTest) {
+                Text(text = "Recompositon Test")
+            }
+            Button(onClick = {
+                Store.instance.dispatch(
+                    UserNetworkThunks.createUser(
+                        null
+                    )
+                )
+            }) {
+                Text(text = "Do network request")
+            }
+            Button(onClick = onNavigateToNetworkView) {
+                Text(text = "Network view")
+            }
         }
     }
 }
