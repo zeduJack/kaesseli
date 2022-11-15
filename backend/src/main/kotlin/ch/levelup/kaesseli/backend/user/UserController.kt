@@ -3,20 +3,32 @@ package ch.levelup.kaesseli.backend.user
 
 import ch.levelup.kaesseli.backend.common.UserDto
 import ch.levelup.kaesseli.backend.usergroup.UserGroupService
+import ch.levelup.kaesseli.shared.UserTestDto
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/users")
-class UserController(private val userService: UserService,
-private val userGroupService: UserGroupService) {
+class UserController(
+    private val userService: UserService,
+    private val userGroupService: UserGroupService
+) {
 
     @GetMapping
-    fun getUsers(): List<User> = userService.getUsers()
+    fun getUsers(): List<User> {
+        val userTestDto = UserTestDto("bla")
+        return userService.getUsers()
+    }
 
     @GetMapping("/{id}")
     fun getUserById(@PathVariable(value = "id") userId: Long): ResponseEntity<User> =
         userService.getUserById(userId)
+
+
+    @GetMapping("/test")
+    fun test(): ResponseEntity<UserTestDto> =
+        userService.getUserTestDto()
+
 
     @GetMapping("email/{email}")
     fun getUserByEmail(@PathVariable(value = "email") email: String): ResponseEntity<User>? =
@@ -27,7 +39,7 @@ private val userGroupService: UserGroupService) {
         userService.getUserDtoByEmail(email)
 
     @GetMapping("userGroup/{userGroupId}")
-    fun getUsersByUserGroup(@PathVariable(value = "userGroupId") userGroupId: Long) : Set<User>? {
+    fun getUsersByUserGroup(@PathVariable(value = "userGroupId") userGroupId: Long): Set<User>? {
         val userGroup = userGroupService.getUsersByUserGroupId(userGroupId).get()
         return userService.getUsers(userGroup)
     }

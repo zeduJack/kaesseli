@@ -7,6 +7,7 @@ import ch.levelup.kaesseli.backend.common.MemberDto
 import ch.levelup.kaesseli.backend.common.UserDto
 import ch.levelup.kaesseli.backend.common.UserGroupDto
 import ch.levelup.kaesseli.backend.usergroup.UserGroup
+import ch.levelup.kaesseli.shared.UserTestDto
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
@@ -16,15 +17,28 @@ import java.util.stream.Collectors
 @Service
 class UserService(
     private val userRepository: UserRepository,
-    private val accountService: AccountService) {
+    private val accountService: AccountService
+) {
 
     fun getUsers(): List<User> = userRepository.findAll()
 
     fun getUserByEmail(email: String): ResponseEntity<User>? {
+
+        val userTestDto = UserTestDto("")
+        if (userTestDto.username == "test") {
+            return userRepository.getUserByEmail("mmuster@email.ch")
+                .map { user -> ResponseEntity.ok(user) }
+                .orElse(ResponseEntity.notFound().build())
+        }
         return userRepository.getUserByEmail(email)
             .map { user -> ResponseEntity.ok(user) }
             .orElse(ResponseEntity.notFound().build())
     }
+
+    fun getUserTestDto(): ResponseEntity<UserTestDto> {
+        return ResponseEntity.ok(UserTestDto(""))
+    }
+
 
     fun getUsers(userGroup: UserGroup?): Set<User>? = userRepository.getUsersByUserGroups(userGroup)
 

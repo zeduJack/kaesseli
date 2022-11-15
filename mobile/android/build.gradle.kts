@@ -42,7 +42,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":common"))
+    implementation(project(":mobile:common"))
     implementation("com.google.android.material:material:1.7.0")
     implementation("androidx.appcompat:appcompat:1.5.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")

@@ -16,6 +16,7 @@ import ch.levelup.kaesseli.ScreenNavigation
 import ch.levelup.kaesseli.android.navigation.Navigation
 import ch.levelup.kaesseli.android.ui.theme.JetpackComposeTestTheme
 import ch.levelup.kaesseli.navigation.NavigationActions
+import ch.levelup.kaesseli.shared.UserTestDto
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.Store
 import kotlinx.coroutines.CoroutineScope
@@ -44,6 +45,8 @@ class MainActivity : AppCompatActivity() {
                     finish()
                 }
             }
+
+            UserTestDto("")
 /*
             navController.setLifecycleOwner(this)
             navController.enableOnBackPressed(true)

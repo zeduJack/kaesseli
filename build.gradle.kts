@@ -1,6 +1,3 @@
-// if gradle has some problems do in terminal:
-// ./gradlew --refresh-dependencies
-
 plugins {
     //trick: for the same plugin versions in all sub-modules
     val kotlinVersion = "1.7.20"
@@ -13,18 +10,14 @@ plugins {
     kotlin("plugin.serialization").version(kotlinVersion).apply(false)
 }
 
-buildscript {
+allprojects {
     repositories {
-        gradlePluginPortal()
         google()
         mavenCentral()
-    }
-    dependencies {
-        val kotlinVersion = project.findProperty("kaesseli.kotlin.version")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     }
 }
 
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }
+

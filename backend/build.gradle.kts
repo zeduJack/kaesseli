@@ -7,20 +7,19 @@ plugins {
 	id("com.palantir.docker") version "0.33.0"
 	id("com.palantir.docker-compose") version "0.33.0"
 	id("org.flywaydb.flyway") version "8.5.13"
-	kotlin("jvm") version "1.6.21"
+	kotlin("jvm")
 	kotlin("plugin.spring") version "1.6.21"
 	id("org.jetbrains.kotlin.plugin.jpa") version "1.5.21"
+
+	application
 }
 
 group = "ch.levelup.kaesseli"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
-repositories {
-	mavenCentral()
-}
-
 dependencies {
+	implementation(project(":shared"))
 	// kotlin
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -82,4 +81,9 @@ flyway {
 	url = "jdbc:postgresql://kaesselidb.postgres.database.azure.com:5432/kaesseli"
 	user =  "kaesseli@kaesselidb"
 	password = "VsMWZo45cavna7WM!"
+}
+
+application {
+	// Define the main class for the application.
+	mainClass.set("ch.levelup.kaesseli.backend.BackendApplicationKt")
 }
