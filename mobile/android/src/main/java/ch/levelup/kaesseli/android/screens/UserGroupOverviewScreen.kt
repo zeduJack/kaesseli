@@ -1,18 +1,13 @@
 package ch.levelup.kaesseli.android.screens
 
+import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,9 +39,12 @@ fun UserGroupOverviewScreen(
         val textStyle = TextStyle(fontSize = 20.sp, color = Color.White)
         val context = LocalContext.current
         LazyColumn(modifier = listModifier) {
-            items(appState.userGroups) { groupName ->
-                GreetingView(name = groupName) {
-                    Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            items(appState.userGroups) { groupName: String ->
+                TextButton(modifier = Modifier.fillMaxWidth(), onClick = { displayToast(groupName, context)}) {
+                    Row {
+                        Text(groupName)
+                        Spacer(modifier = Modifier.weight(1f))
+                    }
                 }
             }
         }
@@ -62,18 +60,7 @@ fun UserGroupOverviewScreen(
         }
     }
 }
-@Composable
-private fun GreetingView(name: String, onClick: (msg: String) -> Unit) {
-    //val msg = "Hello, $name"
 
-    Card(
-        backgroundColor = MaterialTheme.colors.primary,
-        modifier = Modifier
-            .padding(vertical = 4.dp, horizontal = 8.dp)
-            .clickable { onClick("Hello, $name") }
-    ) {
-        Row(modifier = Modifier.padding(12.dp).fillMaxWidth()) {
-            Text(text = name)
-        }
-    }
+private fun displayToast(groupName: String, context: Context){
+    Toast.makeText(context, groupName, Toast.LENGTH_LONG).show()
 }
