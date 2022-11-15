@@ -30,6 +30,11 @@ fun Navigation(
                 LoginScreen()
             }
         }
+        composable(route = ScreenNavigation.UserGroupOverviewScreen.route) {
+            LayoutScreen(appState = appState) {
+                UserGroupOverviewScreen(appState = appState)
+            }
+        }
         composable(route = ScreenNavigation.BalanceScreen.route) {
             BalanceScreen()
         }
