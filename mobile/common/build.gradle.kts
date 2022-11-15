@@ -5,7 +5,7 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
-    kotlin("plugin.serialization").version("1.6.21") // this is the kotlin versoin
+    kotlin("plugin.serialization")
 }
 
 version = "1.0"
@@ -30,8 +30,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
-                api("com.1gravity:redux-kotlin-threadsafe:0.5.10")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.3")
+                api("org.reduxkotlin:redux-kotlin-thunk:0.5.5")
+                api("org.reduxkotlin:redux-kotlin-threadsafe:0.5.5")
 
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-cio:$ktorVersion")

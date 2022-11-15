@@ -12,7 +12,6 @@ local.properties
 /ios/Pods/Target Support Files/common/common.debug.xcconfig
 /ios/Pods/Local Podspecs/common.podspec.json
 /ios/Pods/Target Support Files/common/common.release.xcconfig
-/ios/Pods/Pods.xcodeproj/xcuserdata/choesang.xcuserdatad/xcschemes/common.xcscheme
 /ios/ios.xcworkspace/contents.xcworkspacedata
 /ios/ios.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 /ios/Pods/Manifest.lock
@@ -20,13 +19,10 @@ local.properties
 /ios/Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig
 /ios/Pods/Target Support Files/Pods-ios/Pods-ios.modulemap
 /ios/Pods/Target Support Files/Pods-ios/Pods-ios.release.xcconfig
-/ios/Pods/Pods.xcodeproj/xcuserdata/choesang.xcuserdatad/xcschemes/Pods-ios.xcscheme
+/ios/Pods/Pods.xcodeproj/xcuserdata/
 /ios/Pods/Target Support Files/Pods-ios/Pods-ios-acknowledgements.markdown
 /ios/Pods/Target Support Files/Pods-ios/Pods-ios-acknowledgements.plist
 /ios/Pods/Target Support Files/Pods-ios/Pods-ios-dummy.m
 /ios/Pods/Target Support Files/Pods-ios/Pods-ios-Info.plist
 /ios/Pods/Target Support Files/Pods-ios/Pods-ios-umbrella.h
 /ios/Pods/Pods.xcodeproj/project.pbxproj
-/ios/ios.xcworkspace/xcuserdata/choesang.xcuserdatad/UserInterfaceState.xcuserstate
-/ios/ios.xcodeproj/xcuserdata/choesang.xcuserdatad/xcschemes/xcschememanagement.plist
-/ios/Pods/Pods.xcodeproj/xcuserdata/choesang.xcuserdatad/xcschemes/xcschememanagement.plist

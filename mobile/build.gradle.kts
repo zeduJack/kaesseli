@@ -10,14 +10,6 @@ buildscript {
     dependencies {
         val kotlinVersion = project.findProperty("kaesseli.kotlin.version")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-        classpath("com.android.tools.build:gradle:7.2.2")
-    }
-}
-
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
     }
 }
 
