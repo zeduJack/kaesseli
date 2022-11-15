@@ -1,25 +1,23 @@
-package ch.levelup.kaesseli.backend.account
+package ch.levelup.kaesseli.backend.userusergroup
 
+import ch.levelup.kaesseli.backend.user.User
 import ch.levelup.kaesseli.backend.usergroup.UserGroup
-import java.math.BigDecimal
 import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
-@Table(name = "\"account\"")
-data class Account (
+@Table(name = "\"userusergroup\"")
+data class UserUserGroup(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     val createdAt: LocalDateTime? = LocalDateTime.now(),
     val updatedAt: LocalDateTime? = LocalDateTime.now(),
     val version: Int,
-
-    val type: String,
-    val saldo: BigDecimal,
-    val displayName: String,
-
-    @OneToOne
-    @JoinColumn(name="user_usergroup_id", nullable=false)
-    val userUserGroup: UserGroup
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
+    val user: User,
+    @ManyToOne
+    @JoinColumn(name="usergroup_id", nullable=false)
+    val usergroup: UserGroup
 )

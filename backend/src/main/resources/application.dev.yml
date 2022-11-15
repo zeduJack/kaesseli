@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://kaesselidb.postgres.database.azure.com:5432/kaesseli
-    username: kaesseli@kaesselidb
-    password: VsMWZo45cavna7WM!
+    url: &dbURL jdbc:postgresql://localhost:5432/kaesseli
+    username: &dbUser dbuser
+    password: &dbPassword mysecretpassword
     driver-class-name: org.postgresql.Driver
   flyway:
     locations: classpath:db/migration

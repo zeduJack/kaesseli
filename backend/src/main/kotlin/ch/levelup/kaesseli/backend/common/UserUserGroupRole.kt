@@ -1,14 +1,13 @@
-package ch.levelup.kaesseli.backend.scheduler
+package ch.levelup.kaesseli.backend.common
 
-import ch.levelup.kaesseli.backend.account.Account
 import ch.levelup.kaesseli.backend.user.User
-import java.math.BigDecimal
+import ch.levelup.kaesseli.backend.usergroup.UserGroup
 import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
-@Table(name = "\"scheduler\"")
-data class Scheduler(
+@Table(name = "\"userusergrouprole\"")
+data class UserUserGroupRole (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
@@ -20,9 +19,9 @@ data class Scheduler(
     @JoinColumn(name="user_id", nullable=false)
     val user: User,
     @ManyToOne
-    @JoinColumn(name="account_id", nullable=false)
-    val account: Account,
-    val scheduleTime: String,
-    val amount: BigDecimal,
-    val message: String
-)
+    @JoinColumn(name="usergroup_id", nullable=false)
+    val usergroup: UserGroup,
+    @ManyToOne
+    @JoinColumn(name="role_id", nullable=false)
+    val role: Role
+    )

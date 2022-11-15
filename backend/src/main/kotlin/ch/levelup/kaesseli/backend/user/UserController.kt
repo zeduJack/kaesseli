@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/users")
 class UserController(private val userService: UserService) {
 
     @GetMapping
@@ -14,6 +14,10 @@ class UserController(private val userService: UserService) {
     @GetMapping("/{id}")
     fun getUserById(@PathVariable(value = "id") userId: Long): ResponseEntity<User> =
         userService.getUserById(userId)
+
+    @GetMapping("email/{email}")
+    fun getUserByEmail(@PathVariable(value = "email") email: String): ResponseEntity<User>? =
+        userService.getUserByEmail(email)
 
     @PostMapping
     fun addUser(@RequestBody user: User): ResponseEntity<User> =

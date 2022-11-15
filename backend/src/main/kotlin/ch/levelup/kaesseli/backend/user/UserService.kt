@@ -3,16 +3,23 @@ package ch.levelup.kaesseli.backend.user
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class UserService(private val userRepository: UserRepository) {
 
     fun getUsers(): List<User> = userRepository.findAll()
+    fun getUserByEmail(email: String): ResponseEntity<User>? = userRepository.getUserByEmail(email)
+        .map { user -> ResponseEntity.ok(user) }
+        .orElse(ResponseEntity.notFound().build())
+
+    fun getUserByIdNoFun(userId: Long): Optional<User> = userRepository.findById(userId)
+
 
     fun getUserById(userId: Long): ResponseEntity<User> =
-        userRepository.findById(userId).map { user ->
-            ResponseEntity.ok(user)
-        }.orElse(ResponseEntity.notFound().build())
+        userRepository.findById(userId)
+            .map { user -> ResponseEntity.ok(user) }
+            .orElse(ResponseEntity.notFound().build())
 
     fun addUser(user: User): ResponseEntity<User> =
         ResponseEntity.ok(userRepository.save(user))
