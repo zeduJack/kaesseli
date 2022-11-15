@@ -1,11 +1,10 @@
 package ch.levelup.kaesseli.backend.transaction
 
-import ch.levelup.kaesseli.backend.transaction.Transaction
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/transaction")
+@RequestMapping("/api/transactions")
 class TransactionController (private val transactionService: TransactionService){
 
     @GetMapping
