@@ -10,6 +10,7 @@ data class AppState(
     val errorMessage: String? = "",
     val userRegistration: UserRegistration? = null,
     val user: User = User(),
+    val userGroup: String = "",
     val stringUser: String = "Init",
-    val countries: List<String> = listOf("Child 1", "Child 2", "Child 3")
+    val userGroups: List<String> = listOf("Familie 1", "Familie 2", "Nachbarschaft 3")
 )

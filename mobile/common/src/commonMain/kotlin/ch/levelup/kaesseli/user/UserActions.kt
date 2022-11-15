@@ -5,5 +5,5 @@ class UserActions {
     data class LogOutUser(val username: String)
     data class SetUser(val user: User)
     data class UserCreated(val user: User?)
-
+    data class SelectUserGroup(val userGroupName: String)
 }

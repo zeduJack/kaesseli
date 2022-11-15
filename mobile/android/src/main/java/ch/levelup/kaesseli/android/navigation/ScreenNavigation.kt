@@ -5,6 +5,7 @@ sealed class ScreenNavigation(val route: String) {
     object MainScreen: ScreenNavigation("main")
     object BalanceScreen: ScreenNavigation("balance")
     object OverviewScreen: ScreenNavigation("overview")
+    object UserGroupOverviewScreen: ScreenNavigation("user_group_overview")
     object RegisterScreen: ScreenNavigation("register")
     object CodeSubmissionScreen: ScreenNavigation("code_submission")
     object RecompositionTestScreen: ScreenNavigation("recomposition_test")

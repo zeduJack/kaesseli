@@ -20,7 +20,7 @@ fun rootReducer(state: AppState, action: Any) = AppState(
             else -> it
         }
     },
-    countries = state.countries.let {
+    userGroups = state.userGroups.let {
         when (action) {
             is AddCountry -> it + "new entry"
             else -> it

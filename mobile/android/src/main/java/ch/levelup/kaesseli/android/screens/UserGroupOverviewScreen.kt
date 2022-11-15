@@ -13,18 +13,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ch.levelup.kaesseli.state.AddCountry
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.android.Store
+import ch.levelup.kaesseli.android.navigation.ScreenNavigation
+import ch.levelup.kaesseli.navigation.NavigationActions
+import ch.levelup.kaesseli.state.CreateUserGroup
+import ch.levelup.kaesseli.user.UserActions
 
 @Composable
-fun OverviewScreen(
-    onNavigateToBalance: () -> Unit,
+fun UserGroupOverviewScreen(
     appState: AppState
 ) {
     Column(modifier = Modifier.padding(16.dp)) {
         Text(
-            text = "OVERVIEW",
+            text = "Übersicht - Gruppen",
             style = TextStyle(fontSize = 21.sp)
         )
 
@@ -36,17 +38,19 @@ fun OverviewScreen(
 
         LazyColumn(modifier = listModifier) {
 
-            items(appState.userGroups) { userGroupName ->
-                Text(text = userGroupName, style = textStyle)
+            items(appState.userGroups) { groupName ->
+                Text(text = groupName, style = textStyle)
             }
         }
-
+/*
         Button(onClick = onNavigateToBalance) {
-            Text(text = "balance")
+            // TODO set user group name, route to group overview
+            Store.instance.dispatch(UserActions.SelectUserGroup(userGroupName = "Die Schmitts"))
+            Store.instance.dispatch(NavigationActions.SetNavigation(ScreenNavigation.BalanceScreen.route))
         }
-
-        Button(onClick = { Store.instance.dispatch(AddCountry("test")) }) {
-            Text(text = "Add country")
+*/
+        Button(onClick = { Store.instance.dispatch(CreateUserGroup(userGroupName = "Neuer Gruppenname")) }) {
+            Text(text = "Neue Gruppe erstellen")
         }
     }
 }

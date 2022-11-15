@@ -47,8 +47,10 @@ fun LoginScreen(
         Button(onClick = {
             dirty = true
             if (emailValid) {
+                // send network request, verify username exists and is valid, store user account values inside state
                 Store.instance.dispatch(UserActions.LogInUser(username = username.text))
-                Store.instance.dispatch(NavigationActions.SetNavigation(ScreenNavigation.MainScreen.route))
+                //send network request, get list of available user groups
+                Store.instance.dispatch(NavigationActions.SetNavigation(ScreenNavigation.UserGroupOverviewScreen.route))
             }
         }) {
             Text(text = "Anmelden")
