@@ -35,6 +35,11 @@ fun Navigation(
                 UserGroupOverviewScreen(appState = appState)
             }
         }
+        composable(route = ScreenNavigation.GroupMembersScreen.route) {
+            LayoutScreen(appState = appState) {
+                GroupMembersScreen(appState = appState)
+            }
+        }
         composable(route = ScreenNavigation.BalanceScreen.route) {
             BalanceScreen()
         }

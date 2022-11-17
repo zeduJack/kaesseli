@@ -33,10 +33,10 @@ fun UserGroupOverviewScreen(
         )
 
         val listModifier = Modifier
-            .background(Color.Gray)
+            .background(Color.White)
             .padding(10.dp)
 
-        val textStyle = TextStyle(fontSize = 20.sp, color = Color.White)
+        //val textStyle = TextStyle(fontSize = 20.sp, color = Color.White)
         val context = LocalContext.current
         LazyColumn(modifier = listModifier) {
             items(appState.userGroups) { groupName: String ->
@@ -48,13 +48,7 @@ fun UserGroupOverviewScreen(
                 }
             }
         }
-/*
-        Button(onClick = onNavigateToBalance) {
-            // TODO set user group name, route to group overview
-            Store.instance.dispatch(UserActions.SelectUserGroup(userGroupName = ""))
-            Store.instance.dispatch(NavigationActions.SetNavigation(ScreenNavigation.GroupMemberOverview.route))
-        }
-*/
+
         Button(onClick = { Store.instance.dispatch(CreateUserGroup(userGroupName = "Neuer Gruppenname")) }) {
             Text(text = "Neue Gruppe erstellen")
         }
@@ -62,5 +56,7 @@ fun UserGroupOverviewScreen(
 }
 
 private fun displayToast(groupName: String, context: Context){
-    Toast.makeText(context, groupName, Toast.LENGTH_LONG).show()
+    // TODO set user group name, route to group overview
+    //Store.instance.dispatch(UserActions.SelectUserGroup(userGroupName = ""))
+    Store.instance.dispatch(NavigationActions.SetNavigation(ScreenNavigation.GroupMembersScreen.route))
 }
