@@ -7,6 +7,7 @@ import kotlin.coroutines.CoroutineContext
 
 actual object PlatformDispatcher : CoroutineDispatcher() {
     override fun dispatch(context: CoroutineContext, block: Runnable) {
-        Dispatchers.IO.dispatch(context, block)
+        // todo: check if its a good idea to use here the main dispatcher
+        Dispatchers.Main.dispatch(context, block)
     }
 }

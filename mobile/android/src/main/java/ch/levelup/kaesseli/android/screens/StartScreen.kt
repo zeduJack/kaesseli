@@ -1,9 +1,6 @@
 package ch.levelup.kaesseli.android.screens
 
-import android.content.Context
-import android.widget.Toast
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -17,18 +14,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.android.Store
-import ch.levelup.kaesseli.android.navigation.ScreenNavigation
+import ch.levelup.kaesseli.ScreenNavigation
+import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
+import ch.levelup.kaesseli.selectedUserGroup.UserGroupActions
 import ch.levelup.kaesseli.state.CreateUserGroup
-import ch.levelup.kaesseli.user.UserActions
+import ch.levelup.kaesseli.user.UserGroupDto
 
 @Composable
-fun UserGroupOverviewScreen(
+fun StartScreen(
     appState: AppState
 ) {
     Column(modifier = Modifier.padding(16.dp)) {
         Text(
-            text = "Übersicht - Gruppen",
+            text = "Gruppen",
             style = TextStyle(fontSize = 18.sp)
         )
 
@@ -39,10 +38,10 @@ fun UserGroupOverviewScreen(
         //val textStyle = TextStyle(fontSize = 20.sp, color = Color.White)
         val context = LocalContext.current
         LazyColumn(modifier = listModifier) {
-            items(appState.userGroups) { groupName: String ->
-                TextButton(modifier = Modifier.fillMaxWidth(), onClick = { displayToast(groupName, context)}) {
+            items(appState.user.userGroups) { group: UserGroupDto ->
+                TextButton(modifier = Modifier.fillMaxWidth(), onClick = { setSelectedGroup(group)}) {
                     Row {
-                        Text(groupName)
+                        Text(group.name)
                         Spacer(modifier = Modifier.weight(1f))
                     }
                 }
@@ -55,8 +54,7 @@ fun UserGroupOverviewScreen(
     }
 }
 
-private fun displayToast(groupName: String, context: Context){
-    // TODO set user group name, route to group overview
-    //Store.instance.dispatch(UserActions.SelectUserGroup(userGroupName = ""))
-    Store.instance.dispatch(NavigationActions.SetNavigation(ScreenNavigation.GroupMembersScreen.route))
+private fun setSelectedGroup(selectedGroup: UserGroupDto){
+    Store.instance.dispatch(UserGroupActions.SetSelectedGroup(selectedGroup))
+    Store.instance.dispatch(NavigationActions.SetNavigation(Navigation(ScreenNavigation.GroupMembersScreen.route)))
 }

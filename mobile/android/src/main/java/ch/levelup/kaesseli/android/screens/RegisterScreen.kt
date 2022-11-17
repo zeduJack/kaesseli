@@ -21,14 +21,14 @@ fun RegisterScreen(
 ) {
     Column(modifier = Modifier.padding(50.dp)) {
         Text(
-            text = "CREATE ACCOUNT",
-            style = TextStyle(fontSize = 21.sp)
+            text = "Konto erstellen",
+            style = TextStyle(fontSize = 18.sp)
         )
 
         var firstname by remember { mutableStateOf(TextFieldValue("")) }
         TextField(
             value = firstname,
-            label = { Text(text = "First name") },
+            label = { Text(text = "Vorname") },
             onValueChange = { newText ->
                 firstname = newText
             }
@@ -37,7 +37,7 @@ fun RegisterScreen(
         var lastname by remember { mutableStateOf(TextFieldValue("")) }
         TextField(
             value = lastname,
-            label = { Text(text = "Last name") },
+            label = { Text(text = "Nachname") },
             onValueChange = { newText ->
                 lastname = newText
             }
@@ -46,7 +46,7 @@ fun RegisterScreen(
         var email by remember { mutableStateOf(TextFieldValue("")) }
         TextField(
             value = email,
-            label = { Text(text = "Email") },
+            label = { Text(text = "E-Mail") },
             onValueChange = { newText ->
                 email = newText
             }
@@ -56,7 +56,7 @@ fun RegisterScreen(
             Store.instance.dispatch(UserRegistrationActions.RegisterUser(UserRegistration(name = firstname.text, email = email.text, password = "hello world")))
             onNavigateToOverview()
         }) {
-            Text(text = "Submit")
+            Text(text = "Erstellen")
         }
     }
 }

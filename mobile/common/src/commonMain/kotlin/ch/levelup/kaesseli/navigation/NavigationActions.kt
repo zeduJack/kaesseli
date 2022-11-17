@@ -1,5 +1,5 @@
 package ch.levelup.kaesseli.navigation
 
 class NavigationActions {
-    data class SetNavigation(val route: String)
+    data class SetNavigation(val navigation: Navigation)
 }

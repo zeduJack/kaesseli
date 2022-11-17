@@ -1,6 +1,6 @@
 package ch.levelup.kaesseli.user
 
-fun userReducer(state: User, action: Any) =
+fun userReducer(state: UserDto, action: Any) =
     when (action) {
         is UserActions.SetUser -> action.user
         else -> state

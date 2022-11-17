@@ -1,14 +1,13 @@
-package ch.levelup.kaesseli.android.navigation
+package ch.levelup.kaesseli
 
 sealed class ScreenNavigation(val route: String) {
     object LoginScreen: ScreenNavigation("login")
     object MainScreen: ScreenNavigation("main")
     object BalanceScreen: ScreenNavigation("balance")
     object OverviewScreen: ScreenNavigation("overview")
-    object UserGroupOverviewScreen: ScreenNavigation("user_group_overview")
-    object GroupMembersScreen: ScreenNavigation("group_mebers")
+    object StartScreen: ScreenNavigation("start")
+    object GroupMembersScreen: ScreenNavigation("group_members")
     object RegisterScreen: ScreenNavigation("register")
     object CodeSubmissionScreen: ScreenNavigation("code_submission")
-    object RecompositionTestScreen: ScreenNavigation("recomposition_test")
-    object NetworkTestScreen: ScreenNavigation("network_test")
+    object MemberScreen: ScreenNavigation("member")
 }

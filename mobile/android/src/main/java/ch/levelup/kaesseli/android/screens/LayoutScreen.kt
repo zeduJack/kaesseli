@@ -36,7 +36,7 @@ fun LayoutScreen(
             }
         }
 
-        Text(text = appState.welcomeMessage)
+        Text(text = appState.welcomeMessage.message)
 
         content()
     }
