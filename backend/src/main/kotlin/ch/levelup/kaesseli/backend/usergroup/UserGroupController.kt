@@ -14,7 +14,7 @@ class UserGroupController(private val userGroupService: UserGroupService) {
         userGroupService.getUserGroupById(userGroupId)
 
     @GetMapping("/userId/{id}")
-    fun getUserGroupsByUserId(@PathVariable(value = "id") id: Long): MutableList<UserGroup>? =
+    fun getUserGroupsByUserId(@PathVariable(value = "id") id: Long): Set<UserGroup>? =
         userGroupService.getUserGroupsByUserId(id)
 
     @PostMapping
@@ -25,8 +25,7 @@ class UserGroupController(private val userGroupService: UserGroupService) {
     fun updateUserGroupById(
         @PathVariable(value = "id") userGroupId: Long,
         @RequestBody newUserGroup: UserGroup
-    ): ResponseEntity<UserGroup> =
-        userGroupService.putUserGroup(userGroupId, newUserGroup)
+    ): ResponseEntity<UserGroup> = userGroupService.putUserGroup(userGroupId, newUserGroup)
 
     @DeleteMapping("/{id}")
     fun deleteUserGroup(@PathVariable(value = "id") userGroupId: Long): ResponseEntity<Void> =

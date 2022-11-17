@@ -1,6 +1,6 @@
 package ch.levelup.kaesseli.backend.account
 
-import ch.levelup.kaesseli.backend.usergroup.UserGroup
+import ch.levelup.kaesseli.backend.user.User
 import java.math.BigDecimal
 import java.time.LocalDateTime
 import javax.persistence.*
@@ -21,5 +21,5 @@ data class Account (
 
     @OneToOne
     @JoinColumn(name="user_usergroup_id", nullable=false)
-    val userUserGroup: UserGroup
+    val user: User
 )

@@ -3,9 +3,10 @@ package ch.levelup.kaesseli.backend.transaction
 import ch.levelup.kaesseli.backend.account.Account
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
-import javax.transaction.Transactional
+import java.util.*
 
 @Repository
-@Transactional(Transactional.TxType.MANDATORY)
 interface TransactionRepository : JpaRepository<Transaction, Long> {
+
+    fun getTransactionsByAccount(account: Optional<Account>): Set<Transaction>?
 }
