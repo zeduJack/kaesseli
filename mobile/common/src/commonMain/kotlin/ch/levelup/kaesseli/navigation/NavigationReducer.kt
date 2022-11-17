@@ -1,7 +1,7 @@
 package ch.levelup.kaesseli.navigation
 
-fun navigationReducer(state: String, action: Any) =
+fun navigationReducer(state: Navigation, action: Any) =
     when (action) {
-        is NavigationActions.SetNavigation -> action.route
+        is NavigationActions.SetNavigation -> action.navigation
         else -> state
     }

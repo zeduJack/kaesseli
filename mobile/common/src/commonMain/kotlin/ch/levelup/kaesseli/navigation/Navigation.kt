@@ -1,3 +1,3 @@
 package ch.levelup.kaesseli.navigation
 
-data class Navigation(val currentRoute: String = "", val navigateToRoute: String = "")
+data class Navigation(val route: String = "", val navigateBack: Boolean = false)

@@ -10,22 +10,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ch.levelup.kaesseli.Greeting
 import ch.levelup.kaesseli.android.Store
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.SetString
-import ch.levelup.kaesseli.user.UserNetworkThunks
 
 @Composable
 fun MainScreen(
     appState: AppState,
     onNavigateToCodeSubmission: () -> Unit,
     onNavigateToRegister: () -> Unit,
-    onNavigateToOverview: () -> Unit,
     onNavigateToBalance: () -> Unit,
-    onNavigateToRecompositionTest: () -> Unit,
-    onNavigateToNetworkView: () -> Unit,
-
     ) {
     Column(
         Modifier.fillMaxSize(),
@@ -54,9 +48,9 @@ fun MainScreen(
                 }
             }
 
-            Text(text = appState.welcomeMessage)
+            Text(text = appState.welcomeMessage.message)
 
-            Text(text = Greeting().greeting())
+            Text(text = "Hello")
             Button(
                 onClick = { Store.instance.dispatch(SetString("Button clicked")) },
                 // Uses ButtonDefaults.ContentPadding by default
@@ -82,26 +76,8 @@ fun MainScreen(
             Button(onClick = onNavigateToRegister) {
                 Text(text = "Register")
             }
-            Button(onClick = onNavigateToOverview) {
-                Text(text = "Overview")
-            }
             Button(onClick = onNavigateToBalance) {
                 Text(text = "Balance")
-            }
-            Button(onClick = onNavigateToRecompositionTest) {
-                Text(text = "Recompositon Test")
-            }
-            Button(onClick = {
-                Store.instance.dispatch(
-                    UserNetworkThunks.createUser(
-                        null
-                    )
-                )
-            }) {
-                Text(text = "Do network request")
-            }
-            Button(onClick = onNavigateToNetworkView) {
-                Text(text = "Network view")
             }
         }
     }

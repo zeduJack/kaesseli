@@ -1,8 +1,15 @@
 package ch.levelup.kaesseli.user
 
+import ch.levelup.kaesseli.GatewayResponse
+import ch.levelup.kaesseli.GenericError
 import ch.levelup.kaesseli.PlatformDispatcher
+import ch.levelup.kaesseli.ScreenNavigation
 import ch.levelup.kaesseli.errorMessage.ErrorMessageActions
 import ch.levelup.kaesseli.fetchingData.FetchingDataActions
+import ch.levelup.kaesseli.login.LoginActions
+import ch.levelup.kaesseli.login.LoginInput
+import ch.levelup.kaesseli.navigation.Navigation
+import ch.levelup.kaesseli.navigation.NavigationActions
 import ch.levelup.kaesseli.state.AppState
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -26,19 +33,34 @@ object UserNetworkThunks {
     private val userRepository = UserRepository()
     private val networkScope = CoroutineScope(PlatformDispatcher)
 
-    fun createUser(user: User?): Thunk<AppState> = { dispatch, getState, extraArg ->
-        networkScope.launch(tunkExceptionHandler(dispatch)) {
-            dispatch(ErrorMessageActions.ClearErrorMessage)
-            dispatch(FetchingDataActions.StartNetworkRequest)
-            val response = userRepository.createUser(user = user)
-            dispatch(FetchingDataActions.EndNetworkRequest)
+    fun logInUser(): Thunk<AppState> = { dispatch, getState, extraArg ->
+        var response: GatewayResponse<UserDto, GenericError>? = null
+        dispatch(ErrorMessageActions.ClearErrorMessage)
+        dispatch(FetchingDataActions.StartNetworkRequest)
+        var email = getState().login.username
 
-            if (response.isFailure) {
-                dispatch(ErrorMessageActions.SetErrorMessage(response.errorResponse?.message))
-            } else {
-                dispatch(UserActions.UserCreated(response.response))
+
+
+        networkScope.launch(tunkExceptionHandler(dispatch)) {
+            response = userRepository.logInUser(email)
+
+            // todo: maybe move outside of coroutine if we use the IO dispatcher
+            dispatch(FetchingDataActions.EndNetworkRequest)
+            if (response != null) {
+                if (response!!.isFailure) {
+                    dispatch(ErrorMessageActions.SetErrorMessage(response!!.errorResponse?.message))
+                } else {
+                    if (response?.response != null) {
+                        dispatch(UserActions.SetUser(response!!.response!!))
+                        dispatch(LoginActions.ChangeLogin(LoginInput(username = "", isDirty = false)))
+                    }
+
+                    //response.response?.let { UserActions.SetUser(it) }?.let { dispatch(it) }
+                    dispatch(NavigationActions.SetNavigation(Navigation(route = ScreenNavigation.StartScreen.route)))
+                }
             }
-            //throw Exception("test") // is for testing tunkExceptionHandler
         }
+
+
     }
 }

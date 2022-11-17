@@ -8,12 +8,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ch.levelup.kaesseli.state.AppState
 
 @Composable
-fun BalanceScreen(){
+fun AccountScreen(appState: AppState) {
     Column(modifier = Modifier.padding(16.dp)) {
         Text(
-            text = "Kontostand von ",
+            text = appState.account.displayName,
+            style = TextStyle(fontSize = 18.sp),
+            modifier = Modifier.padding(0.dp, 18.dp)
+        )
+        Text(
+            text = "Kontostand: " + appState.account.saldo,
             style = TextStyle(fontSize = 18.sp)
         )
     }

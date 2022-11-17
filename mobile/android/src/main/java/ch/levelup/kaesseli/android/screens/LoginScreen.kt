@@ -2,43 +2,40 @@ package ch.levelup.kaesseli.android.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
+import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ch.levelup.kaesseli.android.Store
-import ch.levelup.kaesseli.android.navigation.ScreenNavigation
-import ch.levelup.kaesseli.navigation.NavigationActions
-import ch.levelup.kaesseli.user.UserActions
+import ch.levelup.kaesseli.login.LoginActions
+import ch.levelup.kaesseli.login.LoginInput
+import ch.levelup.kaesseli.state.AppState
+import ch.levelup.kaesseli.user.UserNetworkThunks
 
 @Composable
-fun LoginScreen(
-) {
+fun LoginScreen(appState: AppState) {
     Column(modifier = Modifier.padding(50.dp)) {
         Text(
-            text = "Bitte Benutzernamen eingeben",
-            style = TextStyle(fontSize = 21.sp)
+            text = appState.login.loginTextPlaceholder,
+            style = TextStyle(fontSize = 18.sp)
         )
 
-        var username by remember { mutableStateOf(TextFieldValue("")) }
         var dirty by remember { mutableStateOf(false) }
-        var emailValid by remember { mutableStateOf(false) }
 
         TextField(
-            value = username,
-            isError = dirty && !emailValid,
-            label = { Text(text = "Benutzername") },
-            onValueChange = { newText ->
-                username = newText
-                emailValid = isEmailValid(newText.text)
-            }
+            value = appState.login.username,
+            isError = appState.login.isDirty && !appState.login.isValid,
+            label = { Text(text = appState.login.loginFieldLabel) },
+            onValueChange = { newText -> dispatchNewState(newText, dirty) }
         )
-        if (dirty && !emailValid) {
+        if (appState.login.isDirty && !appState.login.isValid) {
             Text(
-                text = "Die E-Mail Adresse ist ungültig",
+                text = appState.login.loginInvalidMessage,
                 color = MaterialTheme.colors.error,
                 style = MaterialTheme.typography.caption
             )
@@ -46,19 +43,27 @@ fun LoginScreen(
 
         Button(onClick = {
             dirty = true
-            if (emailValid) {
+            if (appState.login.isValid) {
                 // send network request, verify username exists and is valid, store user account values inside state
-                Store.instance.dispatch(UserActions.LogInUser(username = username.text))
-                //send network request, get list of available user groups
-                Store.instance.dispatch(NavigationActions.SetNavigation(ScreenNavigation.UserGroupOverviewScreen.route))
+                Store.instance.dispatch(UserNetworkThunks.logInUser())
+            } else {
+                dispatchNewState(appState.login.username, dirty)
             }
+
         }) {
-            Text(text = "Anmelden")
+            Text(text = appState.login.loginButtonText)
         }
     }
 }
 
-fun isEmailValid(newValue: String): Boolean {
-    return android.util.Patterns.EMAIL_ADDRESS.matcher(newValue).matches();
+fun dispatchNewState(newText: String, dirty: Boolean): Unit {
+    Store.instance.dispatch(
+        LoginActions.ChangeLogin(
+            LoginInput(
+                username = newText,
+                dirty
+            )
+        )
+    )
 }
 

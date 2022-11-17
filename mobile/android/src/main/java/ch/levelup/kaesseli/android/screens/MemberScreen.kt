@@ -1,7 +1,5 @@
 package ch.levelup.kaesseli.android.screens
 
-import android.content.Context
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,19 +17,25 @@ import androidx.compose.ui.unit.sp
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.android.Store
 import ch.levelup.kaesseli.ScreenNavigation
+import ch.levelup.kaesseli.account.AccountActions
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
-import ch.levelup.kaesseli.selectedMember.SelectedMemberActions
 import ch.levelup.kaesseli.state.CreateUserGroup
-import ch.levelup.kaesseli.user.MemberDto
+import ch.levelup.kaesseli.user.AccountDto
 
 @Composable
-fun GroupMembersScreen(
+fun MemberScreen(
     appState: AppState
 ) {
     Column(modifier = Modifier.padding(16.dp)) {
+        val postfix: String = if(appState.member.firstname == ""){
+            ""
+        } else {
+            " von " + appState.member.firstname
+        }
+
         Text(
-            text = "Gruppenmitglieder",
+            text = "Konten$postfix",
             style = TextStyle(fontSize = 18.sp)
         )
 
@@ -42,10 +46,10 @@ fun GroupMembersScreen(
         //val textStyle = TextStyle(fontSize = 20.sp, color = Color.White)
         val context = LocalContext.current
         LazyColumn(modifier = listModifier) {
-            items(appState.userGroup.members) { member: MemberDto ->
-                TextButton(modifier = Modifier.fillMaxWidth(), onClick = { setSelectedMember(member, context)}) {
+            items(appState.member.accounts) { account: AccountDto ->
+                TextButton(modifier = Modifier.fillMaxWidth(), onClick = { setSelectedMember(account)}) {
                     Row {
-                        Text(member.firstname)
+                        Text(account.displayName)
                         Spacer(modifier = Modifier.weight(1f))
                     }
                 }
@@ -58,8 +62,7 @@ fun GroupMembersScreen(
     }
 }
 
-private fun setSelectedMember(selectedMember: MemberDto, context: Context){
-    Toast.makeText(context, selectedMember.firstname, Toast.LENGTH_LONG).show()
-    Store.instance.dispatch(SelectedMemberActions.SetSelectedMember(selectedMember))
-    Store.instance.dispatch(NavigationActions.SetNavigation(Navigation(ScreenNavigation.MemberScreen.route)))
+private fun setSelectedMember(selectedAccount: AccountDto){
+    Store.instance.dispatch(AccountActions.SetAccount(selectedAccount))
+    Store.instance.dispatch(NavigationActions.SetNavigation(Navigation(ScreenNavigation.BalanceScreen.route)))
 }
