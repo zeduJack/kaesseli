@@ -1,18 +1,17 @@
-package ch.levelup.kaesseli.backend.usergroup
+package ch.levelup.kaesseli.backend.common
 
-import io.swagger.annotations.ApiModelProperty
 import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
-@Table(name = "usergroup")
-data class UserGroup(
+@Table(name = "\"role\"")
+data class Role(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     val createdAt: LocalDateTime? = LocalDateTime.now(),
     val updatedAt: LocalDateTime? = LocalDateTime.now(),
     val version: Int,
-    @ApiModelProperty(notes = "Provided name", required = true)
+
     val name: String
 )

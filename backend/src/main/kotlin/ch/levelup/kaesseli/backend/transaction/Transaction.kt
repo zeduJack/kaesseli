@@ -1,6 +1,8 @@
 package ch.levelup.kaesseli.backend.transaction
 
+import ch.levelup.kaesseli.backend.account.Account
 import ch.levelup.kaesseli.backend.common.TransactionStatus
+import ch.levelup.kaesseli.backend.user.User
 import java.math.BigDecimal
 import java.time.LocalDateTime
 import javax.persistence.*
@@ -16,8 +18,12 @@ data class Transaction(
     val version: Int,
 
     val amount: BigDecimal,
-    //val user: User,
-    //val account: Account,
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable=false)
+    val user: User,
+    @ManyToOne
+    @JoinColumn(name="account_id", nullable=false)
+    val account: Account,
     val debit: Boolean,
     val status: TransactionStatus,
     val message: String

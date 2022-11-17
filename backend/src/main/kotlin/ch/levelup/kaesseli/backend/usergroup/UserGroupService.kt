@@ -1,11 +1,17 @@
 package ch.levelup.kaesseli.backend.usergroup
 
+import ch.levelup.kaesseli.backend.user.UserService
+import ch.levelup.kaesseli.backend.userusergroup.UserUserGroupService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
+import java.util.stream.Collectors
 
 @Service
-class UserGroupService(private val userGroupRepository: UserGroupRepository) {
+class UserGroupService(private val userGroupRepository: UserGroupRepository,
+                       private val userUserGroupService: UserUserGroupService,
+                       private val userService: UserService) {
+
 
     fun getUserGroups(): List<UserGroup> = userGroupRepository.findAll()
 
@@ -13,6 +19,15 @@ class UserGroupService(private val userGroupRepository: UserGroupRepository) {
         userGroupRepository.findById(userGroupId).map { userGroup ->
             ResponseEntity.ok(userGroup)
         }.orElse(ResponseEntity.notFound().build())
+
+    fun getUserGroupsByUserId(id: Long): MutableList<UserGroup>? {
+        val user = userService.getUserByIdNoFun(id).get()
+        return userUserGroupService.getUserUserGroupByUserId(user)
+            ?.stream()
+            ?.map { userUserGroup -> userUserGroup.usergroup }
+            ?.collect(Collectors.toList())
+    }
+
 
     fun addUserGroup(groupe: UserGroup): ResponseEntity<UserGroup> = ResponseEntity.ok(userGroupRepository.save(groupe))
 

@@ -1,21 +1,27 @@
 package ch.levelup.kaesseli.android.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 
+
+
 private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    primary = CristalBlue,
+    primaryVariant = Blue,
+    secondary = Grey,
+    background = White,
 )
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
+    primary = LightBlue,
+    primaryVariant = Turquoise,
+    secondary = LightGrey,
+
+
 
     /* Other default colors to override
     background = Color.White,

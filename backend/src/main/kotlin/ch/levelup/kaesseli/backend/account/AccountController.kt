@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/account")
+@RequestMapping("/api/accounts")
 class AccountController (private val accountService: AccountService){
 
     @GetMapping
