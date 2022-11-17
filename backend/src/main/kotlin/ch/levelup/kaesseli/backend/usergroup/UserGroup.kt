@@ -15,4 +15,7 @@ data class UserGroup(
     val version: Int,
     @ApiModelProperty(notes = "Provided name", required = true)
     val name: String
+//    @ManyToMany(mappedBy = "userGroups")
+//    val users: Set<User>?
+
 )

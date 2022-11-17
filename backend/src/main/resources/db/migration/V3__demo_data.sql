@@ -1,6 +1,6 @@
 INSERT INTO "user" (id, firstname, lastname, username, email, version) VALUES
-(1, 'Max', 'Mustermann', 'max', 'mmuster@kaesseli-example.ch',1),
-(2,'Paul', 'Mustermann', 'pauli', 'pmuster@kaesseli-example.ch',1);
+(1, 'Max', 'Mustermann', 'max', 'mmuster@email.ch', 1),
+(2, 'Paul', 'Mustermann', 'pauli', 'pmuster@email.ch', 1);
 
 
 INSERT INTO "usergroup" (id, name, version) VALUES
@@ -24,6 +24,9 @@ INSERT INTO "account" (id, saldo, type, display_name, user_usergroup_id) VALUES
 
 INSERT INTO "transaction" (amount, user_id, account_id, debit, status, message) VALUES
 (100.10, 1, 1, false, 'OK', 'Weihnachtsgeld'),
+(10, 1, 2, false, 'OK', 'Taschengeld 6 Nov 2022'),
+(10, 1, 2, false, 'OK', 'Taschengeld 13 Nov 2022'),
+(20, 1, 2, true, 'OK', 'Lego Ninjago'),
 (50, 1, 3, false, 'OK', 'Weihnachtsgeld');
 
 

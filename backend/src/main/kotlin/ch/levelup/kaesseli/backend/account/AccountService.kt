@@ -1,13 +1,22 @@
 package ch.levelup.kaesseli.backend.account
 
+import ch.levelup.kaesseli.backend.user.User
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
-class AccountService (private val accountRepository: AccountRepository) {
+class AccountService (
+    private val accountRepository: AccountRepository) {
 
     fun getAccounts(): List<Account> = accountRepository.findAll();
+
+    fun getAccountsByUserGroup(user: User): Set<Account>? {
+        return accountRepository.getAccountsByUser(user)
+    }
+
+    fun getAccountDboById(accountId: Long): Optional<Account> = accountRepository.findById(accountId)
 
     fun getAccountById(accountId: Long): ResponseEntity<Account> =
         accountRepository.findById(accountId).map { account ->
@@ -18,12 +27,13 @@ class AccountService (private val accountRepository: AccountRepository) {
         ResponseEntity.ok(accountRepository.save(account))
 
     fun putAccount(accountId: Long, newAccount: Account): ResponseEntity<Account> =
-        accountRepository.findById(accountId).map { currentAccount ->
+        accountRepository.findById(accountId)
+            .map { currentAccount ->
             val updateAccount: Account = currentAccount.copy(
                 type = newAccount.type,
                 saldo = newAccount.saldo,
                 displayName = newAccount.displayName,
-                userUserGroup = newAccount.userUserGroup
+                user = newAccount.user
             )
             ResponseEntity.ok().body(accountRepository.save(updateAccount))
         }.orElse(ResponseEntity.notFound().build())
