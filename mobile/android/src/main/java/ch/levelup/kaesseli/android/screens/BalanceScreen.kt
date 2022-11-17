@@ -13,8 +13,8 @@ import androidx.compose.ui.unit.sp
 fun BalanceScreen(){
     Column(modifier = Modifier.padding(16.dp)) {
         Text(
-            text = "BALANCE",
-            style = TextStyle(fontSize = 21.sp)
+            text = "Kontostand von ",
+            style = TextStyle(fontSize = 18.sp)
         )
     }
 }
