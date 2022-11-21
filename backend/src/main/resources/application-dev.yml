@@ -17,3 +17,8 @@ spring:
   sql:
     init:
       platform: postgres
+logging:
+  level:
+    root: WARNING
+    org.springframework.web: DEBUG
+    org.hibernate: DEBUG

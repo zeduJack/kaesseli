@@ -1,8 +1,0 @@
-logging.level.org.hibernate.SQL=DEBUG
-
-spring.datasource.url=jdbc:postgresql://kaesseli-db.postgres.database.azure.com:5432/kaesseli
-spring.datasource.username=kaesseli@kaesseli-db
-spring.datasource.password=VsMWZo45cavna7WM!
-
-spring.jpa.show-sql=true
-spring.jpa.hibernate.ddl-auto=create-drop
