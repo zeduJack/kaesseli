@@ -7,6 +7,7 @@ import ch.levelup.kaesseli.backend.common.MemberDto
 import ch.levelup.kaesseli.backend.common.UserDto
 import ch.levelup.kaesseli.backend.common.UserGroupDto
 import ch.levelup.kaesseli.backend.usergroup.UserGroup
+import ch.levelup.kaesseli.shared.UserTestDto
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
@@ -83,6 +84,7 @@ class UserService(
     )
 
     private fun mapMembers(userGroup: UserGroup?): Set<MemberDto>? {
+        UserTestDto("")
         return getUsers(userGroup)
             ?.stream()
             ?.map { user -> mapMemberDto(user) }

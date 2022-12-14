@@ -26,3 +26,4 @@ local.properties
 /ios/Pods/Target Support Files/Pods-ios/Pods-ios-Info.plist
 /ios/Pods/Target Support Files/Pods-ios/Pods-ios-umbrella.h
 /ios/Pods/Pods.xcodeproj/project.pbxproj
+/ios/ios.xcworkspace/xcuserdata
