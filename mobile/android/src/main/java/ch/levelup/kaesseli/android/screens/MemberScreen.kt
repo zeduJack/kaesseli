@@ -15,7 +15,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ch.levelup.kaesseli.state.AppState
-import ch.levelup.kaesseli.android.Store
+import ch.levelup.kaesseli.state.Store
 import ch.levelup.kaesseli.ScreenNavigation
 import ch.levelup.kaesseli.account.AccountActions
 import ch.levelup.kaesseli.navigation.Navigation
