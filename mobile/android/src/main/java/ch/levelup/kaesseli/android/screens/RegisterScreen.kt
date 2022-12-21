@@ -12,7 +12,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ch.levelup.kaesseli.userRegistration.UserRegistration
-import ch.levelup.kaesseli.android.Store
+import ch.levelup.kaesseli.state.Store
 import ch.levelup.kaesseli.userRegistration.UserRegistrationActions
 
 @Composable

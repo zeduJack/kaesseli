@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ch.levelup.kaesseli.android.Store
+import ch.levelup.kaesseli.state.Store
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.SetString
 
