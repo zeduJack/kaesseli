@@ -1,0 +1,9 @@
+-- role
+CREATE TABLE role (
+    id serial PRIMARY KEY,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE NULL DEFAULT CURRENT_TIMESTAMP,
+    version bigserial NOT NULL,
+
+    name VARCHAR(35) NOT NULL
+);
