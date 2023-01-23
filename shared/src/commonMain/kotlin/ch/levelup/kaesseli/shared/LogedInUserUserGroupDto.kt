@@ -4,6 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class LogedInUserUserGroupDto(
+    val id: Long,
     val name: String,
     val isOwner: Boolean = false
 ){
