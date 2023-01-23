@@ -9,5 +9,5 @@ data class UserGroupMemberDto(
     val firstname: String,
     val lastname: String,
 ){
-    var roles: Set<RoleDto> = setOf();
+    var roles: MutableSet<RoleDto> = mutableSetOf();
 }
