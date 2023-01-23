@@ -19,4 +19,7 @@ data class UserGroup(
 ){
     @ManyToMany(mappedBy = "userGroups")
     val users: Set<User> = mutableSetOf();
+
+    @ManyToMany(mappedBy = "userGroups")
+    val accounts: Set<User> = mutableSetOf();
 }
