@@ -42,7 +42,7 @@ fun GroupMembersScreen(
         //val textStyle = TextStyle(fontSize = 20.sp, color = Color.White)
         val context = LocalContext.current
         LazyColumn(modifier = listModifier) {
-            items(appState.userGroup.members) { member: MemberDto ->
+            items(appState.userGroup.members.toList()) { member: MemberDto ->
                 TextButton(modifier = Modifier.fillMaxWidth(), onClick = { setSelectedMember(member, context)}) {
                     Row {
                         Text(member.firstname)

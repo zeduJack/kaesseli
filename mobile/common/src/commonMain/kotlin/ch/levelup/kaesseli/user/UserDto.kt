@@ -8,20 +8,20 @@ data class UserDto(
     val lastname: String = "",
     val username: String = "",
     val email: String = "",
-    val userGroups: List<UserGroupDto> = listOf(UserGroupDto())
+    val userGroups: Set<UserGroupDto> = setOf(UserGroupDto())
 )
 
 @Serializable
 data class UserGroupDto(
     val name: String = "",
-    val members: List<MemberDto> = listOf(MemberDto())
+    val members: Set<MemberDto> = setOf(MemberDto())
 )
 
 @Serializable
 data class MemberDto(
     val firstname: String = "",
     val lastname: String = "",
-    val accounts: List<AccountDto> = listOf(AccountDto())
+    val accounts: Set<AccountDto> = setOf(AccountDto())
 )
 
 @Serializable

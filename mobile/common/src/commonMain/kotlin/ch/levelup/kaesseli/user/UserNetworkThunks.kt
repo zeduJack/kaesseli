@@ -35,19 +35,16 @@ object UserNetworkThunks {
     private val networkScope = CoroutineScope(PlatformDispatcher)
 
     fun logInUser(): Thunk<AppState> = { dispatch, getState, extraArg ->
-        var response: GatewayResponse<UserDto, GenericError>? = null
+        var response: GatewayResponse<UserDto, GenericError>?
         dispatch(ErrorMessageActions.ClearErrorMessage)
         dispatch(FetchingDataActions.StartNetworkRequest)
-        var email = getState().login.username
 
-
+        val email = getState().login.username
 
         networkScope.launch(tunkExceptionHandler(dispatch)) {
             response = userRepository.logInUser(email)
 
             UserTestDto("")
-
-            // todo: maybe move outside of coroutine if we use the IO dispatcher
             dispatch(FetchingDataActions.EndNetworkRequest)
             if (response != null) {
                 if (response!!.isFailure) {
@@ -57,13 +54,9 @@ object UserNetworkThunks {
                         dispatch(UserActions.SetUser(response!!.response!!))
                         dispatch(LoginActions.ChangeLogin(LoginInput(username = "", isDirty = false)))
                     }
-
-                    //response.response?.let { UserActions.SetUser(it) }?.let { dispatch(it) }
                     dispatch(NavigationActions.SetNavigation(Navigation(route = ScreenNavigation.StartScreen.route)))
                 }
             }
         }
-
-
     }
 }
