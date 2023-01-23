@@ -87,17 +87,20 @@ Follow the guidelines in https://firebase.google.com/docs/admin/setup/#java_1
 
 
 
-### Obsolete
+### Local Backend & DB (docker)
 
-1. List all gradle tasks ./gradlew tasks --all
-2. ./gradlew clean build docker generateDockerCompose
+1. Build backend via gradle (gradle window): backend/Tasks/build -> right click -> run
+2. List all gradle tasks: ./gradlew tasks --all
+3. ./gradlew clean build docker generateDockerCompose
    1. Clean the previous build,
    2. create a new build your application,
    3. create docker image,
    4. create docker-compose
-3. Start your docker-compose ./gradlew dockerComposeUp
-4. Check if the image is running docker ps
-5. Stop the containers ./gradlew dockerComposeDown
+4. Create docker DB: docker compose up postgres
+5. Check if the image is running docker ps
+6. Stop the containers ./gradlew dockerComposeDown
+7. Set "SPRING_PROFILES_ACTIVE=dev" in 
+8. Start backend via gradle (gradle window): backend/Tasks/application/bootRun -> right click -> Debug / Run
 
 ## Setup Firebase account
 For Unix and Mac:  
