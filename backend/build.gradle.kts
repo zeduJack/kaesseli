@@ -83,6 +83,17 @@ flyway {
 	password = "VsMWZo45cavna7WM!"
 }
 
+tasks.register("bootRunDev") {
+	group = "application"
+	description = "Runs the Spring Boot application with the dev profile"
+	doFirst {
+		tasks.bootRun.configure {
+			systemProperty("spring.profiles.active", "dev")
+		}
+	}
+	finalizedBy("bootRun")
+}
+
 application {
 	// Define the main class for the application.
 	mainClass.set("ch.levelup.kaesseli.backend.BackendApplicationKt")
