@@ -38,9 +38,7 @@ class MobileService(
                 logedInUser.groups.add(uGroup)
             }
 
-            if(logedInUser == null){
-                return Optional.empty();
-            }else{
+            if(logedInUser != null){
                 return Optional.of(logedInUser);
             }
         }
