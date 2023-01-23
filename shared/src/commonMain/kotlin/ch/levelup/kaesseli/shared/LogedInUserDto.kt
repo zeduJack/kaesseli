@@ -7,6 +7,8 @@ data class LogedInUserDto (
     val firstname: String,
     val lastname: String,
     val username: String,
-    val email: String,
-    val groups: Set<LogedInUserUserGroupDto>
-    )
+    var email: String,
+
+    ){
+    var groups: Set<LogedInUserUserGroupDto> = setOf();
+}
