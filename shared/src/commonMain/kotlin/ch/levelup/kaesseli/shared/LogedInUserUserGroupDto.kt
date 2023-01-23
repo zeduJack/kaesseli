@@ -8,7 +8,7 @@ data class LogedInUserUserGroupDto(
     val name: String,
     val isOwner: Boolean = false
 ){
-    var roles: Set<RoleDto> = setOf();
-    var accounts: Set<AccountDto> = setOf();
-    var members: Set<UserGroupMemberDto> = setOf();
+    var roles: MutableSet<RoleDto> = mutableSetOf();
+    var accounts: MutableSet<AccountDto> = mutableSetOf();
+    var members: MutableSet<UserGroupMemberDto> = mutableSetOf();
 }

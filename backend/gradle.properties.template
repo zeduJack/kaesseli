@@ -2,3 +2,4 @@
 #flyway.url = jdbc:postgresql://localhost:5432/kaesseli
 #flyway.user =  dbuser
 #flyway.password = mysecretpassword
+#SPRING_PROFILES_ACTIVE=dev

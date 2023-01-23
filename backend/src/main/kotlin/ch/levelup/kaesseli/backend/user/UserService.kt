@@ -23,13 +23,6 @@ class UserService(
     fun getUsers(): List<User> = userRepository.findAll()
 
     fun getUserByEmail(email: String): ResponseEntity<User>? {
-
-        val userTestDto = UserTestDto("")
-        if (userTestDto.username == "test") {
-            return userRepository.getUserByEmail("mmuster@email.ch")
-                .map { user -> ResponseEntity.ok(user) }
-                .orElse(ResponseEntity.notFound().build())
-        }
         return userRepository.getUserByEmail(email)
             .map { user -> ResponseEntity.ok(user) }
             .orElse(ResponseEntity.notFound().build())

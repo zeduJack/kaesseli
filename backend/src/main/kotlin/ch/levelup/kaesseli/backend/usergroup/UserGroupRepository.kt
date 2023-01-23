@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface UserGroupRepository : JpaRepository<UserGroup, Long> {
 
-
     fun getUserGroupById(id: Long): List<UserGroup>
 }

@@ -19,9 +19,12 @@ data class User (
     val username: String?,
     val email: String,
 
+    ){
     @ManyToMany
     @JoinTable(
         name = "userusergroup",
         joinColumns = [JoinColumn(name = "user_id")],
         inverseJoinColumns = [JoinColumn(name = "usergroup_id")])
-    val userGroups: Set<UserGroup>?)
+    var userGroups: Set<UserGroup> = setOf();
+
+}
