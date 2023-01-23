@@ -99,8 +99,8 @@ Follow the guidelines in https://firebase.google.com/docs/admin/setup/#java_1
 4. Create docker DB: docker compose up postgres
 5. Check if the image is running docker ps
 6. Stop the containers ./gradlew dockerComposeDown
-7. Set "SPRING_PROFILES_ACTIVE=dev" in 
-8. Start backend via gradle (gradle window): backend/Tasks/application/bootRun -> right click -> Debug / Run
+7. Start backend via gradle (gradle window): backend/Tasks/application/bootRunDev -> right click -> Debug / Run
+8. Aie IP Adresse für den Zugriff auf unsere API (via Mobile App) muss auf die lokale IP Adresse angepasst werden. Localhost geht nicht da localhost das Smartphone oder der Simulator ist 
 
 ## Setup Firebase account
 For Unix and Mac:  
