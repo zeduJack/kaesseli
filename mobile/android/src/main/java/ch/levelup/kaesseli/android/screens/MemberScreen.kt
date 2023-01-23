@@ -43,10 +43,8 @@ fun MemberScreen(
             .background(Color.White)
             .padding(10.dp)
 
-        //val textStyle = TextStyle(fontSize = 20.sp, color = Color.White)
-        val context = LocalContext.current
         LazyColumn(modifier = listModifier) {
-            items(appState.member.accounts) { account: AccountDto ->
+            items(appState.member.accounts.toList()) { account: AccountDto ->
                 TextButton(modifier = Modifier.fillMaxWidth(), onClick = { setSelectedMember(account)}) {
                     Row {
                         Text(account.displayName)

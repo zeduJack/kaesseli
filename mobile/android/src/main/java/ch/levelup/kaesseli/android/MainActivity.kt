@@ -16,17 +16,12 @@ import ch.levelup.kaesseli.ScreenNavigation
 import ch.levelup.kaesseli.android.navigation.Navigation
 import ch.levelup.kaesseli.android.ui.theme.JetpackComposeTestTheme
 import ch.levelup.kaesseli.navigation.NavigationActions
-import ch.levelup.kaesseli.shared.UserTestDto
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.Store
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import org.reduxkotlin.StoreSubscription
 
 class MainActivity : AppCompatActivity() {
     private lateinit var unsubscribe: StoreSubscription
-    private val mainScope = CoroutineScope(Dispatchers.Main)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val state: MutableState<AppState> = mutableStateOf(Store.instance.getState())
@@ -34,87 +29,76 @@ class MainActivity : AppCompatActivity() {
         setContent {
             val navController = rememberNavController()
 
-            BackHandler(enabled = true){
-                // execute your custome logic here
-                println("blaaaaa")
-
-                if(navController.backQueue.size > 2){
-                    val route = navController.backQueue[navController.backQueue.size -2].destination.route ?: ""
-                    Store.instance.dispatch(NavigationActions.SetNavigation(ch.levelup.kaesseli.navigation.Navigation(route = route, true)))
-                } else if(navController.backQueue.size == 2){
-                    finish()
-                }
-            }
-
-            UserTestDto("")
-/*
-            navController.setLifecycleOwner(this)
-            navController.enableOnBackPressed(true)
-            val callback = BackCallback(true)
-            val dispatcher = OnBackPressedDispatcher()
-            dispatcher.addCallback(this,  callback)
-            navController.setOnBackPressedDispatcher(dispatcher)
-
- */
-
-
-            /*
-            navController.addOnDestinationChangedListener { nc: NavController, nd: NavDestination, bundle: Bundle? ->
-                if(Store.instance.state.navigation != nc.currentDestination?.route){
-                    val route = nc.currentDestination?.toString() ?: ""
-                    Store.instance.dispatch(NavigationActions.SetNavigation(route))
-                }
-            }
-
-             */
-
+            HandleBack(navController)
 
             var startDestination by remember { mutableStateOf(ScreenNavigation.LoginScreen.route) }
 
+            startDestination = setStartDestination(startDestination)
 
-            if (false) {
-                startDestination = ScreenNavigation.RegisterScreen.route
-            }
-
-            JetpackComposeTestTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Navigation(navController, startDestination, state.value)
-                }
-            }
+            SetTheme(navController, startDestination, state)
 
             unsubscribe = Store.instance.subscribe {
-
-
-                if (currentRouteNotEqualDestionationRoute(navController)) {
-                    println("xxxxxxxx: " + navController.backQueue.size)
-                    if(navigateBack()){
-                        println("xxxxxxxx: " + navController.backQueue.size)
-                        navController.navigate(route = Store.instance.state.navigation.route, navOptions { popUpTo(navController.backQueue[navController.backQueue.size -3].destination.id) })
-                    } else {
-                        println("xxxxxxxx: " + navController.backQueue.size)
-                        navController.navigate(route = Store.instance.state.navigation.route)
-                    }
-
-
-
-                }
-                if(navigateBack()){
-                    /*
-                    navController.backQueue.removeLast()
-                    navController.backQueue.removeLast()
-
-                    val route = navController.backQueue.last().destination.route ?: ""
-                    Store.instance.dispatch(NavigationActions.SetNavigation(ch.levelup.kaesseli.navigation.Navigation(route = route, false)))
-
-                     */
-                }
-
-
+                handleNavigation(navController)
                 state.value = Store.instance.state
+            }
+        }
+    }
+
+    private fun handleNavigation(navController: NavHostController) {
+        if (currentRouteNotEqualDestionationRoute(navController)) {
+            if (navigateBack()) {
+                navController.navigate(
+                    route = Store.instance.state.navigation.route,
+                    navOptions { popUpTo(navController.backQueue[navController.backQueue.size - 3].destination.id) })
+            } else {
+                navController.navigate(route = Store.instance.state.navigation.route)
+            }
+        }
+    }
+
+    @Composable
+    private fun setStartDestination(currentStartDestination: String): String {
+        var startDestination = currentStartDestination
+        if (false) {
+            startDestination = ScreenNavigation.RegisterScreen.route
+        }
+        return startDestination
+    }
+
+    @Composable
+    private fun SetTheme(
+        navController: NavHostController,
+        startDestination: String,
+        state: MutableState<AppState>
+    ) {
+        JetpackComposeTestTheme {
+            // A surface container using the 'background' color from the theme
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colors.background
+            ) {
+                Navigation(navController, startDestination, state.value)
+            }
+        }
+    }
+
+    @Composable
+    private fun HandleBack(navController: NavHostController) {
+        BackHandler(enabled = true) {
+            if (navController.backQueue.size > 2) {
+                val route =
+                    navController.backQueue[navController.backQueue.size - 2].destination.route
+                        ?: ""
+                Store.instance.dispatch(
+                    NavigationActions.SetNavigation(
+                        ch.levelup.kaesseli.navigation.Navigation(
+                            route = route,
+                            true
+                        )
+                    )
+                )
+            } else if (navController.backQueue.size == 2) {
+                finish()
             }
         }
     }
@@ -133,22 +117,3 @@ fun currentRouteNotEqualDestionationRoute(navController: NavHostController): Boo
 fun navigateBack(): Boolean {
     return Store.instance.state.navigation.navigateBack
 }
-
-/*
-class BackCallback(enabled: Boolean) : OnBackPressedCallback(enabled) {
-    override fun handleOnBackPressed() {
-        TODO("Not yet implemented")
-    }
-
-
-}
-
-fun onDestinationChanged(
-    controller: NavController,
-    destination: NavDestination,
-    arguments: Bundle?
-): NavController.OnDestinationChangedListener {
-
-}
-
- */
