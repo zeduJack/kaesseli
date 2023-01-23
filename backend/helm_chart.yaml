@@ -17,6 +17,13 @@ spec:
       containers:
         - name: kaesseli-api
           image: kaesseliacr.azurecr.io/kaesseli-api:latest
+          env:
+            - name: FIREBASE_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: backend-credentials
+                  key: FIREBASE_TOKEN
+                  optional: false
           ports:
             - containerPort: 8080
               name: kaesseli-port
