@@ -26,7 +26,7 @@ data class MemberDto(
 
 @Serializable
 data class AccountDto(
-    val id: Double = -1.0,
+    val id: Int = -1,
     val type: String = "",
     val saldo: Double = -1.0,
     val displayName: String = ""

@@ -7,6 +7,7 @@ import ch.levelup.kaesseli.login.loginReducer
 import ch.levelup.kaesseli.navigation.navigationReducer
 import ch.levelup.kaesseli.selectedMember.memberReducer
 import ch.levelup.kaesseli.selectedUserGroup.userGroupReducer
+import ch.levelup.kaesseli.transaction.transactionReducer
 import ch.levelup.kaesseli.user.userReducer
 import ch.levelup.kaesseli.userRegistration.userRegistrationReducer
 import ch.levelup.kaesseli.welcomeMessage.welcomeMessageReducer
@@ -21,5 +22,6 @@ fun rootReducer(state: AppState, action: Any) = AppState(
     user = userReducer(state.user, action),
     userGroup = userGroupReducer(state.userGroup, action),
     member = memberReducer(state.member, action),
-    account = accountReducer(state.account, action)
+    account = accountReducer(state.account, action),
+    currentAccountTransactions = transactionReducer(state.currentAccountTransactions, action)
 )

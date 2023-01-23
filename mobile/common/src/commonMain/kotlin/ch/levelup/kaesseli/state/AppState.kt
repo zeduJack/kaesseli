@@ -2,6 +2,7 @@ package ch.levelup.kaesseli.state
 
 import ch.levelup.kaesseli.login.Login
 import ch.levelup.kaesseli.navigation.Navigation
+import ch.levelup.kaesseli.transaction.TransactionDto
 import ch.levelup.kaesseli.user.AccountDto
 import ch.levelup.kaesseli.user.MemberDto
 import ch.levelup.kaesseli.user.UserDto
@@ -20,4 +21,5 @@ data class AppState(
     val userGroup: UserGroupDto = UserGroupDto(),
     val member: MemberDto = MemberDto(),
     val account: AccountDto = AccountDto(),
+    val currentAccountTransactions: Set<TransactionDto> = setOf()
 )
