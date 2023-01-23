@@ -1,5 +1,6 @@
 package ch.levelup.kaesseli.backend.mobile
 
+import ch.levelup.kaesseli.backend.common.Role
 import ch.levelup.kaesseli.backend.common.UserGroupDto
 import ch.levelup.kaesseli.backend.user.User
 import ch.levelup.kaesseli.backend.user.UserRepository
@@ -9,6 +10,7 @@ import ch.levelup.kaesseli.backend.usergroup.UserGroupRepository
 import ch.levelup.kaesseli.backend.usergroup.UserGroupService
 import ch.levelup.kaesseli.shared.LogedInUserDto
 import ch.levelup.kaesseli.shared.LogedInUserUserGroupDto
+import ch.levelup.kaesseli.shared.RoleDto
 import ch.levelup.kaesseli.shared.UserGroupMemberDto
 import org.springframework.data.jpa.domain.AbstractPersistable_.id
 import org.springframework.http.ResponseEntity
@@ -30,7 +32,10 @@ class MobileService(
             var logedInUser = mapUserDto(user);
 
             user.userGroups.forEach { group ->
-                logedInUser.groups.add(group)
+                val uGroup = mapUserGroupDto(group);
+                uGroup.members.addAll(group.users.map {user ->
+                    mapUserGroupMemberDto(user) } )
+                logedInUser.groups.add(uGroup)
             }
 
             if(logedInUser == null){
@@ -62,8 +67,9 @@ class MobileService(
         lastname = user.lastname
     )
 
-    private fun mapRole(role)(
-
+    private fun mapRole(role: Role) = RoleDto(
+        id = role.id ?: 0L,
+        name = role.name
     )
 }
 ̨
