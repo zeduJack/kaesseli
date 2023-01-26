@@ -3,6 +3,7 @@ package ch.levelup.kaesseli.transaction
 import ch.levelup.kaesseli.GatewayResponse
 import ch.levelup.kaesseli.GenericError
 import ch.levelup.kaesseli.PlatformDispatcher
+import ch.levelup.kaesseli.baseUrl
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
@@ -27,7 +28,7 @@ open class TransactionRepository {
     suspend fun logInUser(accountId: Int): GatewayResponse<Set<TransactionDto>, GenericError> {
         try {
             val response =
-                client.get("http://20.250.109.29/api/transactions/accountId/$accountId")
+                client.get("$baseUrl/api/transactions/accountId/$accountId")
 
             if (response.status != HttpStatusCode.OK) {
                 return GatewayResponse.createError(GenericError("Problem beim Laden der Transaktionen"), 500, "")

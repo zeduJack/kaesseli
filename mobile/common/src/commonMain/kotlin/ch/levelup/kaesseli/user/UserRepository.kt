@@ -3,6 +3,7 @@ package ch.levelup.kaesseli.user
 import ch.levelup.kaesseli.GatewayResponse
 import ch.levelup.kaesseli.GenericError
 import ch.levelup.kaesseli.PlatformDispatcher
+import ch.levelup.kaesseli.baseUrl
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
@@ -28,7 +29,7 @@ open class UserRepository {
     suspend fun logInUser(mail: String): GatewayResponse<UserDto, GenericError> {
         try {
             val response =
-                client.get("http://20.250.109.29/api/users/data/$mail")
+                client.get("$baseUrl/api/users/data/$mail")
 
             if (response.status != HttpStatusCode.OK) {
                 return GatewayResponse.createError(GenericError("Problem beim Anmelden"), 500, "")
