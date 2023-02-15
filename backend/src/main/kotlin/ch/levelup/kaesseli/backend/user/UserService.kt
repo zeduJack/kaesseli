@@ -4,6 +4,7 @@ import ch.levelup.kaesseli.backend.account.Account
 import ch.levelup.kaesseli.backend.account.AccountService
 import ch.levelup.kaesseli.backend.common.*
 import ch.levelup.kaesseli.backend.usergroup.UserGroup
+import ch.levelup.kaesseli.backend.usergroup.UserGroupRepository
 import ch.levelup.kaesseli.shared.UserTestDto
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -15,6 +16,7 @@ import kotlin.streams.toList
 @Service
 class UserService(
     private val userRepository: UserRepository,
+    private val userGroupRepository: UserGroupRepository,
     private val accountService: AccountService
 ) {
 
@@ -31,7 +33,15 @@ class UserService(
     }
 
 
-    fun getUsers(userGroup: UserGroup?): Set<User>? = userRepository.getUsersByUserGroups(userGroup)
+    fun getUsers(userGroup: UserGroup?): Set<User>? {
+        val users: MutableSet<User> = mutableSetOf();
+        if(userGroup != null){
+            userGroup.userUserGroups.map { userUserGroup ->
+                users.add(userUserGroup.user);
+            }
+        }
+        return users;
+    }
 
     fun getAccounts(user: User): Set<Account>? = accountService.getAccountsByUserGroup(user)
 

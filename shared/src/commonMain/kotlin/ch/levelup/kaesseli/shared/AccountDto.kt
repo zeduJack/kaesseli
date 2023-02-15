@@ -8,4 +8,6 @@ data class AccountDto(
     val type: String,
     val saldo: Long,
     val displayName: String
+
+    // add transactions
 )

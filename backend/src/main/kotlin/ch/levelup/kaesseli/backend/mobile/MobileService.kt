@@ -1,14 +1,13 @@
 package ch.levelup.kaesseli.backend.mobile
 
+import ch.levelup.kaesseli.backend.account.Account
+import ch.levelup.kaesseli.backend.account.AccountRepository
 import ch.levelup.kaesseli.backend.common.Role
+import ch.levelup.kaesseli.backend.common.UserUserGroup
 import ch.levelup.kaesseli.backend.user.User
 import ch.levelup.kaesseli.backend.user.UserRepository
 import ch.levelup.kaesseli.backend.usergroup.UserGroup
-import ch.levelup.kaesseli.backend.usergroup.UserGroupRepository
-import ch.levelup.kaesseli.shared.LogedInUserDto
-import ch.levelup.kaesseli.shared.LogedInUserUserGroupDto
-import ch.levelup.kaesseli.shared.RoleDto
-import ch.levelup.kaesseli.shared.UserGroupMemberDto
+import ch.levelup.kaesseli.shared.*
 
 import org.springframework.stereotype.Service
 import java.util.*
@@ -16,9 +15,8 @@ import java.util.*
 @Service
 class MobileService(
     private val userRepository: UserRepository,
-
-    private val userGroupRepository: UserGroupRepository
-) {
+    private val accountRepository: AccountRepository
+    ) {
 
     fun getLogedInUserByEmail(email: String): Optional<LogedInUserDto> {
         val userOptional = userRepository.getUserByEmail(email);
@@ -31,22 +29,28 @@ class MobileService(
 
                 val uGroup = mapUserGroupDto(userUserGroup.userGroup);
 
-                uGroup.members.addAll(userUserGroup.userGroup.users.map { user ->
-                    mapUserGroupMemberDto(user)
+                uGroup.members.addAll(userUserGroup.userGroup.userUserGroups.map { userUserGroup ->
+                    mapUserGroupMemberDto(userUserGroup.user)
                 })
+                uGroup.accounts = getAccountsForUserWithinGroup(userUserGroup);
                 logedInUser.groups.add(uGroup)
 
             }
 
-            if (logedInUser != null) {
-                return Optional.of(logedInUser);
-            }
+            return Optional.of(logedInUser)
         }
         return Optional.empty()
     }
 
-    private fun getAccountsForUserWithinGroup(userId: Long, userGroupId: Long): MutableSet<AccountDto> {
-        return mutableSetOf();
+    private fun getAccountsForUserWithinGroup(userUserGroup: UserUserGroup): MutableSet<AccountDto> {
+        val accounts: MutableSet<AccountDto> = mutableSetOf();
+        val dboAccounts = accountRepository.getAccountsByUserUserGroup(userUserGroup);
+        if(dboAccounts.isPresent){
+            dboAccounts.get().forEach { accountDbo ->
+                accounts.add(mapAccount(accountDbo))
+            };
+        }
+        return accounts;
     }
 
     private fun mapUserDto(user: User) = LogedInUserDto(
@@ -73,4 +77,12 @@ class MobileService(
         id = role.id ?: 0L,
         name = role.name
     )
+
+    private fun mapAccount(account: Account) = AccountDto(
+        id = account.id ?: 0L,
+        type = account.type,
+        saldo = account.saldo.longValueExact(),
+        displayName = account.displayName
+    )
+
 }

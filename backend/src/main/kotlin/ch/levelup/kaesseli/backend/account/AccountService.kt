@@ -13,7 +13,14 @@ class AccountService (
     fun getAccounts(): List<Account> = accountRepository.findAll();
 
     fun getAccountsByUserGroup(user: User): Set<Account>? {
-        return accountRepository.getAccountsByUser(user)
+        val accounts: MutableSet<Account> = mutableSetOf();
+            user.userUserGroups.map { userUserGroup ->
+                val userGroupAccount = accountRepository.getAccountsByUserUserGroup(userUserGroup);
+                if(userGroupAccount.isPresent) {
+                    accounts.addAll(userGroupAccount.get())
+                }
+        }
+        return accounts;
     }
 
     fun getAccountDboById(accountId: Long): Optional<Account> = accountRepository.findById(accountId)

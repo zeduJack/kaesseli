@@ -1,9 +1,7 @@
 package ch.levelup.kaesseli.backend.common
 
-import ch.levelup.kaesseli.backend.account.Account
 import ch.levelup.kaesseli.backend.user.User
 import ch.levelup.kaesseli.backend.usergroup.UserGroup
-import ch.levelup.kaesseli.backend.usergroup.UserGroupRepository
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -18,14 +16,18 @@ data class UserUserGroup(
     val version: Int,
 
     //val usergroupId: Long,
-    //val userId: Long,
     @ManyToOne
+    @JoinColumn(name = "usergroup_id", nullable = false)
     val userGroup: UserGroup,
 
+    //val userId: Long,
     @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     val user: User
-){
+) {
 
-//    @OneToMany
-  //  var accounts: MutableSet<Account> = mutableSetOf();
+   /* @OneToMany(mappedBy="userUserGroup")
+    var accounts: MutableSet<Account> = mutableSetOf();
+
+    */
 }

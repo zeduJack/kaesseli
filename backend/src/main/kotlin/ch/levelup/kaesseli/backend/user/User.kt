@@ -22,7 +22,7 @@ data class User (
 
     ){
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     var userUserGroups: MutableSet<UserUserGroup> = mutableSetOf();
     /*
     @ManyToMany

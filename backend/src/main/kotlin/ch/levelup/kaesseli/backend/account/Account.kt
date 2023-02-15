@@ -23,4 +23,6 @@ data class Account (
     @ManyToOne
     @JoinColumn(name="user_usergroup_id", nullable=false)
     val userUserGroup: UserUserGroup
-)
+) {
+
+}
