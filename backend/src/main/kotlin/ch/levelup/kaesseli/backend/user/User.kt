@@ -1,5 +1,6 @@
 package ch.levelup.kaesseli.backend.user
 
+import ch.levelup.kaesseli.backend.common.UserUserGroup
 import ch.levelup.kaesseli.backend.usergroup.UserGroup
 import java.time.LocalDateTime
 import javax.persistence.*
@@ -20,11 +21,15 @@ data class User (
     val email: String,
 
     ){
+
+    @OneToMany
+    var userUserGroups: MutableSet<UserUserGroup> = mutableSetOf();
+    /*
     @ManyToMany
     @JoinTable(
         name = "userusergroup",
-        joinColumns = [JoinColumn(name = "user_id")],
-        inverseJoinColumns = [JoinColumn(name = "usergroup_id")])
-    var userGroups: Set<UserGroup> = setOf();
+        joinColumns = [JoinColumn(name = "userId")],
+        inverseJoinColumns = [JoinColumn(name = "usergroupId")])
+    var userGroups: Set<UserGroup> = setOf();*/
 
 }

@@ -2,10 +2,7 @@ package ch.levelup.kaesseli.backend.user
 
 import ch.levelup.kaesseli.backend.account.Account
 import ch.levelup.kaesseli.backend.account.AccountService
-import ch.levelup.kaesseli.backend.common.AccountDto
-import ch.levelup.kaesseli.backend.common.MemberDto
-import ch.levelup.kaesseli.backend.common.UserDto
-import ch.levelup.kaesseli.backend.common.UserGroupDto
+import ch.levelup.kaesseli.backend.common.*
 import ch.levelup.kaesseli.backend.usergroup.UserGroup
 import ch.levelup.kaesseli.shared.UserTestDto
 import org.springframework.http.HttpStatus
@@ -13,6 +10,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 import java.util.*
 import java.util.stream.Collectors
+import kotlin.streams.toList
 
 @Service
 class UserService(
@@ -44,6 +42,20 @@ class UserService(
             .map { user -> ResponseEntity.ok(user) }
             .orElse(ResponseEntity.notFound().build())
 
+    fun getUserGroupsByUserId(userId: Long):Set<UserGroup> {
+        var userGroupSet: MutableSet<UserGroup> = mutableSetOf() ;
+        var user = userRepository.findById(userId);
+        if(user.isEmpty){
+            return userGroupSet;
+        }
+
+        var userGroups = user.get().userUserGroups.stream().toArray();
+        for(userGroup in userGroups){
+            userGroupSet.add(userGroup as UserGroup);
+        }
+        return userGroupSet;
+    }
+
     fun addUser(user: User): ResponseEntity<User> = ResponseEntity.ok(userRepository.save(user))
 
     fun putUser(userId: Long, newUser: User): ResponseEntity<User> =
@@ -74,13 +86,19 @@ class UserService(
         lastname = user.lastname,
         username = user.username,
         email = user.email,
-        userGroups = mapUserGroups(user.userGroups)
+        userGroups = mapUserGroups(user.userUserGroups)
     )
 
-    private fun mapUserGroups(userGroups: Set<UserGroup>?): Set<UserGroupDto>? {
+    private fun mapUserUserGroups(userUserGroups: MutableSet<UserUserGroup>?): MutableSet<UserGroupDto>? {
+        return userUserGroups
+            ?.stream()
+            ?.map { userUserGroup -> mapUserGroupDto(userUserGroup.userGroup) }
+            ?.collect(Collectors.toSet())
+    }
+    private fun mapUserGroups(userGroups: MutableSet<UserUserGroup>?): MutableSet<UserGroupDto>? {
         return userGroups
             ?.stream()
-            ?.map { userGroup -> mapUserGroupDto(userGroup) }
+            ?.map { userGroup -> mapUserGroupDto(userGroup.userGroup) }
             ?.collect(Collectors.toSet())
     }
 

@@ -9,6 +9,7 @@ import ch.levelup.kaesseli.shared.LogedInUserDto
 import ch.levelup.kaesseli.shared.LogedInUserUserGroupDto
 import ch.levelup.kaesseli.shared.RoleDto
 import ch.levelup.kaesseli.shared.UserGroupMemberDto
+
 import org.springframework.stereotype.Service
 import java.util.*
 
@@ -17,7 +18,7 @@ class MobileService(
     private val userRepository: UserRepository,
 
     private val userGroupRepository: UserGroupRepository
-    ) {
+) {
 
     fun getLogedInUserByEmail(email: String): Optional<LogedInUserDto> {
         val userOptional = userRepository.getUserByEmail(email);
@@ -26,12 +27,15 @@ class MobileService(
             val user = userOptional.get();
             var logedInUser = mapUserDto(user);
 
-            user.userGroups.forEach { group ->
-                val uGroup = mapUserGroupDto(group);
-                uGroup.members.addAll(group.users.map { user ->
+            user.userUserGroups.forEach { userUserGroup ->
+
+                val uGroup = mapUserGroupDto(userUserGroup.userGroup);
+
+                uGroup.members.addAll(userUserGroup.userGroup.users.map { user ->
                     mapUserGroupMemberDto(user)
                 })
                 logedInUser.groups.add(uGroup)
+
             }
 
             if (logedInUser != null) {
@@ -39,6 +43,10 @@ class MobileService(
             }
         }
         return Optional.empty()
+    }
+
+    private fun getAccountsForUserWithinGroup(userId: Long, userGroupId: Long): MutableSet<AccountDto> {
+        return mutableSetOf();
     }
 
     private fun mapUserDto(user: User) = LogedInUserDto(
