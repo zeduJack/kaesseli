@@ -5,7 +5,7 @@ import ch.levelup.kaesseli.errorMessage.errorMessageReducer
 import ch.levelup.kaesseli.fetchingData.fetchinDatakReducer
 import ch.levelup.kaesseli.login.loginReducer
 import ch.levelup.kaesseli.navigation.navigationReducer
-import ch.levelup.kaesseli.selectedMember.memberReducer
+import ch.levelup.kaesseli.member.memberReducer
 import ch.levelup.kaesseli.selectedUserGroup.userGroupReducer
 import ch.levelup.kaesseli.transaction.transactionReducer
 import ch.levelup.kaesseli.user.userReducer
