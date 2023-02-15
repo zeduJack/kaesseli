@@ -1,3 +1,8 @@
+buildscript {
+    dependencies {
+        classpath("com.google.gms:google-services:4.3.15")
+    }
+}
 plugins {
     //trick: for the same plugin versions in all sub-modules
     val kotlinVersion = "1.7.20"
