@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    id("com.google.gms.google-services")
 }
 // https://antran.app/2022/kotlin_multiplatform_mobile_jetpack_compose/
 // Added for Jetpack Compose
@@ -43,23 +44,24 @@ android {
 
 dependencies {
     implementation(project(":mobile:common"))
-    implementation("com.google.android.material:material:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.5.1")
+    implementation("com.google.android.material:material:1.8.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     // Added for Jetpack Compose
     implementation("androidx.activity:activity-compose:1.6.1")
     implementation("androidx.compose.material:material:$composeVersion")
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
-    implementation("androidx.test.ext:junit-ktx:1.1.4")
-    implementation("androidx.test:monitor:1.6.0")
+    implementation("androidx.test.ext:junit-ktx:1.1.5")
+    implementation("androidx.test:monitor:1.6.1")
     // Jetpack Compose navigation
     implementation("androidx.navigation:navigation-compose:$composeNavVersion")
+    implementation("com.google.firebase:firebase-messaging-ktx:23.1.1")
 
     // Added for Tests
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.4")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
     debugImplementation("androidx.compose.ui:ui-tooling:$composeVersion")
     debugImplementation("androidx.compose.ui:ui-test-manifest:$composeVersion")
