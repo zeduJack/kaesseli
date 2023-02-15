@@ -1,26 +1,23 @@
 package ch.levelup.kaesseli.android.screens
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import ch.levelup.kaesseli.state.AppState
-import ch.levelup.kaesseli.state.Store
 import ch.levelup.kaesseli.ScreenNavigation
 import ch.levelup.kaesseli.account.AccountActions
+import ch.levelup.kaesseli.android.components.KsH1
+import ch.levelup.kaesseli.android.components.KsHeadderRorw
+import ch.levelup.kaesseli.android.components.KsListItem
+import ch.levelup.kaesseli.android.components.KsPlusButton
+import ch.levelup.kaesseli.android.listModifier
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
-import ch.levelup.kaesseli.state.CreateUserGroup
+import ch.levelup.kaesseli.state.AppState
+import ch.levelup.kaesseli.state.Store
 import ch.levelup.kaesseli.user.AccountDto
 
 @Composable
@@ -28,34 +25,15 @@ fun MemberScreen(
     appState: AppState
 ) {
     Column(modifier = Modifier.padding(16.dp)) {
-        val postfix: String = if(appState.member.firstname == ""){
-            ""
-        } else {
-            " von " + appState.member.firstname
+        KsHeadderRorw {
+            KsH1(text = appState.member.title)
+            KsPlusButton(onClick = {  })
         }
-
-        Text(
-            text = "Konten$postfix",
-            style = TextStyle(fontSize = 18.sp)
-        )
-
-        val listModifier = Modifier
-            .background(Color.White)
-            .padding(10.dp)
 
         LazyColumn(modifier = listModifier) {
-            items(appState.member.accounts.toList()) { account: AccountDto ->
-                TextButton(modifier = Modifier.fillMaxWidth(), onClick = { setSelectedMember(account)}) {
-                    Row {
-                        Text(account.displayName)
-                        Spacer(modifier = Modifier.weight(1f))
-                    }
-                }
+            items(appState.member.selectedMember.accounts.toList()) { account: AccountDto ->
+                KsListItem(text = account.displayName, onClick = {setSelectedMember(account)})
             }
-        }
-
-        Button(onClick = { Store.instance.dispatch(CreateUserGroup(userGroupName = "Neues Mitglied")) }) {
-            Text(text = "Neues Mitglied hinzufügen")
         }
     }
 }

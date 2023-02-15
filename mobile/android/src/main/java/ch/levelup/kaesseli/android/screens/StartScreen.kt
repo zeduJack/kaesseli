@@ -1,19 +1,22 @@
 package ch.levelup.kaesseli.android.screens
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Button
 import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ch.levelup.kaesseli.ScreenNavigation
+import ch.levelup.kaesseli.android.components.KsH1
+import ch.levelup.kaesseli.android.components.KsHeadderRorw
+import ch.levelup.kaesseli.android.components.KsListItem
+import ch.levelup.kaesseli.android.components.KsPlusButton
+import ch.levelup.kaesseli.android.listModifier
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
 import ch.levelup.kaesseli.selectedUserGroup.UserGroupActions
@@ -26,29 +29,16 @@ import ch.levelup.kaesseli.user.UserGroupDto
 fun StartScreen(
     appState: AppState
 ) {
-    Column(modifier = Modifier.padding(16.dp)) {
-        Text(
-            text = "Gruppen",
-            style = TextStyle(fontSize = 18.sp)
-        )
-
-        val listModifier = Modifier
-            .background(Color.White)
-            .padding(10.dp)
+    Column(modifier = Modifier.padding(10.dp)) {
+        KsHeadderRorw {
+            KsH1(text = "Gruppen")
+            KsPlusButton(onClick = { Store.instance.dispatch(CreateUserGroup(userGroupName = "Neuer Gruppenname")) })
+        }
 
         LazyColumn(modifier = listModifier) {
             items(appState.user.userGroups.toList()) { group: UserGroupDto ->
-                TextButton(modifier = Modifier.fillMaxWidth(), onClick = { setSelectedGroup(group)}) {
-                    Row {
-                        Text(group.name)
-                        Spacer(modifier = Modifier.weight(1f))
-                    }
-                }
+                KsListItem(text = group.name, onClick = {setSelectedGroup(group)})
             }
-        }
-
-        Button(onClick = { Store.instance.dispatch(CreateUserGroup(userGroupName = "Neuer Gruppenname")) }) {
-            Text(text = "Neue Gruppe erstellen")
         }
     }
 }
