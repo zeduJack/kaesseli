@@ -15,6 +15,7 @@ data class UserDto(
 data class UserGroupDto(
     val name: String = "",
     val members: Set<MemberDto> = setOf(MemberDto())
+
 )
 
 @Serializable

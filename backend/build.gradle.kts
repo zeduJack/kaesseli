@@ -83,6 +83,9 @@ flyway {
 	password = "VsMWZo45cavna7WM!"
 }
 
+// Hinweis: Wenn dieser Task gestartet wird, dann kann nicht ourt of the box
+// gedebugt werden. Wenn man debuggen möchte, dann muss die Gradle Konfigriation angepasst werden:
+// Unter Run muss de command so aussehen: bootRunDev --debug
 tasks.register("bootRunDev") {
 	group = "application"
 	description = "Runs the Spring Boot application with the dev profile"

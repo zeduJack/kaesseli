@@ -4,19 +4,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import ch.levelup.kaesseli.ScreenNavigation
 import ch.levelup.kaesseli.android.components.KsH1
-import ch.levelup.kaesseli.android.components.KsHeadderRorw
+import ch.levelup.kaesseli.android.components.KsHeaderRorw
 import ch.levelup.kaesseli.android.components.KsListItem
 import ch.levelup.kaesseli.android.components.KsPlusButton
 import ch.levelup.kaesseli.android.listModifier
+import ch.levelup.kaesseli.groupView.Group
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
 import ch.levelup.kaesseli.selectedUserGroup.UserGroupActions
@@ -30,14 +27,18 @@ fun StartScreen(
     appState: AppState
 ) {
     Column(modifier = Modifier.padding(10.dp)) {
-        KsHeadderRorw {
-            KsH1(text = "Gruppen")
+        KsHeaderRorw {
+            KsH1(text = appState.groupView.title)
             KsPlusButton(onClick = { Store.instance.dispatch(CreateUserGroup(userGroupName = "Neuer Gruppenname")) })
         }
 
         LazyColumn(modifier = listModifier) {
-            items(appState.user.userGroups.toList()) { group: UserGroupDto ->
-                KsListItem(text = group.name, onClick = {setSelectedGroup(group)})
+            items(appState.groupView.groups.toList()) { group: Group ->
+                KsListItem(
+                    text = group.userGroupDto.name,
+                    onClick = {setSelectedGroup(group.userGroupDto)},
+                    detailText = group.description
+                )
             }
         }
     }
