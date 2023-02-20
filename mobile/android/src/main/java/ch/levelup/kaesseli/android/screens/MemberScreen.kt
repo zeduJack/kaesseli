@@ -26,13 +26,17 @@ fun MemberScreen(
 ) {
     Column(modifier = Modifier.padding(16.dp)) {
         KsHeaderRorw {
-            KsH1(text = appState.member.title)
+            KsH1(text = appState.selectedMember.accountsLabel)
             KsPlusButton(onClick = {  })
         }
 
         LazyColumn(modifier = listModifier) {
-            items(appState.member.selectedMember.accounts.toList()) { account: AccountDto ->
-                KsListItem(text = account.displayName, onClick = {setSelectedMember(account)})
+            items(appState.selectedMember.accounts.toList()) { account: AccountDto ->
+                KsListItem(
+                    text = account.displayName,
+                    onClick = {setSelectedMember(account)},
+                    detailText = account.saldoLabel
+                )
             }
         }
     }

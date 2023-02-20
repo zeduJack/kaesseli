@@ -4,8 +4,7 @@ import ch.levelup.kaesseli.account.accountReducer
 import ch.levelup.kaesseli.errorMessage.errorMessageReducer
 import ch.levelup.kaesseli.fetchingData.fetchinDatakReducer
 import ch.levelup.kaesseli.login.loginReducer
-import ch.levelup.kaesseli.groupView.groupViewReducer
-import ch.levelup.kaesseli.member.memberReducer
+import ch.levelup.kaesseli.selectedMember.memberReducer
 import ch.levelup.kaesseli.navigation.navigationReducer
 import ch.levelup.kaesseli.selectedUserGroup.userGroupReducer
 import ch.levelup.kaesseli.transaction.transactionReducer
@@ -20,10 +19,9 @@ fun rootReducer(state: AppState, action: Any) = AppState(
     fetchingData = fetchinDatakReducer(state.fetchingData, action),
     errorMessage = errorMessageReducer(state.errorMessage, action),
     userRegistration = userRegistrationReducer(state.userRegistration, action),
-    user = userReducer(state.user, action),
-    groupView = groupViewReducer(state.groupView, action),
-    userGroup = userGroupReducer(state.userGroup, action),
-    member = memberReducer(state.member, action),
-    account = accountReducer(state.account, action),
+    logedInUser = userReducer(state.logedInUser, action),
+    selectedUserGroup = userGroupReducer(state.selectedUserGroup, action),
+    selectedMember = memberReducer(state.selectedMember, action),
+    selectedAccount = accountReducer(state.selectedAccount, action),
     currentAccountTransactions = transactionReducer(state.currentAccountTransactions, action)
 )

@@ -2,7 +2,6 @@ package ch.levelup.kaesseli.backend.mobile
 
 import ch.levelup.kaesseli.backend.account.Account
 import ch.levelup.kaesseli.backend.account.AccountRepository
-import ch.levelup.kaesseli.backend.common.MemberDto
 import ch.levelup.kaesseli.backend.common.Role
 import ch.levelup.kaesseli.backend.common.UserUserGroup
 import ch.levelup.kaesseli.backend.transaction.Transaction
@@ -23,23 +22,31 @@ class MobileService(
     ) {
 
     fun getLogedInUserByEmail(email: String): Optional<LogedInUserDto> {
-        val userOptional = userRepository.getUserByEmail(email);
+        val userOptional = userRepository.getUserByEmail(email)
 
         if (userOptional.isPresent) {
-            val user = userOptional.get();
-            var logedInUser = mapUserDto(user);
+            val user = userOptional.get()
+            val logedInUser = mapUserDto(user)
+
+            logedInUser.groupLabel = "Gruppen von ${user.firstname}"
 
             user.userUserGroups.forEach { userUserGroup ->
 
-                val uGroup = mapUserGroupDto(userUserGroup.userGroup);
+                val uGroup = mapUserGroupDto(userUserGroup.userGroup)
 
-                var members: MutableSet<UserGroupMemberDto> = mutableSetOf();
+                val members: MutableSet<UserGroupMemberDto> = mutableSetOf()
+
                 userUserGroup.userGroup.userUserGroups.map { userUserGroup ->
-                    var member = mapUserGroupMemberDto(userUserGroup.user)
-                    member.accounts = getAccountsForUserWithinGroup(userUserGroup);
-                    members.add(member);
+                    val member = mapUserGroupMemberDto(userUserGroup.user)
+                    member.accounts = getAccountsForUserWithinGroup(userUserGroup)
+                    member.sumOfAccountsLabel = getSumOfAccounts(member.accounts)
+                    member.accountsLabel = "Konten von ${user.firstname}"
+                    members.add(member)
                 }
-                uGroup.members.addAll(members);
+                uGroup.members.addAll(members)
+
+                uGroup.membersDescription = "${members.size} Mitglieder"
+                uGroup.membersTitle = "Mitglieder von ${uGroup.name}"
               //  uGroup.accounts = getAccountsForUserWithinGroup(userUserGroup);
                 logedInUser.groups.add(uGroup)
             }
@@ -49,28 +56,41 @@ class MobileService(
         return Optional.empty()
     }
 
+    private fun getSumOfAccounts(accounts: MutableSet<AccountDto>): String {
+        var sum = 0L
+        for(account in accounts) {
+            sum+= account.saldo
+        }
+
+        return "CHF $sum"
+    }
+
     private fun getAccountsForUserWithinGroup(userUserGroup: UserUserGroup): MutableSet<AccountDto> {
-        val accounts: MutableSet<AccountDto> = mutableSetOf();
-        val dboAccounts = accountRepository.getAccountsByUserUserGroup(userUserGroup);
+        val accounts: MutableSet<AccountDto> = mutableSetOf()
+        val dboAccounts = accountRepository.getAccountsByUserUserGroup(userUserGroup)
         if(dboAccounts.isPresent){
             dboAccounts.get().forEach { accountDbo ->
-                var accountDto = mapAccount(accountDbo)
-                accountDto.transactions = getTransactionsForAccount(accountDbo);
+                val accountDto = mapAccount(accountDbo)
+                accountDto.transactions = getTransactionsForAccount(accountDbo)
+                accountDto.saldoLabel = "CHF ${accountDbo.saldo}"
+                accountDto.accountLabel = "${accountDbo.displayName} von ${userUserGroup.user.firstname}"
+                accountDto.kontostandLabel = "Kontostand: ${accountDbo.saldo} CHF"
+
                 accounts.add(accountDto)
-            };
+            }
         }
-        return accounts;
+        return accounts
     }
 
 
     private fun getTransactionsForAccount(account: Account): MutableSet<TransactionDto> {
-        val transactions: MutableSet<TransactionDto> = mutableSetOf();
+        val transactions: MutableSet<TransactionDto> = mutableSetOf()
 
-        var transactionsDbo = transActionsRepository.getTransactionsByAccount(account);
+        val transactionsDbo = transActionsRepository.getTransactionsByAccount(account)
         transactions.addAll(transactionsDbo.get().map {transactionDbo ->
-            mapTransactionDto(transactionDbo);
-        });
-        return transactions;
+            mapTransactionDto(transactionDbo)
+        })
+        return transactions
     }
 
     private fun mapTransactionDto(transaction: Transaction) = TransactionDto(
@@ -116,7 +136,4 @@ class MobileService(
         saldo = account.saldo.toLong(),
         displayName = account.displayName
     )
-
-
-
 }

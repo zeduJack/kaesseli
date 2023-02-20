@@ -34,18 +34,13 @@ fun AccountScreen(appState: AppState) {
     Column(modifier = Modifier.padding(16.dp)) {
 
         KsHeaderRorw {
-            KsH1(text = appState.account.displayName)
+            KsH1(text = appState.selectedAccount.accountLabel)
             KsPlusButton(onClick = {  })
         }
 
         Text(
-            text = "Kontostand: " + appState.account.saldo,
-            style = TextStyle(fontSize = 18.sp)
-        )
-
-        Text(
             //text = appState.account.displayName,
-            text = "Transaktionen:",
+            text = appState.selectedAccount.kontostandLabel,
             style = TextStyle(fontSize = 18.sp),
             modifier = Modifier.padding(0.dp, 18.dp)
         )

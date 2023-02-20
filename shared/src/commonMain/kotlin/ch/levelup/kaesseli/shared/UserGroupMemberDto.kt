@@ -9,6 +9,8 @@ data class UserGroupMemberDto(
     val firstname: String = "",
     val lastname: String = "",
 ){
-    var accounts: MutableSet<AccountDto> = mutableSetOf();
-    var roles: MutableSet<RoleDto> = mutableSetOf();
+    var accounts: MutableSet<AccountDto> = mutableSetOf()
+    var roles: MutableSet<RoleDto> = mutableSetOf()
+    var sumOfAccountsLabel: String = ""
+    var accountsLabel: String = ""
 }

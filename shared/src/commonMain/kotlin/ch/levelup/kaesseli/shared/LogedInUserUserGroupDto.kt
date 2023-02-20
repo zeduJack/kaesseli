@@ -11,4 +11,6 @@ data class LogedInUserUserGroupDto(
     //var roles: MutableSet<RoleDto> = mutableSetOf()
     var accounts: MutableSet<AccountDto> = mutableSetOf()
     var members: MutableSet<UserGroupMemberDto> = mutableSetOf()
+    var membersDescription: String = ""
+    var membersTitle = ""
 }
