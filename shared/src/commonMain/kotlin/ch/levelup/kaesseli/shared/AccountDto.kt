@@ -14,4 +14,5 @@ data class AccountDto(
     var saldoLabel: String = ""
     var accountLabel = ""
     var kontostandLabel = ""
+    var paymentAccountDescription: String = ""
 }

@@ -16,9 +16,12 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ch.levelup.kaesseli.ScreenNavigation
 import ch.levelup.kaesseli.android.components.KsH1
 import ch.levelup.kaesseli.android.components.KsHeaderRorw
 import ch.levelup.kaesseli.android.components.KsPlusButton
+import ch.levelup.kaesseli.navigation.Navigation
+import ch.levelup.kaesseli.navigation.NavigationActions
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.Store
 import ch.levelup.kaesseli.transaction.TransactionDto
@@ -35,7 +38,8 @@ fun AccountScreen(appState: AppState) {
 
         KsHeaderRorw {
             KsH1(text = appState.selectedAccount.accountLabel)
-            KsPlusButton(onClick = {  })
+            KsPlusButton(onClick = { Store.instance.dispatch(NavigationActions.SetNavigation(
+                Navigation(ScreenNavigation.PaymentScreen.route))) })
         }
 
         Text(

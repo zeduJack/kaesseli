@@ -41,6 +41,9 @@ class MobileService(
                     member.accounts = getAccountsForUserWithinGroup(userUserGroup)
                     member.sumOfAccountsLabel = getSumOfAccounts(member.accounts)
                     member.accountsLabel = "Konten von ${member.firstname}"
+                    member.paymentLabel = "Zahlung an ${member.firstname}"
+                    member.amoutnLabel = "Betrag"
+                    member.messageLabel = "Mitteilung"
                     members.add(member)
                 }
                 uGroup.members.addAll(members)
@@ -75,6 +78,7 @@ class MobileService(
                 accountDto.saldoLabel = "CHF ${accountDbo.saldo}"
                 accountDto.accountLabel = "${accountDbo.displayName} von ${userUserGroup.user.firstname}"
                 accountDto.kontostandLabel = "Kontostand: ${accountDbo.saldo} CHF"
+                accountDto.paymentAccountDescription = "Der Betrag wird dem Konto '${accountDbo.displayName}' überwiesen"
 
                 accounts.add(accountDto)
             }
