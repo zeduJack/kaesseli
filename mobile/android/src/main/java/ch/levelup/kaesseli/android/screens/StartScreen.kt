@@ -13,7 +13,6 @@ import ch.levelup.kaesseli.android.components.KsHeaderRorw
 import ch.levelup.kaesseli.android.components.KsListItem
 import ch.levelup.kaesseli.android.components.KsPlusButton
 import ch.levelup.kaesseli.android.listModifier
-import ch.levelup.kaesseli.groupView.Group
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
 import ch.levelup.kaesseli.selectedUserGroup.UserGroupActions
@@ -28,23 +27,23 @@ fun StartScreen(
 ) {
     Column(modifier = Modifier.padding(10.dp)) {
         KsHeaderRorw {
-            KsH1(text = appState.groupView.title)
+            KsH1(text = appState.logedInUser.groupLabel)
             KsPlusButton(onClick = { Store.instance.dispatch(CreateUserGroup(userGroupName = "Neuer Gruppenname")) })
         }
 
         LazyColumn(modifier = listModifier) {
-            items(appState.groupView.groups.toList()) { group: Group ->
+            items(appState.logedInUser.groups.toList()) { group: LogedInUserUserGroupDto ->
                 KsListItem(
-                    text = group.userGroupDto.name,
-                    onClick = {setSelectedGroup(group.userGroupDto)},
-                    detailText = group.description
+                    text = group.name,
+                    onClick = {setSelectedGroup(group)},
+                    detailText = group.membersDescription
                 )
             }
         }
     }
 }
 
-private fun setSelectedGroup(logedInUserUserGroupDto: LogedInUserUserGroupDto){
-    Store.instance.dispatch(UserGroupActions.SetSelectedGroup(logedInUserUserGroupDto))
+private fun setSelectedGroup(selectedGroup: LogedInUserUserGroupDto){
+    Store.instance.dispatch(UserGroupActions.SetSelectedGroup(selectedGroup))
     Store.instance.dispatch(NavigationActions.SetNavigation(Navigation(ScreenNavigation.GroupMembersScreen.route)))
 }

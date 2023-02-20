@@ -8,9 +8,10 @@ data class AccountDto(
     val type: String = "",
     val saldo: Long = 0L,
     val displayName: String = ""
-
-
     // add transactions
 ){
-    var transactions: MutableSet<TransactionDto> = mutableSetOf();
+    var transactions: MutableSet<TransactionDto> = mutableSetOf()
+    var saldoLabel: String = ""
+    var accountLabel = ""
+    var kontostandLabel = ""
 }

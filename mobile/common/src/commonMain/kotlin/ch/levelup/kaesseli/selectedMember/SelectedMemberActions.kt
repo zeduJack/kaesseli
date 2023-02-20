@@ -1,4 +1,4 @@
-package ch.levelup.kaesseli.member
+package ch.levelup.kaesseli.selectedMember
 
 import ch.levelup.kaesseli.shared.UserGroupMemberDto
 

@@ -11,5 +11,6 @@ data class LogedInUserDto(
     var email: String = "",
 
     ) {
-    var groups: MutableSet<LogedInUserUserGroupDto> = mutableSetOf();
+    var groups: MutableSet<LogedInUserUserGroupDto> = mutableSetOf()
+    var groupLabel = ""
 }

@@ -18,7 +18,7 @@ import ch.levelup.kaesseli.android.components.KsPlusButton
 import ch.levelup.kaesseli.android.listModifier
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
-import ch.levelup.kaesseli.member.SelectedMemberActions
+import ch.levelup.kaesseli.selectedMember.SelectedMemberActions
 import ch.levelup.kaesseli.shared.UserGroupMemberDto
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.CreateUserGroup
@@ -30,15 +30,19 @@ fun GroupMembersScreen(
 ) {
     Column(modifier = Modifier.padding(16.dp)) {
         KsHeaderRorw {
-            KsH1(text = "Gruppenmitglieder")
+            KsH1(text = appState.selectedUserGroup.membersTitle)
             KsPlusButton(onClick = { Store.instance.dispatch(CreateUserGroup(userGroupName = "Neues Mitglied")) })
         }
 
         val context = LocalContext.current
 
         LazyColumn(modifier = listModifier) {
-            items(appState.userGroup.members.toList()) { userGroupMemberDto: UserGroupMemberDto ->
-                KsListItem(text = userGroupMemberDto.firstname, onClick = {setSelectedMember(userGroupMemberDto, context)})
+            items(appState.selectedUserGroup.members.toList()) { userGroupMemberDto: UserGroupMemberDto ->
+                KsListItem(
+                    text = userGroupMemberDto.firstname,
+                    onClick = {setSelectedMember(userGroupMemberDto, context)},
+                    detailText = userGroupMemberDto.sumOfAccountsLabel
+                )
             }
         }
     }

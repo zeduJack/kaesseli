@@ -34,7 +34,7 @@ object TransactionNetworkThunks {
         dispatch(FetchingDataActions.StartNetworkRequest)
 
         networkScope.launch(tunkExceptionHandler(dispatch)) {
-            response = transactionRepository.logInUser(getState().account.id)
+            response = transactionRepository.logInUser(getState().selectedAccount.id)
 
             dispatch(FetchingDataActions.EndNetworkRequest)
             if (response != null) {
