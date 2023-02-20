@@ -2,6 +2,7 @@ package ch.levelup.kaesseli.backend.mobile
 
 import ch.levelup.kaesseli.backend.account.Account
 import ch.levelup.kaesseli.backend.account.AccountRepository
+import ch.levelup.kaesseli.backend.common.MemberDto
 import ch.levelup.kaesseli.backend.common.Role
 import ch.levelup.kaesseli.backend.common.UserUserGroup
 import ch.levelup.kaesseli.backend.transaction.Transaction
@@ -32,12 +33,15 @@ class MobileService(
 
                 val uGroup = mapUserGroupDto(userUserGroup.userGroup);
 
-                uGroup.members.addAll(userUserGroup.userGroup.userUserGroups.map { userUserGroup ->
-                    mapUserGroupMemberDto(userUserGroup.user)
-                })
-                uGroup.accounts = getAccountsForUserWithinGroup(userUserGroup);
+                var members: MutableSet<UserGroupMemberDto> = mutableSetOf();
+                userUserGroup.userGroup.userUserGroups.map { userUserGroup ->
+                    var member = mapUserGroupMemberDto(userUserGroup.user)
+                    member.accounts = getAccountsForUserWithinGroup(userUserGroup);
+                    members.add(member);
+                }
+                uGroup.members.addAll(members);
+              //  uGroup.accounts = getAccountsForUserWithinGroup(userUserGroup);
                 logedInUser.groups.add(uGroup)
-
             }
 
             return Optional.of(logedInUser)
