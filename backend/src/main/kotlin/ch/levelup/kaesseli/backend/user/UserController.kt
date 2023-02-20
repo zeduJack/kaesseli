@@ -22,7 +22,6 @@ class UserController(
     fun getUserById(@PathVariable(value = "id") userId: Long): ResponseEntity<User> =
         userService.getUserById(userId)
 
-
     @GetMapping("email/{email}")
     fun getUserByEmail(@PathVariable(value = "email") email: String): ResponseEntity<User>? =
         userService.getUserByEmail(email)

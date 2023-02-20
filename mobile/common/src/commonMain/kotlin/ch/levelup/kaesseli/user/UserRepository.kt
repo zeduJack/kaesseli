@@ -5,6 +5,7 @@ import ch.levelup.kaesseli.GenericError
 import ch.levelup.kaesseli.PlatformDispatcher
 import ch.levelup.kaesseli.baseUrl
 import ch.levelup.kaesseli.shared.LogedInUserDto
+import ch.levelup.kaesseli.state.Store
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
@@ -27,15 +28,13 @@ open class UserRepository {
         }
     }
 
-    suspend fun logInUser(mail: String): GatewayResponse<LogedInUserDto, GenericError> {
+    suspend fun logInUser(email: String): GatewayResponse<LogedInUserDto, GenericError> {
         try {
-            val response =
-                client.get("$baseUrl/api/mobile/logedInUser/$mail")
-
+            val token = Store.instance.getState().token
+            val response = client.get("$baseUrl/api/mobile/logedInUser/$email?token=$token")
             if (response.status != HttpStatusCode.OK) {
                 return GatewayResponse.createError(GenericError("Problem beim Anmelden"), 500, "")
             }
-
             val gotUser = response.body<LogedInUserDto>()
 
             return GatewayResponse.createSuccess(
@@ -43,15 +42,6 @@ open class UserRepository {
                 200,
                 ""
             )
-
-            /*
-            return GatewayResponse.createError(
-                GenericError("Test error from creating user"),
-                500,
-                ""
-            )
-            */
-
 
         } catch (e: Exception) {
             val error = e.message ?: "error"

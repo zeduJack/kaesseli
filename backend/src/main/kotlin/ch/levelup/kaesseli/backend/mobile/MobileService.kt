@@ -4,6 +4,7 @@ import ch.levelup.kaesseli.backend.account.Account
 import ch.levelup.kaesseli.backend.account.AccountRepository
 import ch.levelup.kaesseli.backend.common.Role
 import ch.levelup.kaesseli.backend.common.UserUserGroup
+import ch.levelup.kaesseli.backend.firebase.FirebaseService
 import ch.levelup.kaesseli.backend.transaction.Transaction
 import ch.levelup.kaesseli.backend.transaction.TransactionRepository
 import ch.levelup.kaesseli.backend.transaction.TransactionService
@@ -23,6 +24,7 @@ class MobileService(
     private val accountRepository: AccountRepository,
     private val transActionsRepository: TransactionRepository,
     private val transactionService: TransactionService,
+    private val firebaseService: FirebaseService
 ) {
 
     fun getLogedInUserByEmail(email: String): Optional<LogedInUserDto> {
@@ -63,25 +65,45 @@ class MobileService(
         return Optional.empty()
     }
 
-    fun addTransaction(newTransactionDto: NewTransactionDto): ResponseEntity<Void> {
-        val user = userRepository.getUserByEmail(newTransactionDto.logedInUserEmail)
-        val account = accountRepository.findById(newTransactionDto.accountId)
+    fun updateUserToken(email: String, token: String): ResponseEntity<User>? {
+        return userRepository.getUserByEmail(email).map { currentUser ->
+            val updateUser: User = currentUser.copy(
+                firstname = currentUser.firstname,
+                lastname = currentUser.lastname,
+                email = currentUser.email,
+                username = currentUser.username,
+                token = token
+            )
+            ResponseEntity.ok().body(userRepository.save(updateUser))
+        }.orElse(ResponseEntity.notFound().build())
+    }
 
-        if (user.isEmpty || account.isEmpty) {
+    fun addTransaction(newTransactionDto: NewTransactionDto): ResponseEntity<Void> {
+        val userOptional = userRepository.getUserByEmail(newTransactionDto.logedInUserEmail)
+        val accountOptional = accountRepository.findById(newTransactionDto.accountId)
+
+        if (userOptional.isEmpty || accountOptional.isEmpty) {
             return ResponseEntity.notFound().build()
         }
 
+        val user = userOptional.get()
+        val account = accountOptional.get()
+        val amount = BigDecimal(newTransactionDto.amount)
+
         val transaction = Transaction(
             version = 0,
-            amount = BigDecimal(newTransactionDto.amount),
-            user = user.get(),
-            account = account.get(),
+            amount = amount,
+            user = user,
+            account = account,
             debit = newTransactionDto.debit,
             status = "OK",
             message = newTransactionDto.message
         )
         transactionService.addTransaction(transaction)
 
+        val token = account.userUserGroup.user.token
+        val text = user.firstname + " has send you " + amount
+        firebaseService.pushMessage(token, text, text)
         return ResponseEntity.ok().build()
     }
 

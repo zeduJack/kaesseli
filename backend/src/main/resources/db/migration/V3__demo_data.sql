@@ -1,6 +1,6 @@
-INSERT INTO "user" (id, firstname, lastname, username, email, version) VALUES
-(1, 'Max', 'Mustermann', 'max', 'mmuster@email.ch', 1),
-(2, 'Paul', 'Mustermann', 'pauli', 'pmuster@email.ch', 1);
+INSERT INTO "user" (id, firstname, lastname, username, email, token, version) VALUES
+(1, 'Max', 'Mustermann', 'max', 'mmuster@email.ch', '', 1),
+(2, 'Paul', 'Mustermann', 'pauli', 'pmuster@email.ch', '', 1);
 
 
 INSERT INTO "usergroup" (id, name, version) VALUES

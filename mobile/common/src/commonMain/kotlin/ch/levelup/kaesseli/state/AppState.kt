@@ -21,5 +21,6 @@ data class AppState(
     val selectedUserGroup: LogedInUserUserGroupDto = LogedInUserUserGroupDto(),
     val selectedMember: UserGroupMemberDto = UserGroupMemberDto(),
     val selectedAccount: AccountDto = AccountDto(),
-    val currentAccountTransactions: Set<TransactionDto> = setOf()
+    val currentAccountTransactions: Set<TransactionDto> = setOf(),
+    val token: String = ""
 )

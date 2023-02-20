@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class Firebase() {
+class FirebaseService() {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
@@ -64,13 +64,13 @@ class Firebase() {
     }
 
     fun deleteFirebaseUser(uid: String): Boolean {
-        val success = Firebase().deleteFirebaseUser(uid)
+        val success = FirebaseService().deleteFirebaseUser(uid)
         logger.debug("Deleted user with UID: $uid. Status: $success")
         return success
     }
 
     fun logOutUser(uid: String) {
-        Firebase().revokeFirebaseAccessToken(uid)
+        FirebaseService().revokeFirebaseAccessToken(uid)
     }
 
     private fun verifyFirebaseIdToken(idToken: String): String? {
