@@ -1,6 +1,7 @@
 package ch.levelup.kaesseli.groupView
 
-import ch.levelup.kaesseli.user.UserGroupDto
+import ch.levelup.kaesseli.shared.LogedInUserUserGroupDto
+
 
 data class GroupView(
     val title: String = "Gruppen",
@@ -8,7 +9,7 @@ data class GroupView(
 )
 
 data class Group(
-    val userGroupDto: UserGroupDto = UserGroupDto(),
+    val userGroupDto: LogedInUserUserGroupDto = LogedInUserUserGroupDto(),
     var description: String = ""
 )
 

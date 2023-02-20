@@ -17,10 +17,10 @@ import ch.levelup.kaesseli.groupView.Group
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
 import ch.levelup.kaesseli.selectedUserGroup.UserGroupActions
+import ch.levelup.kaesseli.shared.LogedInUserUserGroupDto
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.CreateUserGroup
 import ch.levelup.kaesseli.state.Store
-import ch.levelup.kaesseli.user.UserGroupDto
 
 @Composable
 fun StartScreen(
@@ -44,7 +44,7 @@ fun StartScreen(
     }
 }
 
-private fun setSelectedGroup(selectedGroup: UserGroupDto){
-    Store.instance.dispatch(UserGroupActions.SetSelectedGroup(selectedGroup))
+private fun setSelectedGroup(logedInUserUserGroupDto: LogedInUserUserGroupDto){
+    Store.instance.dispatch(UserGroupActions.SetSelectedGroup(logedInUserUserGroupDto))
     Store.instance.dispatch(NavigationActions.SetNavigation(Navigation(ScreenNavigation.GroupMembersScreen.route)))
 }

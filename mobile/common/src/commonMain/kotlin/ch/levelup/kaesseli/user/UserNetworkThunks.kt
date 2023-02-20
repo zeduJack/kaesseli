@@ -10,6 +10,7 @@ import ch.levelup.kaesseli.login.LoginActions
 import ch.levelup.kaesseli.login.LoginInput
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
+import ch.levelup.kaesseli.shared.LogedInUserDto
 import ch.levelup.kaesseli.shared.UserTestDto
 import ch.levelup.kaesseli.state.AppState
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -35,7 +36,7 @@ object UserNetworkThunks {
     private val networkScope = CoroutineScope(PlatformDispatcher)
 
     fun logInUser(): Thunk<AppState> = { dispatch, getState, extraArg ->
-        var response: GatewayResponse<UserDto, GenericError>?
+        var response: GatewayResponse<LogedInUserDto, GenericError>?
         dispatch(ErrorMessageActions.ClearErrorMessage)
         dispatch(FetchingDataActions.StartNetworkRequest)
 

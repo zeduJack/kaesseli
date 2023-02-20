@@ -1,9 +1,9 @@
 package ch.levelup.kaesseli.selectedUserGroup
 
-import ch.levelup.kaesseli.user.UserGroupDto
+import ch.levelup.kaesseli.shared.LogedInUserUserGroupDto
 
 
-fun userGroupReducer(state: UserGroupDto, action: Any) =
+fun userGroupReducer(state: LogedInUserUserGroupDto, action: Any) =
     when (action) {
         is UserGroupActions.SetSelectedGroup -> action.group
         else -> state
