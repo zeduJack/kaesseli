@@ -113,7 +113,7 @@ class MobileService(
     private fun mapAccount(account: Account) = AccountDto(
         id = account.id ?: 0L,
         type = account.type,
-        saldo = account.saldo.longValueExact(),
+        saldo = account.saldo.toLong(),
         displayName = account.displayName
     )
 
