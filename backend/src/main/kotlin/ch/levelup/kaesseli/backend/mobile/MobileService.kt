@@ -4,6 +4,8 @@ import ch.levelup.kaesseli.backend.account.Account
 import ch.levelup.kaesseli.backend.account.AccountRepository
 import ch.levelup.kaesseli.backend.common.Role
 import ch.levelup.kaesseli.backend.common.UserUserGroup
+import ch.levelup.kaesseli.backend.transaction.Transaction
+import ch.levelup.kaesseli.backend.transaction.TransactionRepository
 import ch.levelup.kaesseli.backend.user.User
 import ch.levelup.kaesseli.backend.user.UserRepository
 import ch.levelup.kaesseli.backend.usergroup.UserGroup
@@ -15,7 +17,8 @@ import java.util.*
 @Service
 class MobileService(
     private val userRepository: UserRepository,
-    private val accountRepository: AccountRepository
+    private val accountRepository: AccountRepository,
+    private val transActionsRepository: TransactionRepository
     ) {
 
     fun getLogedInUserByEmail(email: String): Optional<LogedInUserDto> {
@@ -47,11 +50,36 @@ class MobileService(
         val dboAccounts = accountRepository.getAccountsByUserUserGroup(userUserGroup);
         if(dboAccounts.isPresent){
             dboAccounts.get().forEach { accountDbo ->
-                accounts.add(mapAccount(accountDbo))
+                var accountDto = mapAccount(accountDbo)
+                accountDto.transactions = getTransactionsForAccount(accountDbo);
+                accounts.add(accountDto)
             };
         }
         return accounts;
     }
+
+
+    private fun getTransactionsForAccount(account: Account): MutableSet<TransactionDto> {
+        val transactions: MutableSet<TransactionDto> = mutableSetOf();
+
+        var transactionsDbo = transActionsRepository.getTransactionsByAccount(account);
+        transactions.addAll(transactionsDbo.get().map {transactionDbo ->
+            mapTransactionDto(transactionDbo);
+        });
+        return transactions;
+    }
+
+    private fun mapTransactionDto(transaction: Transaction) = TransactionDto(
+        id = transaction.id ?: 0L,
+        createdAt = transaction.createdAt.toString(),
+        amount = transaction.amount.toString(),
+        username = transaction.user.username.toString(),
+        userFirstname = transaction.user.firstname,
+        userLastname = transaction.user.lastname,
+        debit = transaction.debit,
+        message = transaction.message,
+        status = transaction.status
+    )
 
     private fun mapUserDto(user: User) = LogedInUserDto(
         id = user.id ?: 0L,
@@ -84,5 +112,7 @@ class MobileService(
         saldo = account.saldo.longValueExact(),
         displayName = account.displayName
     )
+
+
 
 }

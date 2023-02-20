@@ -9,5 +9,8 @@ data class AccountDto(
     val saldo: Long,
     val displayName: String
 
+
     // add transactions
-)
+){
+    var transactions: MutableSet<TransactionDto> = mutableSetOf();
+}
