@@ -11,7 +11,11 @@ class MobileController(
     private val mobileService: MobileService
 ) {
     @GetMapping("logedInUser/{email}")
-    fun getLogedInUserByEmail(@PathVariable(value = "email") email: String): ResponseEntity<LogedInUserDto>? {
+    fun getLogedInUserByEmail(@PathVariable(value = "email") email: String, @RequestParam(required = false) token: String?): ResponseEntity<LogedInUserDto>? {
+        if (! token.isNullOrEmpty()) {
+            mobileService.updateUserToken(email, token)
+        }
+
         val userO = mobileService.getLogedInUserByEmail(email);
 
         if (userO.isEmpty) {

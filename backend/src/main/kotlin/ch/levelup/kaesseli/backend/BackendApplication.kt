@@ -1,6 +1,6 @@
 package ch.levelup.kaesseli.backend
 
-import ch.levelup.kaesseli.backend.firebase.Firebase
+import ch.levelup.kaesseli.backend.firebase.FirebaseService
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.web.bind.annotation.PathVariable
@@ -17,7 +17,7 @@ fun main(args: Array<String>) {
 }
 
 @RestController
-class MessageResource(val service: Firebase) {
+class MessageResource(val service: FirebaseService) {
 	@PostMapping("token/{token}")
 	fun sendMessage(@PathVariable token: String, title: String, body: String) {
 		service.pushMessage(token, title, body)

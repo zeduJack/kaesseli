@@ -1,8 +1,12 @@
 package ch.levelup.kaesseli.android;
 
+import android.content.Context
 import android.util.Log
+import ch.levelup.kaesseli.state.Store
+import ch.levelup.kaesseli.token.TokenActions
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import java.io.File
 
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
@@ -32,7 +36,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
      */
     override fun onNewToken(token: String) {
         Log.d(TAG, "Refreshed token: $token")
-        sendRegistrationToServer(token)
+        Store.instance.dispatch(TokenActions.SetToken(token))
     }
 
 

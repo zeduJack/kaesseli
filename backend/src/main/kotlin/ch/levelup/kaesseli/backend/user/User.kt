@@ -19,6 +19,7 @@ data class User (
     val lastname: String,
     val username: String?,
     val email: String,
+    val token: String
 
     ){
 
