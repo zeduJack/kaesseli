@@ -11,7 +11,6 @@ import ch.levelup.kaesseli.login.LoginInput
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
 import ch.levelup.kaesseli.shared.LogedInUserDto
-import ch.levelup.kaesseli.shared.UserTestDto
 import ch.levelup.kaesseli.state.AppState
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -45,7 +44,6 @@ object UserNetworkThunks {
         networkScope.launch(tunkExceptionHandler(dispatch)) {
             response = userRepository.logInUser(email)
 
-            UserTestDto("")
             dispatch(FetchingDataActions.EndNetworkRequest)
             if (response != null) {
                 if (response!!.isFailure) {

@@ -3,7 +3,6 @@ package ch.levelup.kaesseli.backend.user
 
 import ch.levelup.kaesseli.backend.common.UserDto
 import ch.levelup.kaesseli.backend.usergroup.UserGroupService
-import ch.levelup.kaesseli.shared.UserTestDto
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -16,18 +15,12 @@ class UserController(
 
     @GetMapping
     fun getUsers(): List<User> {
-        val userTestDto = UserTestDto("bla")
         return userService.getUsers()
     }
 
     @GetMapping("/{id}")
     fun getUserById(@PathVariable(value = "id") userId: Long): ResponseEntity<User> =
         userService.getUserById(userId)
-
-
-    @GetMapping("/test")
-    fun test(): ResponseEntity<UserTestDto> =
-        userService.getUserTestDto()
 
 
     @GetMapping("email/{email}")
