@@ -25,7 +25,7 @@ open class TransactionRepository {
         }
     }
 
-    suspend fun logInUser(accountId: Int): GatewayResponse<Set<TransactionDto>, GenericError> {
+    suspend fun logInUser(accountId: Long): GatewayResponse<Set<TransactionDto>, GenericError> {
         try {
             val response =
                 client.get("$baseUrl/api/transactions/accountId/$accountId")

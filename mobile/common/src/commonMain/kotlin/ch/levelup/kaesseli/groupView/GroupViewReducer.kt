@@ -1,7 +1,8 @@
 package ch.levelup.kaesseli.groupView
 
+import ch.levelup.kaesseli.shared.LogedInUserDto
 import ch.levelup.kaesseli.user.UserActions
-import ch.levelup.kaesseli.user.UserDto
+
 
 
 fun groupViewReducer(state: GroupView, action: Any) =
@@ -10,11 +11,11 @@ fun groupViewReducer(state: GroupView, action: Any) =
         else -> state
     }
 
-fun getGroups(userDto: UserDto, state: GroupView): GroupView {
+fun getGroups(userDto: LogedInUserDto, state: GroupView): GroupView {
 
     return GroupView(
         title = state.title,
-        groups = userDto.userGroups.map { group ->
+        groups = userDto.groups.map { group ->
             Group(
                 userGroupDto = group,
                 description = group.members.size.toString() + " Mitglieder"

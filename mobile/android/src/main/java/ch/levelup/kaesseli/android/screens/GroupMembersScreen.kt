@@ -19,10 +19,10 @@ import ch.levelup.kaesseli.android.listModifier
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
 import ch.levelup.kaesseli.member.SelectedMemberActions
+import ch.levelup.kaesseli.shared.UserGroupMemberDto
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.CreateUserGroup
 import ch.levelup.kaesseli.state.Store
-import ch.levelup.kaesseli.user.MemberDto
 
 @Composable
 fun GroupMembersScreen(
@@ -37,14 +37,14 @@ fun GroupMembersScreen(
         val context = LocalContext.current
 
         LazyColumn(modifier = listModifier) {
-            items(appState.userGroup.members.toList()) { member: MemberDto ->
-                KsListItem(text = member.firstname, onClick = {setSelectedMember(member, context)})
+            items(appState.userGroup.members.toList()) { userGroupMemberDto: UserGroupMemberDto ->
+                KsListItem(text = userGroupMemberDto.firstname, onClick = {setSelectedMember(userGroupMemberDto, context)})
             }
         }
     }
 }
 
-private fun setSelectedMember(selectedMember: MemberDto, context: Context){
+private fun setSelectedMember(selectedMember: UserGroupMemberDto, context: Context){
     Toast.makeText(context, selectedMember.firstname, Toast.LENGTH_LONG).show()
     Store.instance.dispatch(SelectedMemberActions.SetSelectedMember(selectedMember))
     Store.instance.dispatch(NavigationActions.SetNavigation(Navigation(ScreenNavigation.MemberScreen.route)))

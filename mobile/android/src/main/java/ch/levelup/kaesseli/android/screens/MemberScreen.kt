@@ -16,9 +16,9 @@ import ch.levelup.kaesseli.android.components.KsPlusButton
 import ch.levelup.kaesseli.android.listModifier
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
+import ch.levelup.kaesseli.shared.AccountDto
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.Store
-import ch.levelup.kaesseli.user.AccountDto
 
 @Composable
 fun MemberScreen(

@@ -1,6 +1,6 @@
 package ch.levelup.kaesseli.account
 
-import ch.levelup.kaesseli.user.AccountDto
+import ch.levelup.kaesseli.shared.AccountDto
 
 
 fun accountReducer(state: AccountDto, action: Any) =

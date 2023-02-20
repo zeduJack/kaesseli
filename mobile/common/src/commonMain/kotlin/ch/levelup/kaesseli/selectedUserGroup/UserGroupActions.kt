@@ -1,7 +1,8 @@
 package ch.levelup.kaesseli.selectedUserGroup
 
-import ch.levelup.kaesseli.user.UserGroupDto
+import ch.levelup.kaesseli.shared.LogedInUserUserGroupDto
+
 
 class UserGroupActions {
-    data class SetSelectedGroup(val group: UserGroupDto)
+    data class SetSelectedGroup(val group: LogedInUserUserGroupDto)
 }

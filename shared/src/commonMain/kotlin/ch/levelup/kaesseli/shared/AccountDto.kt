@@ -4,10 +4,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class AccountDto(
-    val id: Long,
-    val type: String,
-    val saldo: Long,
-    val displayName: String
+    val id: Long = -1L,
+    val type: String = "",
+    val saldo: Long = 0L,
+    val displayName: String = ""
 
 
     // add transactions
