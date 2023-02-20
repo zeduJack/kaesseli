@@ -1,5 +1,6 @@
 package ch.levelup.kaesseli.backend.account
 
+import ch.levelup.kaesseli.backend.common.UserUserGroup
 import ch.levelup.kaesseli.backend.user.User
 import java.math.BigDecimal
 import java.time.LocalDateTime
@@ -19,7 +20,9 @@ data class Account (
     val saldo: BigDecimal,
     val displayName: String,
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="user_usergroup_id", nullable=false)
-    val user: User
-)
+    val userUserGroup: UserUserGroup
+) {
+
+}

@@ -1,9 +1,9 @@
 -- usergroup
 CREATE TABLE usergroup (
-    id serial PRIMARY KEY,
+    id bigserial PRIMARY KEY,
     created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE NULL DEFAULT CURRENT_TIMESTAMP,
-    version bigserial NOT NULL,
+    version serial NOT NULL,
 
     name VARCHAR(255) UNIQUE NOT NULL
 );

@@ -1,22 +1,24 @@
 package ch.levelup.kaesseli.backend.mobile
 
+import ch.levelup.kaesseli.backend.account.Account
+import ch.levelup.kaesseli.backend.account.AccountRepository
 import ch.levelup.kaesseli.backend.common.Role
+import ch.levelup.kaesseli.backend.common.UserUserGroup
+import ch.levelup.kaesseli.backend.transaction.Transaction
+import ch.levelup.kaesseli.backend.transaction.TransactionRepository
 import ch.levelup.kaesseli.backend.user.User
 import ch.levelup.kaesseli.backend.user.UserRepository
 import ch.levelup.kaesseli.backend.usergroup.UserGroup
-import ch.levelup.kaesseli.backend.usergroup.UserGroupRepository
-import ch.levelup.kaesseli.shared.LogedInUserDto
-import ch.levelup.kaesseli.shared.LogedInUserUserGroupDto
-import ch.levelup.kaesseli.shared.RoleDto
-import ch.levelup.kaesseli.shared.UserGroupMemberDto
+import ch.levelup.kaesseli.shared.*
+
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
 class MobileService(
     private val userRepository: UserRepository,
-
-    private val userGroupRepository: UserGroupRepository
+    private val accountRepository: AccountRepository,
+    private val transActionsRepository: TransactionRepository
     ) {
 
     fun getLogedInUserByEmail(email: String): Optional<LogedInUserDto> {
@@ -26,20 +28,58 @@ class MobileService(
             val user = userOptional.get();
             var logedInUser = mapUserDto(user);
 
-            user.userGroups.forEach { group ->
-                val uGroup = mapUserGroupDto(group);
-                uGroup.members.addAll(group.users.map { user ->
-                    mapUserGroupMemberDto(user)
+            user.userUserGroups.forEach { userUserGroup ->
+
+                val uGroup = mapUserGroupDto(userUserGroup.userGroup);
+
+                uGroup.members.addAll(userUserGroup.userGroup.userUserGroups.map { userUserGroup ->
+                    mapUserGroupMemberDto(userUserGroup.user)
                 })
+                uGroup.accounts = getAccountsForUserWithinGroup(userUserGroup);
                 logedInUser.groups.add(uGroup)
+
             }
 
-            if (logedInUser != null) {
-                return Optional.of(logedInUser);
-            }
+            return Optional.of(logedInUser)
         }
         return Optional.empty()
     }
+
+    private fun getAccountsForUserWithinGroup(userUserGroup: UserUserGroup): MutableSet<AccountDto> {
+        val accounts: MutableSet<AccountDto> = mutableSetOf();
+        val dboAccounts = accountRepository.getAccountsByUserUserGroup(userUserGroup);
+        if(dboAccounts.isPresent){
+            dboAccounts.get().forEach { accountDbo ->
+                var accountDto = mapAccount(accountDbo)
+                accountDto.transactions = getTransactionsForAccount(accountDbo);
+                accounts.add(accountDto)
+            };
+        }
+        return accounts;
+    }
+
+
+    private fun getTransactionsForAccount(account: Account): MutableSet<TransactionDto> {
+        val transactions: MutableSet<TransactionDto> = mutableSetOf();
+
+        var transactionsDbo = transActionsRepository.getTransactionsByAccount(account);
+        transactions.addAll(transactionsDbo.get().map {transactionDbo ->
+            mapTransactionDto(transactionDbo);
+        });
+        return transactions;
+    }
+
+    private fun mapTransactionDto(transaction: Transaction) = TransactionDto(
+        id = transaction.id ?: 0L,
+        createdAt = transaction.createdAt.toString(),
+        amount = transaction.amount.toString(),
+        username = transaction.user.username.toString(),
+        userFirstname = transaction.user.firstname,
+        userLastname = transaction.user.lastname,
+        debit = transaction.debit,
+        message = transaction.message,
+        status = transaction.status
+    )
 
     private fun mapUserDto(user: User) = LogedInUserDto(
         id = user.id ?: 0L,
@@ -65,4 +105,14 @@ class MobileService(
         id = role.id ?: 0L,
         name = role.name
     )
+
+    private fun mapAccount(account: Account) = AccountDto(
+        id = account.id ?: 0L,
+        type = account.type,
+        saldo = account.saldo.longValueExact(),
+        displayName = account.displayName
+    )
+
+
+
 }

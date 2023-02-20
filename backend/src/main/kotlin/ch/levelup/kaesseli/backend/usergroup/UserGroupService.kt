@@ -22,7 +22,7 @@ class UserGroupService(
 
     fun getUsersByUserGroupId(userGroupId: Long): Optional<UserGroup> = userGroupRepository.findById(userGroupId)
 
-    fun getUserGroupsByUserId(id: Long): Set<UserGroup>? = userService.getUserDboById(id).get().userGroups
+    fun getUserGroupsByUserId(id: Long): Set<UserGroup>? = userService.getUserGroupsByUserId(id);
 
     fun addUserGroup(groupe: UserGroup): ResponseEntity<UserGroup> = ResponseEntity.ok(userGroupRepository.save(groupe))
 

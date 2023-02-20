@@ -1,6 +1,6 @@
 package ch.levelup.kaesseli.backend.usergroup
 
-import ch.levelup.kaesseli.backend.user.User
+import ch.levelup.kaesseli.backend.common.UserUserGroup
 import io.swagger.annotations.ApiModelProperty
 import java.time.LocalDateTime
 import javax.persistence.*
@@ -17,9 +17,7 @@ data class UserGroup(
     @ApiModelProperty(notes = "Provided name", required = true)
     val name: String
 ){
-    @ManyToMany(mappedBy = "userGroups")
-    val users: Set<User> = mutableSetOf();
+    @OneToMany(mappedBy = "userGroup")
+    val userUserGroups: Set<UserUserGroup> = mutableSetOf();
 
-    @ManyToMany(mappedBy = "userGroups")
-    val accounts: Set<User> = mutableSetOf();
 }

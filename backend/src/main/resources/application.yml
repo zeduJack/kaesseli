@@ -12,7 +12,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      #ddl-auto: validate
+      ddl-auto: validate
     show-sql: true
   sql:
     init:
