@@ -5,7 +5,6 @@ import ch.levelup.kaesseli.GenericError
 import ch.levelup.kaesseli.PlatformDispatcher
 import ch.levelup.kaesseli.errorMessage.ErrorMessageActions
 import ch.levelup.kaesseli.fetchingData.FetchingDataActions
-import ch.levelup.kaesseli.shared.UserTestDto
 import ch.levelup.kaesseli.state.AppState
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -37,7 +36,6 @@ object TransactionNetworkThunks {
         networkScope.launch(tunkExceptionHandler(dispatch)) {
             response = transactionRepository.logInUser(getState().account.id)
 
-            UserTestDto("")
             dispatch(FetchingDataActions.EndNetworkRequest)
             if (response != null) {
                 if (response!!.isFailure) {

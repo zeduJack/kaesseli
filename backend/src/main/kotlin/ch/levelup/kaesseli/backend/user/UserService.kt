@@ -5,7 +5,6 @@ import ch.levelup.kaesseli.backend.account.AccountService
 import ch.levelup.kaesseli.backend.common.*
 import ch.levelup.kaesseli.backend.usergroup.UserGroup
 import ch.levelup.kaesseli.backend.usergroup.UserGroupRepository
-import ch.levelup.kaesseli.shared.UserTestDto
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
@@ -26,10 +25,6 @@ class UserService(
         return userRepository.getUserByEmail(email)
             .map { user -> ResponseEntity.ok(user) }
             .orElse(ResponseEntity.notFound().build())
-    }
-
-    fun getUserTestDto(): ResponseEntity<UserTestDto> {
-        return ResponseEntity.ok(UserTestDto(""))
     }
 
 
