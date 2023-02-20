@@ -12,10 +12,11 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class Firebase {
+class Firebase() {
+
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    fun initiateFirebase() {
+    private fun initiateFirebase() {
         val encodedToken = System.getenv("FIREBASE_TOKEN")
         val decodedToken = String(Base64.getDecoder().decode(encodedToken))
         val credential = GoogleCredentials.fromStream(decodedToken.byteInputStream())
@@ -93,5 +94,9 @@ class Firebase {
         // Convert to seconds as the auth_time in the token claims is in seconds too.
         val revocationSecond = user.tokensValidAfterTimestamp / 1000
         println("Tokens revoked at: $revocationSecond")
+    }
+
+    init {
+        initiateFirebase()
     }
 }

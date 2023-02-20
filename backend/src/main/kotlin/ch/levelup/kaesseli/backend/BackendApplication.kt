@@ -13,7 +13,6 @@ import java.util.*
 class BackendApplication
 
 fun main(args: Array<String>) {
-	Firebase().initiateFirebase()
 	runApplication<BackendApplication>(*args)
 }
 

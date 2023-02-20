@@ -1,5 +1,6 @@
-package ch.levelup.kaesseli.backend
+package ch.levelup.kaesseli.backend//package ch.levelup.kaesseli.backend
 
+import ch.levelup.kaesseli.backend.firebase.Firebase
 import com.google.auth.oauth2.GoogleCredentials
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
@@ -15,7 +16,7 @@ class BackendApplicationTests {
     fun testFirebaseUserManagement() {
         instantiateFirebaseApp()
         val testUid = "test-uid"
-        FirebaseUserManagement().deleteFirebaseUser(testUid) //verify user does not exist
+        Firebase().deleteFirebaseUser(testUid) //verify user does not exist
         createFirebaseUser(testUid)
         //val success = FirebaseUserManagement().deleteFirebaseUser(testUid)
         //if (success){
