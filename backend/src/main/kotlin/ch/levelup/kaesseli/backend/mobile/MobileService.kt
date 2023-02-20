@@ -40,7 +40,7 @@ class MobileService(
                     val member = mapUserGroupMemberDto(userUserGroup.user)
                     member.accounts = getAccountsForUserWithinGroup(userUserGroup)
                     member.sumOfAccountsLabel = getSumOfAccounts(member.accounts)
-                    member.accountsLabel = "Konten von ${user.firstname}"
+                    member.accountsLabel = "Konten von ${member.firstname}"
                     members.add(member)
                 }
                 uGroup.members.addAll(members)
