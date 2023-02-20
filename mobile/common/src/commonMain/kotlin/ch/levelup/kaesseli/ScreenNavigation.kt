@@ -10,4 +10,5 @@ sealed class ScreenNavigation(val route: String) {
     object RegisterScreen: ScreenNavigation("register")
     object CodeSubmissionScreen: ScreenNavigation("code_submission")
     object MemberScreen: ScreenNavigation("member")
+    object PaymentScreen: ScreenNavigation("payment")
 }
