@@ -10,6 +10,7 @@ import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -17,9 +18,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ch.levelup.kaesseli.ScreenNavigation
-import ch.levelup.kaesseli.android.components.KsH1
-import ch.levelup.kaesseli.android.components.KsHeaderRorw
-import ch.levelup.kaesseli.android.components.KsPlusButton
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
 import ch.levelup.kaesseli.state.AppState
@@ -28,7 +26,7 @@ import ch.levelup.kaesseli.transaction.TransactionDto
 import ch.levelup.kaesseli.transaction.TransactionNetworkThunks
 
 @Composable
-fun AccountScreen(appState: AppState) {
+fun AccountScreen(appState: AppState, floatingActionButtonAction: MutableState<() -> Unit>) {
 
     LaunchedEffect(true) {
         Store.instance.dispatch(TransactionNetworkThunks.getTransactions())
@@ -36,10 +34,9 @@ fun AccountScreen(appState: AppState) {
 
     Column(modifier = Modifier.padding(16.dp)) {
 
-        KsHeaderRorw {
-            KsH1(text = appState.selectedAccount.accountLabel)
-            KsPlusButton(onClick = { Store.instance.dispatch(NavigationActions.SetNavigation(
-                Navigation(ScreenNavigation.PaymentScreen.route))) })
+        floatingActionButtonAction.value = {
+            Store.instance.dispatch(NavigationActions.SetNavigation(
+                Navigation(ScreenNavigation.PaymentScreen.route)))
         }
 
         Text(

@@ -12,8 +12,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ch.levelup.kaesseli.android.components.KsH1
-import ch.levelup.kaesseli.android.components.KsHeaderRorw
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.Store
 import ch.levelup.kaesseli.transaction.TransactionNetworkThunks
@@ -28,18 +26,12 @@ fun PaymentScreen(appState: AppState) {
     }
 
     Column(modifier = Modifier.padding(16.dp)) {
-
-        KsHeaderRorw {
-            KsH1(text = appState.selectedMember.paymentLabel)
-        }
-
         Text(
             //text = appState.account.displayName,
             text = appState.selectedAccount.paymentAccountDescription,
             style = TextStyle(fontSize = 18.sp),
             modifier = Modifier.padding(0.dp, 18.dp)
         )
-
 
         var dirty by remember { mutableStateOf(false) }
         val amountText = remember { mutableStateOf("") }
