@@ -4,6 +4,7 @@ import ch.levelup.kaesseli.GatewayResponse
 import ch.levelup.kaesseli.GenericError
 import ch.levelup.kaesseli.PlatformDispatcher
 import ch.levelup.kaesseli.baseUrl
+import ch.levelup.kaesseli.shared.NewTransactionDto
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.cio.*
@@ -38,6 +39,30 @@ open class TransactionRepository {
 
             return GatewayResponse.createSuccess(
                 transactions,
+                200,
+                ""
+            )
+        } catch (e: Exception) {
+            val error = e.message ?: "error"
+            println(e)
+            return GatewayResponse.createError(GenericError(error), 500, "")
+        }
+    }
+
+    suspend fun addTransaction(newTransactionDto: NewTransactionDto): GatewayResponse<Unit, GenericError> {
+        try {
+            val response =
+                client.post("$baseUrl/api/mobile/transactions") {
+                    contentType(ContentType.Application.Json)
+                    setBody(newTransactionDto)
+                }
+
+            if (response.status != HttpStatusCode.OK) {
+                return GatewayResponse.createError(GenericError("Unerwarteter Fehler. Bitte versuchen Sie es später erneut."), 500, "")
+            }
+
+            return GatewayResponse.createSuccess(
+                Unit,
                 200,
                 ""
             )

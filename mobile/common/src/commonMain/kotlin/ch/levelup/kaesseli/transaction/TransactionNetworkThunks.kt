@@ -5,6 +5,7 @@ import ch.levelup.kaesseli.GenericError
 import ch.levelup.kaesseli.PlatformDispatcher
 import ch.levelup.kaesseli.errorMessage.ErrorMessageActions
 import ch.levelup.kaesseli.fetchingData.FetchingDataActions
+import ch.levelup.kaesseli.shared.NewTransactionDto
 import ch.levelup.kaesseli.state.AppState
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -44,6 +45,33 @@ object TransactionNetworkThunks {
                     if (response?.response != null) {
                         dispatch(TransactionActions.SetTransactions(response!!.response!!))
                     }
+                }
+            }
+        }
+    }
+
+    fun addTransaction(amount: Long, message: String): Thunk<AppState> = { dispatch, getState, extraArg ->
+        var response: GatewayResponse<Unit, GenericError>?
+        dispatch(ErrorMessageActions.ClearErrorMessage)
+        dispatch(FetchingDataActions.StartNetworkRequest)
+
+        val newTransactionDto = NewTransactionDto(
+            amount = amount,
+            debit = false,
+            message = message,
+            logedInUserEmail = getState().logedInUser.email,
+            accountId = getState().selectedAccount.id
+        )
+
+        networkScope.launch(tunkExceptionHandler(dispatch)) {
+            response = transactionRepository.addTransaction(newTransactionDto)
+
+            dispatch(FetchingDataActions.EndNetworkRequest)
+            if (response != null) {
+                if (response!!.isFailure) {
+                    dispatch(ErrorMessageActions.SetErrorMessage(response!!.errorResponse?.message))
+                } else {
+                    // todo: load all user data and navigate back
                 }
             }
         }
