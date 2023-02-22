@@ -44,5 +44,5 @@ fun MemberScreen(
 
 private fun setSelectedMember(selectedAccount: AccountDto){
     Store.instance.dispatch(AccountActions.SetAccount(selectedAccount))
-    Store.instance.dispatch(NavigationActions.SetNavigation(Navigation(ScreenNavigation.BalanceScreen.route)))
+    Store.instance.dispatch(NavigationActions.SetNavigation(Navigation(ScreenNavigation.AccountScreeen.route)))
 }

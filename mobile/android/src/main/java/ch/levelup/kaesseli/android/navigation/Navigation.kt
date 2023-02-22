@@ -20,7 +20,7 @@ fun Navigation(
             MainScreen(
                 appState,
                 onNavigateToRegister = { navController.navigate(ScreenNavigation.RegisterScreen.route) },
-                onNavigateToBalance = { navController.navigate(ScreenNavigation.BalanceScreen.route) },
+                onNavigateToBalance = { navController.navigate(ScreenNavigation.AccountScreeen.route) },
                 onNavigateToCodeSubmission = { navController.navigate(ScreenNavigation.CodeSubmissionScreen.route) },
             )
         }
@@ -44,7 +44,7 @@ fun Navigation(
                 GroupMembersScreen(appState = appState)
             }
         }
-        composable(route = ScreenNavigation.BalanceScreen.route) {
+        composable(route = ScreenNavigation.AccountScreeen.route) {
             LayoutScreen(appState = appState) {
                 AccountScreen(appState)
             }

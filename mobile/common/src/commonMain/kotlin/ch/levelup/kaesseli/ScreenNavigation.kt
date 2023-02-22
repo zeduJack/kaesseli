@@ -3,7 +3,7 @@ package ch.levelup.kaesseli
 sealed class ScreenNavigation(val route: String) {
     object LoginScreen: ScreenNavigation("login")
     object MainScreen: ScreenNavigation("main")
-    object BalanceScreen: ScreenNavigation("balance")
+    object AccountScreeen: ScreenNavigation("balance")
     object OverviewScreen: ScreenNavigation("overview")
     object StartScreen: ScreenNavigation("start")
     object GroupMembersScreen: ScreenNavigation("group_members")
