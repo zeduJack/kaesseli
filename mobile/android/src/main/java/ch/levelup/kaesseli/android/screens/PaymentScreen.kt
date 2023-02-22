@@ -42,7 +42,7 @@ fun PaymentScreen(appState: AppState) {
 
 
         var dirty by remember { mutableStateOf(false) }
-        var amountText = remember { mutableStateOf("") }
+        val amountText = remember { mutableStateOf("") }
 
         var message by remember { mutableStateOf("") }
 
@@ -77,9 +77,8 @@ fun PaymentScreen(appState: AppState) {
 
         Button(onClick = {
             dirty = true
-            if (amountText.value.isEmpty()) {
-                // send network request, verify username exists and is valid, store user account values inside state
-                //Store.instance.dispatch(UserNetworkThunks.logInUser())
+            if (amountText.value.isNotEmpty()) {
+                Store.instance.dispatch(TransactionNetworkThunks.addTransaction(amountText.value.toLong(), message))
             }
 
         }) {

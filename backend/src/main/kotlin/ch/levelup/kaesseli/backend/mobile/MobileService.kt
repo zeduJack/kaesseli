@@ -6,20 +6,24 @@ import ch.levelup.kaesseli.backend.common.Role
 import ch.levelup.kaesseli.backend.common.UserUserGroup
 import ch.levelup.kaesseli.backend.transaction.Transaction
 import ch.levelup.kaesseli.backend.transaction.TransactionRepository
+import ch.levelup.kaesseli.backend.transaction.TransactionService
 import ch.levelup.kaesseli.backend.user.User
 import ch.levelup.kaesseli.backend.user.UserRepository
 import ch.levelup.kaesseli.backend.usergroup.UserGroup
 import ch.levelup.kaesseli.shared.*
+import org.springframework.http.ResponseEntity
 
 import org.springframework.stereotype.Service
+import java.math.BigDecimal
 import java.util.*
 
 @Service
 class MobileService(
     private val userRepository: UserRepository,
     private val accountRepository: AccountRepository,
-    private val transActionsRepository: TransactionRepository
-    ) {
+    private val transActionsRepository: TransactionRepository,
+    private val transactionService: TransactionService,
+) {
 
     fun getLogedInUserByEmail(email: String): Optional<LogedInUserDto> {
         val userOptional = userRepository.getUserByEmail(email)
@@ -50,7 +54,7 @@ class MobileService(
 
                 uGroup.membersDescription = "${members.size} Mitglieder"
                 uGroup.membersTitle = "Mitglieder von ${uGroup.name}"
-              //  uGroup.accounts = getAccountsForUserWithinGroup(userUserGroup);
+                //  uGroup.accounts = getAccountsForUserWithinGroup(userUserGroup);
                 logedInUser.groups.add(uGroup)
             }
 
@@ -59,10 +63,32 @@ class MobileService(
         return Optional.empty()
     }
 
+    fun addTransaction(newTransactionDto: NewTransactionDto): ResponseEntity<Void> {
+        val user = userRepository.getUserByEmail(newTransactionDto.logedInUserEmail)
+        val account = accountRepository.findById(newTransactionDto.accountId)
+
+        if (user.isEmpty || account.isEmpty) {
+            return ResponseEntity.notFound().build()
+        }
+
+        val transaction = Transaction(
+            version = 0,
+            amount = BigDecimal(newTransactionDto.amount),
+            user = user.get(),
+            account = account.get(),
+            debit = newTransactionDto.debit,
+            status = "OK",
+            message = newTransactionDto.message
+        )
+        transactionService.addTransaction(transaction)
+
+        return ResponseEntity.ok().build()
+    }
+
     private fun getSumOfAccounts(accounts: MutableSet<AccountDto>): String {
         var sum = 0L
-        for(account in accounts) {
-            sum+= account.saldo
+        for (account in accounts) {
+            sum += account.saldo
         }
 
         return "CHF $sum"
@@ -71,14 +97,16 @@ class MobileService(
     private fun getAccountsForUserWithinGroup(userUserGroup: UserUserGroup): MutableSet<AccountDto> {
         val accounts: MutableSet<AccountDto> = mutableSetOf()
         val dboAccounts = accountRepository.getAccountsByUserUserGroup(userUserGroup)
-        if(dboAccounts.isPresent){
+        if (dboAccounts.isPresent) {
             dboAccounts.get().forEach { accountDbo ->
                 val accountDto = mapAccount(accountDbo)
                 accountDto.transactions = getTransactionsForAccount(accountDbo)
                 accountDto.saldoLabel = "CHF ${accountDbo.saldo}"
-                accountDto.accountLabel = "${accountDbo.displayName} von ${userUserGroup.user.firstname}"
+                accountDto.accountLabel =
+                    "${accountDbo.displayName} von ${userUserGroup.user.firstname}"
                 accountDto.kontostandLabel = "Kontostand: ${accountDbo.saldo} CHF"
-                accountDto.paymentAccountDescription = "Der Betrag wird dem Konto '${accountDbo.displayName}' überwiesen"
+                accountDto.paymentAccountDescription =
+                    "Der Betrag wird dem Konto '${accountDbo.displayName}' überwiesen"
 
                 accounts.add(accountDto)
             }
@@ -91,7 +119,7 @@ class MobileService(
         val transactions: MutableSet<TransactionDto> = mutableSetOf()
 
         val transactionsDbo = transActionsRepository.getTransactionsByAccount(account)
-        transactions.addAll(transactionsDbo.get().map {transactionDbo ->
+        transactions.addAll(transactionsDbo.get().map { transactionDbo ->
             mapTransactionDto(transactionDbo)
         })
         return transactions
