@@ -2,6 +2,7 @@ package ch.levelup.kaesseli.state
 
 import ch.levelup.kaesseli.login.Login
 import ch.levelup.kaesseli.navigation.Navigation
+import ch.levelup.kaesseli.scaffold.Scaffold
 import ch.levelup.kaesseli.shared.AccountDto
 import ch.levelup.kaesseli.shared.LogedInUserDto
 import ch.levelup.kaesseli.shared.LogedInUserUserGroupDto
@@ -11,6 +12,7 @@ import ch.levelup.kaesseli.userRegistration.UserRegistration
 import ch.levelup.kaesseli.welcomeMessage.WelcomeMessage
 
 data class AppState(
+    val scaffold: Scaffold = Scaffold(),
     val login: Login = Login(),
     val navigation: Navigation = Navigation(),
     val welcomeMessage: WelcomeMessage = WelcomeMessage(),
