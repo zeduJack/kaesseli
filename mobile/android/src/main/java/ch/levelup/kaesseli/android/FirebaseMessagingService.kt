@@ -1,15 +1,19 @@
-package ch.levelup.kaesseli.android;
+package ch.levelup.kaesseli.android
 
+
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
+import android.os.Build
 import android.util.Log
+import androidx.core.app.NotificationCompat
 import ch.levelup.kaesseli.state.Store
 import ch.levelup.kaesseli.token.TokenActions
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import java.io.File
 
 
-class MyFirebaseMessagingService : FirebaseMessagingService() {
+class FirebaseMessagingService : FirebaseMessagingService() {
 
     /**
      * Called when message is received.
@@ -21,11 +25,21 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         if (remoteMessage.data.isNotEmpty()) {
             Log.d(TAG, "Message data payload: ${remoteMessage.data}")
-        }
+    }
 
         // Check if message contains a notification payload.
         remoteMessage.notification?.let {
-            Log.d(TAG, "Message Notification Body: ${it.body}")
+        Log.d(TAG, "Message Notification Body: ${it.body}")
+            var notificationManager = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            lateinit var notificationChannel : NotificationChannel
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                notificationChannel = NotificationChannel("1", "Generic Notifications", NotificationManager.IMPORTANCE_HIGH)
+                notificationManager.createNotificationChannel(notificationChannel)
+            }
+            var notificationBuilder : NotificationCompat.Builder =
+                NotificationCompat.Builder(applicationContext, "1")
+            notificationBuilder.setSmallIcon(android.R.drawable.stat_notify_chat).setContentTitle("Neue Nachricht").setContentText(it.body).setAutoCancel(true)
+            notificationManager.notify(1, notificationBuilder.build())
         }
     }
 
