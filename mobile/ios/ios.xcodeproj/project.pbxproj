@@ -9,21 +9,39 @@
 /* Begin PBXBuildFile section */
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
-		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
-		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		2152FB042600AC8F00CF470E /* KaesseliApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* KaesseliApp.swift */; };
+		7555FF83242A565900829871 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* LoginScreen.swift */; };
 		79FF65EAAED4708AFCDA5B9F /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02AA8487014D7086E3AB43F2 /* Pods_ios.framework */; };
+		8A04F174299133A400522CA8 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04F173299133A400522CA8 /* GroupView.swift */; };
+		8A04F17629913A0B00522CA8 /* GroupMembersScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04F17529913A0B00522CA8 /* GroupMembersScreen.swift */; };
+		8A3AE1B029AC8BD5009AF08B /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3AE1AF29AC8BD5009AF08B /* AccountView.swift */; };
+		8A4CC420296D9CD40034DB31 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CC41F296D9CD40034DB31 /* StartScreen.swift */; };
+		8A7E0B32299D082E00B6F18C /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7E0B31299D082E00B6F18C /* AccountScreen.swift */; };
+		8A7E0B34299D1AD000B6F18C /* MemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7E0B33299D1AD000B6F18C /* MemberView.swift */; };
+		8A9CAD7C29A38053009D37F4 /* TransactionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CAD7B29A38053009D37F4 /* TransactionScreen.swift */; };
+		8AB8F6F629AC110200759EA2 /* start.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AB8F6F529AC110200759EA2 /* start.json */; };
+		8AEEA7AB29AC0D6D00AED179 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEEA7AA29AC0D6D00AED179 /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		02AA8487014D7086E3AB43F2 /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		2152FB032600AC8F00CF470E /* KaesseliApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaesseliApp.swift; sourceTree = "<group>"; };
 		59ED51C21B9AC6092381C258 /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7555FF82242A565900829871 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B768C7F8835DF119E7F2C7B /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		8A04F173299133A400522CA8 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
+		8A04F17529913A0B00522CA8 /* GroupMembersScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersScreen.swift; sourceTree = "<group>"; };
+		8A3AE1AF29AC8BD5009AF08B /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		8A4CC41F296D9CD40034DB31 /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
+		8A7E0B31299D082E00B6F18C /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
+		8A7E0B33299D1AD000B6F18C /* MemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberView.swift; sourceTree = "<group>"; };
+		8A9CAD7B29A38053009D37F4 /* TransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionScreen.swift; sourceTree = "<group>"; };
+		8AB8F6F529AC110200759EA2 /* start.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = start.json; sourceTree = "<group>"; };
+		8AEEA7AA29AC0D6D00AED179 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,13 +93,30 @@
 		7555FF7D242A565900829871 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				8AB8F6F529AC110200759EA2 /* start.json */,
+				8AEEA7AA29AC0D6D00AED179 /* Helper.swift */,
+				8A4CC41E296D9C960034DB31 /* view */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
-				7555FF82242A565900829871 /* ContentView.swift */,
+				2152FB032600AC8F00CF470E /* KaesseliApp.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
-				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 			);
 			path = ios;
+			sourceTree = "<group>";
+		};
+		8A4CC41E296D9C960034DB31 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				7555FF82242A565900829871 /* LoginScreen.swift */,
+				8A4CC41F296D9CD40034DB31 /* StartScreen.swift */,
+				8A04F173299133A400522CA8 /* GroupView.swift */,
+				8A04F17529913A0B00522CA8 /* GroupMembersScreen.swift */,
+				8A7E0B33299D1AD000B6F18C /* MemberView.swift */,
+				8A7E0B31299D082E00B6F18C /* AccountScreen.swift */,
+				8A9CAD7B29A38053009D37F4 /* TransactionScreen.swift */,
+				8A3AE1AF29AC8BD5009AF08B /* AccountView.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		B5C7665650E903333D889855 /* Pods */ = {
@@ -90,7 +125,6 @@
 				7B768C7F8835DF119E7F2C7B /* Pods-ios.debug.xcconfig */,
 				59ED51C21B9AC6092381C258 /* Pods-ios.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -154,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
+				8AB8F6F629AC110200759EA2 /* start.json in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,8 +225,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
-				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				8A9CAD7C29A38053009D37F4 /* TransactionScreen.swift in Sources */,
+				2152FB042600AC8F00CF470E /* KaesseliApp.swift in Sources */,
+				8A04F17629913A0B00522CA8 /* GroupMembersScreen.swift in Sources */,
+				8A7E0B34299D1AD000B6F18C /* MemberView.swift in Sources */,
+				8A3AE1B029AC8BD5009AF08B /* AccountView.swift in Sources */,
+				7555FF83242A565900829871 /* LoginScreen.swift in Sources */,
+				8AEEA7AB29AC0D6D00AED179 /* Helper.swift in Sources */,
+				8A7E0B32299D082E00B6F18C /* AccountScreen.swift in Sources */,
+				8A04F174299133A400522CA8 /* GroupView.swift in Sources */,
+				8A4CC420296D9CD40034DB31 /* StartScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +366,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ios/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ios/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Kaesseli;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -343,6 +389,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"ios/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ios/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Kaesseli;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

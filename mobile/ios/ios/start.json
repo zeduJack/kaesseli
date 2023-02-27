@@ -1,0 +1,780 @@
+{
+  "id": 1,
+  "firstname": "Max",
+  "lastname": "Mustermann",
+  "username": "max",
+  "email": "mmuster@email.ch",
+  "groups": [
+    {
+      "id": 1,
+      "name": "Mustermanns",
+      "members": [
+        {
+          "id": 1,
+          "username": "max",
+          "firstname": "Max",
+          "lastname": "Mustermann",
+          "accounts": [
+            {
+              "id": 1,
+              "type": "SPAREN",
+              "saldo": 100,
+              "displayName": "Sparkonto",
+              "transactions": [
+                {
+                  "id": 1,
+                  "createdAt": "2023-02-24T05:19:34.998587",
+                  "amount": "100.10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK"
+                },
+                {
+                  "id": 19,
+                  "createdAt": "2023-02-26T12:39:06.301543",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachten",
+                  "status": "OK"
+                },
+                {
+                  "id": 20,
+                  "createdAt": "2023-02-26T12:40:00.112173",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Ostern",
+                  "status": "OK"
+                },
+                {
+                  "id": 21,
+                  "createdAt": "2023-02-26T12:40:31.272805",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "a",
+                  "status": "OK"
+                },
+                {
+                  "id": 22,
+                  "createdAt": "2023-02-26T12:42:11.288760",
+                  "amount": "12",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "a",
+                  "status": "OK"
+                },
+                {
+                  "id": 23,
+                  "createdAt": "2023-02-26T12:43:11.819875",
+                  "amount": "34",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "sdf",
+                  "status": "OK"
+                },
+                {
+                  "id": 24,
+                  "createdAt": "2023-02-26T12:46:58.936626",
+                  "amount": "1234",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "sdfas",
+                  "status": "OK"
+                },
+                {
+                  "id": 25,
+                  "createdAt": "2023-02-26T12:47:20.257793",
+                  "amount": "12",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "d",
+                  "status": "OK"
+                },
+                {
+                  "id": 26,
+                  "createdAt": "2023-02-26T12:50:58.975617",
+                  "amount": "123",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "dsf",
+                  "status": "OK"
+                },
+                {
+                  "id": 27,
+                  "createdAt": "2023-02-26T12:51:16.713012",
+                  "amount": "123",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "sdf",
+                  "status": "OK"
+                },
+                {
+                  "id": 31,
+                  "createdAt": "2023-02-26T13:14:19.325147",
+                  "amount": "5",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "5",
+                  "status": "OK"
+                },
+                {
+                  "id": 32,
+                  "createdAt": "2023-02-26T13:14:38.452377",
+                  "amount": "6",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "6",
+                  "status": "OK"
+                },
+                {
+                  "id": 33,
+                  "createdAt": "2023-02-26T13:15:01.947781",
+                  "amount": "7",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "7",
+                  "status": "OK"
+                },
+                {
+                  "id": 34,
+                  "createdAt": "2023-02-26T13:15:33.895389",
+                  "amount": "8",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "8",
+                  "status": "OK"
+                },
+                {
+                  "id": 35,
+                  "createdAt": "2023-02-26T13:16:27.972820",
+                  "amount": "1",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "1",
+                  "status": "OK"
+                },
+                {
+                  "id": 36,
+                  "createdAt": "2023-02-26T13:30:33.557625",
+                  "amount": "2",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "2",
+                  "status": "OK"
+                },
+                {
+                  "id": 37,
+                  "createdAt": "2023-02-26T13:31:40.306174",
+                  "amount": "2",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "hhd",
+                  "status": "OK"
+                },
+                {
+                  "id": 38,
+                  "createdAt": "2023-02-26T13:32:03.537757",
+                  "amount": "85",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "ggz",
+                  "status": "OK"
+                },
+                {
+                  "id": 39,
+                  "createdAt": "2023-02-26T13:32:27.902594",
+                  "amount": "65",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "fju",
+                  "status": "OK"
+                },
+                {
+                  "id": 44,
+                  "createdAt": "2023-02-26T13:34:56.630427",
+                  "amount": "123",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "sfd",
+                  "status": "OK"
+                },
+                {
+                  "id": 45,
+                  "createdAt": "2023-02-26T13:37:47.917061",
+                  "amount": "2314",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "dfsdfg",
+                  "status": "OK"
+                },
+                {
+                  "id": 48,
+                  "createdAt": "2023-02-26T13:39:33.310861",
+                  "amount": "1111",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "1111111",
+                  "status": "OK"
+                },
+                {
+                  "id": 51,
+                  "createdAt": "2023-02-26T13:41:13.183477",
+                  "amount": "234",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "sdf",
+                  "status": "OK"
+                },
+                {
+                  "id": 54,
+                  "createdAt": "2023-02-26T13:43:40.842015",
+                  "amount": "234",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "sdfd",
+                  "status": "OK"
+                },
+                {
+                  "id": 55,
+                  "createdAt": "2023-02-26T13:45:43.266848",
+                  "amount": "432",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "sf",
+                  "status": "OK"
+                },
+                {
+                  "id": 56,
+                  "createdAt": "2023-02-26T13:47:05.303254",
+                  "amount": "453",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "gdf",
+                  "status": "OK"
+                },
+                {
+                  "id": 57,
+                  "createdAt": "2023-02-26T13:49:28.868958",
+                  "amount": "234",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "ergdf",
+                  "status": "OK"
+                },
+                {
+                  "id": 58,
+                  "createdAt": "2023-02-26T13:50:04.136547",
+                  "amount": "123453",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "dgd",
+                  "status": "OK"
+                },
+                {
+                  "id": 59,
+                  "createdAt": "2023-02-26T13:59:19.227215",
+                  "amount": "2433",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "dfgfdh",
+                  "status": "OK"
+                },
+                {
+                  "id": 60,
+                  "createdAt": "2023-02-26T14:01:03.674976",
+                  "amount": "3245",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "dfs",
+                  "status": "OK"
+                },
+                {
+                  "id": 61,
+                  "createdAt": "2023-02-26T14:08:08.942913",
+                  "amount": "3245",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "dsg",
+                  "status": "OK"
+                }
+              ],
+              "saldoLabel": "CHF 100.10",
+              "accountLabel": "Sparkonto von Max",
+              "kontostandLabel": "Kontostand: 100.10 CHF",
+              "paymentAccountDescription": "Der Betrag wird dem Konto 'Sparkonto' überwiesen"
+            },
+            {
+              "id": 2,
+              "type": "TASCHENGELD",
+              "displayName": "Taschengeld",
+              "transactions": [
+                {
+                  "id": 2,
+                  "createdAt": "2023-02-24T05:19:34.998587",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 6 Nov 2022",
+                  "status": "OK"
+                },
+                {
+                  "id": 3,
+                  "createdAt": "2023-02-24T05:19:34.998587",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 13 Nov 2022",
+                  "status": "OK"
+                },
+                {
+                  "id": 4,
+                  "createdAt": "2023-02-24T05:19:34.998587",
+                  "amount": "20",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Lego Ninjago",
+                  "status": "OK"
+                },
+                {
+                  "id": 18,
+                  "createdAt": "2023-02-26T11:30:16.778898",
+                  "amount": "999",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "hier ist die money",
+                  "status": "OK"
+                },
+                {
+                  "id": 28,
+                  "createdAt": "2023-02-26T12:53:25.957353",
+                  "amount": "12",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "asdf",
+                  "status": "OK"
+                }
+              ],
+              "saldoLabel": "CHF 0",
+              "accountLabel": "Taschengeld von Max",
+              "kontostandLabel": "Kontostand: 0 CHF",
+              "paymentAccountDescription": "Der Betrag wird dem Konto 'Taschengeld' überwiesen"
+            }
+          ],
+          "sumOfAccountsLabel": "CHF 100",
+          "accountsLabel": "Konten von Max",
+          "paymentLabel": "Zahlung an Max",
+          "amoutnLabel": "Betrag",
+          "messageLabel": "Mitteilung"
+        },
+        {
+          "id": 2,
+          "username": "pauli",
+          "firstname": "Paul",
+          "lastname": "Mustermann",
+          "accounts": [
+            {
+              "id": 3,
+              "type": "SPAREN",
+              "saldo": 50,
+              "displayName": "Sparkonto",
+              "transactions": [
+                {
+                  "id": 5,
+                  "createdAt": "2023-02-24T05:19:34.998587",
+                  "amount": "50",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK"
+                },
+                {
+                  "id": 6,
+                  "createdAt": "2023-02-24T13:42:26.970939",
+                  "amount": "29",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Test",
+                  "status": "OK"
+                },
+                {
+                  "id": 7,
+                  "createdAt": "2023-02-24T13:42:32.002077",
+                  "amount": "29",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Test",
+                  "status": "OK"
+                },
+                {
+                  "id": 8,
+                  "createdAt": "2023-02-24T13:42:42.750812",
+                  "amount": "29",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Test",
+                  "status": "OK"
+                },
+                {
+                  "id": 9,
+                  "createdAt": "2023-02-24T13:42:43.222539",
+                  "amount": "29",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Test",
+                  "status": "OK"
+                },
+                {
+                  "id": 10,
+                  "createdAt": "2023-02-24T13:42:43.357237",
+                  "amount": "29",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Test",
+                  "status": "OK"
+                },
+                {
+                  "id": 11,
+                  "createdAt": "2023-02-24T13:42:43.509304",
+                  "amount": "29",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Test",
+                  "status": "OK"
+                },
+                {
+                  "id": 12,
+                  "createdAt": "2023-02-24T13:42:43.682623",
+                  "amount": "29",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Test",
+                  "status": "OK"
+                },
+                {
+                  "id": 13,
+                  "createdAt": "2023-02-24T13:57:50.713959",
+                  "amount": "5",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "5",
+                  "status": "OK"
+                },
+                {
+                  "id": 14,
+                  "createdAt": "2023-02-24T14:03:00.255122",
+                  "amount": "66",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "66",
+                  "status": "OK"
+                },
+                {
+                  "id": 15,
+                  "createdAt": "2023-02-24T14:04:03.620678",
+                  "amount": "66",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "66",
+                  "status": "OK"
+                },
+                {
+                  "id": 16,
+                  "createdAt": "2023-02-24T14:05:35.927886",
+                  "amount": "66",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "66",
+                  "status": "OK"
+                },
+                {
+                  "id": 17,
+                  "createdAt": "2023-02-24T14:06:06.961405",
+                  "amount": "66",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "66",
+                  "status": "OK"
+                },
+                {
+                  "id": 29,
+                  "createdAt": "2023-02-26T13:08:01.748031",
+                  "amount": "3",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "3",
+                  "status": "OK"
+                },
+                {
+                  "id": 30,
+                  "createdAt": "2023-02-26T13:08:16.881582",
+                  "amount": "3",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "3",
+                  "status": "OK"
+                },
+                {
+                  "id": 40,
+                  "createdAt": "2023-02-26T13:33:52.643802",
+                  "amount": "66",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "cvvv",
+                  "status": "OK"
+                },
+                {
+                  "id": 41,
+                  "createdAt": "2023-02-26T13:33:54.579340",
+                  "amount": "66",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "cvvv",
+                  "status": "OK"
+                },
+                {
+                  "id": 42,
+                  "createdAt": "2023-02-26T13:33:59.732976",
+                  "amount": "66",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "cvvv",
+                  "status": "OK"
+                },
+                {
+                  "id": 43,
+                  "createdAt": "2023-02-26T13:34:19.882736",
+                  "amount": "66",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "cvvv",
+                  "status": "OK"
+                },
+                {
+                  "id": 46,
+                  "createdAt": "2023-02-26T13:38:42.799872",
+                  "amount": "66",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "xxx",
+                  "status": "OK"
+                },
+                {
+                  "id": 47,
+                  "createdAt": "2023-02-26T13:39:13.805049",
+                  "amount": "22",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "22",
+                  "status": "OK"
+                },
+                {
+                  "id": 49,
+                  "createdAt": "2023-02-26T13:40:46.276565",
+                  "amount": "55",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "55",
+                  "status": "OK"
+                },
+                {
+                  "id": 50,
+                  "createdAt": "2023-02-26T13:41:03.013038",
+                  "amount": "66",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "66",
+                  "status": "OK"
+                },
+                {
+                  "id": 52,
+                  "createdAt": "2023-02-26T13:41:17.417612",
+                  "amount": "77",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "77",
+                  "status": "OK"
+                },
+                {
+                  "id": 53,
+                  "createdAt": "2023-02-26T13:41:36.399484",
+                  "amount": "20",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld",
+                  "status": "OK"
+                },
+                {
+                  "id": 62,
+                  "createdAt": "2023-02-26T14:26:05.148750",
+                  "amount": "12",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "12",
+                  "status": "OK"
+                }
+              ],
+              "saldoLabel": "CHF 50",
+              "accountLabel": "Sparkonto von Paul",
+              "kontostandLabel": "Kontostand: 50 CHF",
+              "paymentAccountDescription": "Der Betrag wird dem Konto 'Sparkonto' überwiesen"
+            }
+          ],
+          "sumOfAccountsLabel": "CHF 50",
+          "accountsLabel": "Konten von Paul",
+          "paymentLabel": "Zahlung an Paul",
+          "amoutnLabel": "Betrag",
+          "messageLabel": "Mitteilung"
+        }
+      ],
+      "membersDescription": "2 Mitglieder",
+      "membersTitle": "Mitglieder von Mustermanns"
+    },
+    {
+      "id": 2,
+      "name": "PatentKindGroup",
+      "members": [
+        {
+          "id": 1,
+          "username": "max",
+          "firstname": "Max",
+          "lastname": "Mustermann",
+          "sumOfAccountsLabel": "CHF 0",
+          "accountsLabel": "Konten von Max",
+          "paymentLabel": "Zahlung an Max",
+          "amoutnLabel": "Betrag",
+          "messageLabel": "Mitteilung"
+        }
+      ],
+      "membersDescription": "1 Mitglieder",
+      "membersTitle": "Mitglieder von PatentKindGroup"
+    }
+  ],
+  "groupLabel": "Gruppen von Max"
+}
