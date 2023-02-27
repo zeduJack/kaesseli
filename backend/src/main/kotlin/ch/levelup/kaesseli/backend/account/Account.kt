@@ -13,11 +13,11 @@ data class Account (
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     val createdAt: LocalDateTime? = LocalDateTime.now(),
-    val updatedAt: LocalDateTime? = LocalDateTime.now(),
+    var updatedAt: LocalDateTime? = LocalDateTime.now(),
     val version: Int,
 
     val type: String,
-    val saldo: BigDecimal,
+    var saldo: BigDecimal,
     val displayName: String,
 
     @ManyToOne

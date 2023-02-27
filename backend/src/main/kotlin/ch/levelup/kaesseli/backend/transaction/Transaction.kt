@@ -13,7 +13,7 @@ data class Transaction(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     val createdAt: LocalDateTime? = LocalDateTime.now(),
-    val updatedAt: LocalDateTime? = LocalDateTime.now(),
+    var updatedAt: LocalDateTime? = LocalDateTime.now(),
     val version: Int,
 
     val amount: BigDecimal,
@@ -24,6 +24,6 @@ data class Transaction(
     @JoinColumn(name = "account_id", nullable = false)
     val account: Account,
     val debit: Boolean,
-    val status: String,
-    val message: String
+    var status: String,
+    var message: String
 )
