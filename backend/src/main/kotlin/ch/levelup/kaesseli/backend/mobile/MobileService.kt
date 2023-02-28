@@ -12,10 +12,12 @@ import ch.levelup.kaesseli.backend.user.User
 import ch.levelup.kaesseli.backend.user.UserRepository
 import ch.levelup.kaesseli.backend.usergroup.UserGroup
 import ch.levelup.kaesseli.shared.*
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 
 import org.springframework.stereotype.Service
 import java.math.BigDecimal
+import java.time.LocalDateTime
 import java.util.*
 
 @Service
@@ -96,15 +98,36 @@ class MobileService(
             user = user,
             account = account,
             debit = newTransactionDto.debit,
-            status = "OK",
+            status = "recived",
             message = newTransactionDto.message
         )
-        transactionService.addTransaction(transaction)
+        val transResponseEntity = transactionService.addTransaction(transaction)
+        if(transResponseEntity.statusCode == HttpStatus.OK){
+            var trans = transResponseEntity.body;
+            if (trans != null) {
+                performeTransactionOnAccount(trans, account)
+            }
+        }
 
         val token = account.userUserGroup.user.token
-        val text = user.firstname + " has send you " + amount
-        firebaseService.pushMessage(token, text, text)
+        if(token != null && token != "") {
+            val text = user.firstname + " has send you " + amount
+            firebaseService.pushMessage(token, text, text)
+        }
         return ResponseEntity.ok().build()
+    }
+
+    private fun performeTransactionOnAccount(trans: Transaction, account: Account){
+        if(trans.status == "recived"){
+            if(trans.debit){
+                account.saldo += trans.amount
+            }else {
+                account.saldo -= trans.amount
+            }
+            account.updatedAt = LocalDateTime.now()
+            accountRepository.save(account)
+            transactionService.setTransProcessed(trans)
+        }
     }
 
     private fun getSumOfAccounts(accounts: MutableSet<AccountDto>): String {

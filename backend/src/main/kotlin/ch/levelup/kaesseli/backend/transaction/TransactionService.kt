@@ -5,6 +5,7 @@ import ch.levelup.kaesseli.backend.common.TransactionDto
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 import java.util.stream.Stream
 
 
@@ -62,4 +63,15 @@ class TransactionService(
                 ResponseEntity<Void>(HttpStatus.ACCEPTED)
             }
             .orElse(ResponseEntity.notFound().build())
+
+    fun setTransProcessed(trans: Transaction): ResponseEntity<Transaction>{
+
+        if(trans?.id != null && trans.status == "recived"){
+            trans.status = "processed"
+            trans.updatedAt =  LocalDateTime.now()
+            return putTransaction(trans.id, trans)
+        }
+
+        return ResponseEntity.notFound().build()
+    }
 }
