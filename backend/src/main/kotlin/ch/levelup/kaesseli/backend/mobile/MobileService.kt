@@ -110,8 +110,10 @@ class MobileService(
         }
 
         val token = account.userUserGroup.user.token
-        val text = user.firstname + " has send you " + amount
-        firebaseService.pushMessage(token, text, text)
+        if(token != null && token != "") {
+            val text = user.firstname + " has send you " + amount
+            firebaseService.pushMessage(token, text, text)
+        }
         return ResponseEntity.ok().build()
     }
 
