@@ -120,9 +120,9 @@ class MobileService(
     private fun performeTransactionOnAccount(trans: Transaction, account: Account){
         if(trans.status == "recived"){
             if(trans.debit){
-                account.saldo += trans.amount
-            }else {
                 account.saldo -= trans.amount
+            }else {
+                account.saldo += trans.amount
             }
             account.updatedAt = LocalDateTime.now()
             accountRepository.save(account)
