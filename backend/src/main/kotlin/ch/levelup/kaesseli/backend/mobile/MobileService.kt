@@ -50,7 +50,7 @@ class MobileService(
                     member.sumOfAccountsLabel = getSumOfAccounts(member.accounts)
                     member.accountsLabel = "Konten von ${member.firstname}"
                     member.paymentLabel = "Zahlung an ${member.firstname}"
-                    member.amoutnLabel = "Betrag"
+                    member.amountLabel = "Betrag"
                     member.messageLabel = "Mitteilung"
                     members.add(member)
                 }

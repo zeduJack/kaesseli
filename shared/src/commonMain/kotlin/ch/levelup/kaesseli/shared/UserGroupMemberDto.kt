@@ -14,6 +14,6 @@ data class UserGroupMemberDto(
     var sumOfAccountsLabel: String = ""
     var accountsLabel: String = ""
     var paymentLabel: String = ""
-    var amoutnLabel: String = ""
+    var amountLabel: String = ""
     var messageLabel: String = ""
 }

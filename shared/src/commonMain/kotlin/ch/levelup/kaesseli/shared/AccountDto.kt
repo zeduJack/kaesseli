@@ -15,4 +15,6 @@ data class AccountDto(
     var accountLabel = ""
     var kontostandLabel = ""
     var paymentAccountDescription: String = ""
+    var confirmationButtonLabel: String = "Bestätigen"
+    val paymentToggleIsDebit: String = "Geld Auszahlen?"
 }

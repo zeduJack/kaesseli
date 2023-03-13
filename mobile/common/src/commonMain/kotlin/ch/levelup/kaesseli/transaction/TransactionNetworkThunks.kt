@@ -55,7 +55,11 @@ object TransactionNetworkThunks {
         }
     }
 
-    fun addTransaction(amount: Long, message: String): Thunk<AppState> =
+    fun addTransaction(
+        amount: Long,
+        message: String,
+        isDebit: Boolean
+    ): Thunk<AppState> =
         { dispatch, getState, extraArg ->
             var response: GatewayResponse<Unit, GenericError>?
             dispatch(ErrorMessageActions.ClearErrorMessage)
@@ -63,7 +67,7 @@ object TransactionNetworkThunks {
 
             val newTransactionDto = NewTransactionDto(
                 amount = amount,
-                debit = false,
+                debit = isDebit,
                 message = message,
                 logedInUserEmail = getState().logedInUser.email,
                 accountId = getState().selectedAccount.id

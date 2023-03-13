@@ -1,11 +1,11 @@
 package ch.levelup.kaesseli.android.screens
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ch.levelup.kaesseli.android.components.KsH1
 import ch.levelup.kaesseli.android.components.KsHeaderRorw
+import ch.levelup.kaesseli.android.ui.theme.CristalBlue
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.Store
 import ch.levelup.kaesseli.transaction.TransactionNetworkThunks
@@ -28,7 +29,7 @@ fun PaymentScreen(appState: AppState) {
     }
 
     Column(modifier = Modifier.padding(16.dp)) {
-
+        val checked = remember { mutableStateOf(false) }
         KsHeaderRorw {
             KsH1(text = appState.selectedMember.paymentLabel)
         }
@@ -40,6 +41,25 @@ fun PaymentScreen(appState: AppState) {
             modifier = Modifier.padding(0.dp, 18.dp)
         )
 
+        Row() {
+            Switch(
+                checked = checked.value,
+                onCheckedChange = { checked.value = it },
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = CristalBlue,
+                    checkedTrackColor = CristalBlue,
+                    //uncheckedThumbColor = Yellow,
+                    //uncheckedTrackColor= Yellow,
+                ),
+            )
+
+            Text(
+                text = appState.selectedAccount.paymentToggleIsDebit,
+                style = TextStyle(fontSize = 18.sp),
+                modifier = Modifier.padding(5.dp, 18.dp)
+            )
+            //Spacer(Modifier.weight(1f))
+        }
 
         var dirty by remember { mutableStateOf(false) }
         val amountText = remember { mutableStateOf("") }
@@ -60,7 +80,7 @@ fun PaymentScreen(appState: AppState) {
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             value = amountText.value,
             isError = dirty && amountText.value.isEmpty(),
-            label = { Text(text = appState.selectedMember.amoutnLabel) },
+            label = { Text(text = appState.selectedMember.amountLabel) },
             onValueChange = { newText ->
                 if (regex.matches(newText)) {
                     amountText.value = newText
@@ -78,11 +98,11 @@ fun PaymentScreen(appState: AppState) {
         Button(onClick = {
             dirty = true
             if (amountText.value.isNotEmpty()) {
-                Store.instance.dispatch(TransactionNetworkThunks.addTransaction(amountText.value.toLong(), message))
+                Store.instance.dispatch(TransactionNetworkThunks.addTransaction(amountText.value.toLong(), message, checked.value))
             }
 
         }) {
-            Text(text = "Senden")
+            Text(text = appState.selectedAccount.confirmationButtonLabel)
         }
     }
 }
