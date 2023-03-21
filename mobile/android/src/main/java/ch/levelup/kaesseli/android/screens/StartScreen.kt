@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ch.levelup.kaesseli.ScreenNavigation
 import ch.levelup.kaesseli.android.components.KsH1
-import ch.levelup.kaesseli.android.components.KsHeaderRorw
+import ch.levelup.kaesseli.android.components.KsHeaderRow
 import ch.levelup.kaesseli.android.components.KsListItem
 import ch.levelup.kaesseli.android.components.KsPlusButton
 import ch.levelup.kaesseli.android.listModifier
@@ -26,7 +26,7 @@ fun StartScreen(
     appState: AppState
 ) {
     Column(modifier = Modifier.padding(10.dp)) {
-        KsHeaderRorw {
+        KsHeaderRow {
             KsH1(text = appState.logedInUser.groupLabel)
             KsPlusButton(onClick = { Store.instance.dispatch(CreateUserGroup(userGroupName = "Neuer Gruppenname")) })
         }

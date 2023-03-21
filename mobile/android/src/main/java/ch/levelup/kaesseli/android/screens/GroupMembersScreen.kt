@@ -12,7 +12,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import ch.levelup.kaesseli.ScreenNavigation
 import ch.levelup.kaesseli.android.components.KsH1
-import ch.levelup.kaesseli.android.components.KsHeaderRorw
+import ch.levelup.kaesseli.android.components.KsHeaderRow
 import ch.levelup.kaesseli.android.components.KsListItem
 import ch.levelup.kaesseli.android.components.KsPlusButton
 import ch.levelup.kaesseli.android.listModifier
@@ -29,7 +29,7 @@ fun GroupMembersScreen(
     appState: AppState
 ) {
     Column(modifier = Modifier.padding(16.dp)) {
-        KsHeaderRorw {
+        KsHeaderRow {
             KsH1(text = appState.selectedUserGroup.membersTitle)
             KsPlusButton(onClick = { Store.instance.dispatch(CreateUserGroup(userGroupName = "Neues Mitglied")) })
         }

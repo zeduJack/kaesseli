@@ -60,8 +60,11 @@ fun Navigation(
                 onNavigateToRegister = { navController.navigate(ScreenNavigation.RegisterScreen.route) }
             )
         }
-        composable(route = ScreenNavigation.PaymentScreen.route) {
-            PaymentScreen(appState = appState)
+        composable(route = ScreenNavigation.CreditScreen.route) {
+            CreditScreen(appState = appState)
+        }
+        composable(route = ScreenNavigation.DebitScreen.route) {
+            DebitScreen(appState = appState)
         }
     }
 }

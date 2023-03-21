@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import ch.levelup.kaesseli.ScreenNavigation
 import ch.levelup.kaesseli.account.AccountActions
 import ch.levelup.kaesseli.android.components.KsH1
-import ch.levelup.kaesseli.android.components.KsHeaderRorw
+import ch.levelup.kaesseli.android.components.KsHeaderRow
 import ch.levelup.kaesseli.android.components.KsListItem
 import ch.levelup.kaesseli.android.components.KsPlusButton
 import ch.levelup.kaesseli.android.listModifier
@@ -25,7 +25,7 @@ fun MemberScreen(
     appState: AppState
 ) {
     Column(modifier = Modifier.padding(16.dp)) {
-        KsHeaderRorw {
+        KsHeaderRow {
             KsH1(text = appState.selectedMember.accountsLabel)
             KsPlusButton(onClick = {  })
         }

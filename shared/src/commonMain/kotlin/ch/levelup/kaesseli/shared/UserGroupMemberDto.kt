@@ -13,7 +13,8 @@ data class UserGroupMemberDto(
     var roles: MutableSet<RoleDto> = mutableSetOf()
     var sumOfAccountsLabel: String = ""
     var accountsLabel: String = ""
-    var paymentLabel: String = ""
+    var debitLabel: String = ""
+    var creditLabel: String = ""
     var amountLabel: String = ""
     var messageLabel: String = ""
 }

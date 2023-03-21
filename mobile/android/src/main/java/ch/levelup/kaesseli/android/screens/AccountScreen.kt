@@ -18,7 +18,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ch.levelup.kaesseli.ScreenNavigation
 import ch.levelup.kaesseli.android.components.KsH1
-import ch.levelup.kaesseli.android.components.KsHeaderRorw
+import ch.levelup.kaesseli.android.components.KsHeaderRow
+import ch.levelup.kaesseli.android.components.KsMinusButton
 import ch.levelup.kaesseli.android.components.KsPlusButton
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
@@ -36,10 +37,24 @@ fun AccountScreen(appState: AppState) {
 
     Column(modifier = Modifier.padding(16.dp)) {
 
-        KsHeaderRorw {
+        KsHeaderRow {
             KsH1(text = appState.selectedAccount.accountLabel)
-            KsPlusButton(onClick = { Store.instance.dispatch(NavigationActions.SetNavigation(
-                Navigation(ScreenNavigation.PaymentScreen.route))) })
+        }
+        KsHeaderRow {
+            KsMinusButton(onClick = {
+                Store.instance.dispatch(
+                    NavigationActions.SetNavigation(
+                        Navigation(ScreenNavigation.DebitScreen.route)
+                    )
+                )
+            })
+            KsPlusButton(onClick = {
+                Store.instance.dispatch(
+                    NavigationActions.SetNavigation(
+                        Navigation(ScreenNavigation.CreditScreen.route)
+                    )
+                )
+            })
         }
 
         Text(

@@ -13,7 +13,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ch.levelup.kaesseli.android.components.KsH1
-import ch.levelup.kaesseli.android.components.KsHeaderRorw
+import ch.levelup.kaesseli.android.components.KsHeaderRow
 import ch.levelup.kaesseli.android.ui.theme.CristalBlue
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.Store
@@ -22,44 +22,23 @@ import java.text.DecimalFormat
 
 
 @Composable
-fun PaymentScreen(appState: AppState) {
+fun CreditScreen(appState: AppState) {
 
     LaunchedEffect(true) {
         Store.instance.dispatch(TransactionNetworkThunks.getTransactions())
     }
 
     Column(modifier = Modifier.padding(16.dp)) {
-        val checked = remember { mutableStateOf(false) }
-        KsHeaderRorw {
-            KsH1(text = appState.selectedMember.paymentLabel)
+        KsHeaderRow {
+            KsH1(text = appState.selectedMember.creditLabel)
         }
 
         Text(
             //text = appState.account.displayName,
-            text = appState.selectedAccount.paymentAccountDescription,
+            text = appState.selectedAccount.creditAccountDescription,
             style = TextStyle(fontSize = 18.sp),
             modifier = Modifier.padding(0.dp, 18.dp)
         )
-
-        Row() {
-            Switch(
-                checked = checked.value,
-                onCheckedChange = { checked.value = it },
-                colors = SwitchDefaults.colors(
-                    checkedThumbColor = CristalBlue,
-                    checkedTrackColor = CristalBlue,
-                    //uncheckedThumbColor = Yellow,
-                    //uncheckedTrackColor= Yellow,
-                ),
-            )
-
-            Text(
-                text = appState.selectedAccount.paymentToggleIsDebit,
-                style = TextStyle(fontSize = 18.sp),
-                modifier = Modifier.padding(5.dp, 18.dp)
-            )
-            //Spacer(Modifier.weight(1f))
-        }
 
         var dirty by remember { mutableStateOf(false) }
         val amountText = remember { mutableStateOf("") }
@@ -98,7 +77,7 @@ fun PaymentScreen(appState: AppState) {
         Button(onClick = {
             dirty = true
             if (amountText.value.isNotEmpty()) {
-                Store.instance.dispatch(TransactionNetworkThunks.addTransaction(amountText.value.toLong(), message, checked.value))
+                Store.instance.dispatch(TransactionNetworkThunks.addTransaction(amountText.value.toLong(), message, false))
             }
 
         }) {

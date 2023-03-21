@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun KsHeaderRorw(content: @Composable RowScope.() -> Unit){
+fun KsHeaderRow(content: @Composable RowScope.() -> Unit){
 
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
