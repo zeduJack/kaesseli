@@ -25,5 +25,6 @@ data class Transaction(
     val account: Account,
     val debit: Boolean,
     var status: String,
-    var message: String
+    var message: String,
+    var resultingSaldo: BigDecimal
 )
