@@ -99,7 +99,8 @@ class MobileService(
             account = account,
             debit = newTransactionDto.debit,
             status = "recived",
-            message = newTransactionDto.message
+            message = newTransactionDto.message,
+            resultingSaldo = BigDecimal(0)
         )
         val transResponseEntity = transactionService.addTransaction(transaction)
         if(transResponseEntity.statusCode == HttpStatus.OK){
@@ -126,6 +127,7 @@ class MobileService(
             }
             account.updatedAt = LocalDateTime.now()
             accountRepository.save(account)
+            trans.resultingSaldo = account.saldo
             transactionService.setTransProcessed(trans)
         }
     }
