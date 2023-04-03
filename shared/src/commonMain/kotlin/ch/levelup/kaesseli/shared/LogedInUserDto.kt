@@ -12,5 +12,6 @@ data class LogedInUserDto(
 
     ) {
     var groups: MutableSet<LogedInUserUserGroupDto> = mutableSetOf()
+    var groupsList: List<LogedInUserUserGroupDto> = listOf()
     var groupLabel = ""
 }

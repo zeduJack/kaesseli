@@ -10,7 +10,9 @@ data class LogedInUserUserGroupDto(
 ) {
     //var roles: MutableSet<RoleDto> = mutableSetOf()
     var accounts: MutableSet<AccountDto> = mutableSetOf()
+    var accountsList: List<AccountDto> = listOf()
     var members: MutableSet<UserGroupMemberDto> = mutableSetOf()
+    var membersList: List<UserGroupMemberDto> = listOf()
     var membersDescription: String = ""
     var membersTitle = ""
 }
