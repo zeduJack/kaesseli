@@ -1,0 +1,1226 @@
+{
+  "id": 1,
+  "firstname": "Max",
+  "lastname": "Mustermann",
+  "username": "max",
+  "email": "mmuster@email.ch",
+  "groups": [
+    {
+      "id": 1,
+      "name": "Mustermanns",
+      "members": [
+        {
+          "id": 2,
+          "username": "pauli",
+          "firstname": "Paul",
+          "lastname": "Mustermann",
+          "accounts": [
+            {
+              "id": 3,
+              "type": "SPAREN",
+              "saldo": 300,
+              "displayName": "Sparkonto",
+              "transactions": [
+                {
+                  "id": 5,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "50",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+50"
+                },
+                {
+                  "id": 9,
+                  "createdAt": "2023-04-03T13:39:45.761281",
+                  "amount": "250",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Geburtstagsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "300",
+                  "chartLabel": "+250"
+                }
+              ],
+              "transactionsList": [
+                {
+                  "id": 5,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "50",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+50"
+                },
+                {
+                  "id": 9,
+                  "createdAt": "2023-04-03T13:39:45.761281",
+                  "amount": "250",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Geburtstagsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "300",
+                  "chartLabel": "+250"
+                }
+              ],
+              "saldoLabel": "CHF 300",
+              "accountLabel": "Sparkonto von Paul",
+              "kontostandLabel": "Kontostand: 300 CHF",
+              "paymentAccountDescription": "Der Betrag wird dem Konto 'Sparkonto' überwiesen"
+            }
+          ],
+          "accountsList": [
+            {
+              "id": 3,
+              "type": "SPAREN",
+              "saldo": 300,
+              "displayName": "Sparkonto",
+              "transactions": [
+                {
+                  "id": 5,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "50",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+50"
+                },
+                {
+                  "id": 9,
+                  "createdAt": "2023-04-03T13:39:45.761281",
+                  "amount": "250",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Geburtstagsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "300",
+                  "chartLabel": "+250"
+                }
+              ],
+              "transactionsList": [
+                {
+                  "id": 5,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "50",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+50"
+                },
+                {
+                  "id": 9,
+                  "createdAt": "2023-04-03T13:39:45.761281",
+                  "amount": "250",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Geburtstagsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "300",
+                  "chartLabel": "+250"
+                }
+              ],
+              "saldoLabel": "CHF 300",
+              "accountLabel": "Sparkonto von Paul",
+              "kontostandLabel": "Kontostand: 300 CHF",
+              "paymentAccountDescription": "Der Betrag wird dem Konto 'Sparkonto' überwiesen"
+            }
+          ],
+          "sumOfAccountsLabel": "CHF 300",
+          "accountsLabel": "Konten von Paul",
+          "paymentLabel": "Zahlung an Paul",
+          "amoutnLabel": "Betrag",
+          "messageLabel": "Mitteilung"
+        },
+        {
+          "id": 1,
+          "username": "max",
+          "firstname": "Max",
+          "lastname": "Mustermann",
+          "accounts": [
+            {
+              "id": 2,
+              "type": "TASCHENGELD",
+              "displayName": "Taschengeld",
+              "transactions": [
+                {
+                  "id": 2,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 6 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 3,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 13 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 4,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "20",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Lego Ninjago",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-20"
+                }
+              ],
+              "transactionsList": [
+                {
+                  "id": 2,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 6 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 3,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 13 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 4,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "20",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Lego Ninjago",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-20"
+                }
+              ],
+              "saldoLabel": "CHF 0",
+              "accountLabel": "Taschengeld von Max",
+              "kontostandLabel": "Kontostand: 0 CHF",
+              "paymentAccountDescription": "Der Betrag wird dem Konto 'Taschengeld' überwiesen"
+            },
+            {
+              "id": 1,
+              "type": "SPAREN",
+              "saldo": 160,
+              "displayName": "Sparkonto",
+              "transactions": [
+                {
+                  "id": 1,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "100.10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+100.10"
+                },
+                {
+                  "id": 6,
+                  "createdAt": "2023-02-28T10:43:47.225581",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 7,
+                  "createdAt": "2023-02-28T10:46:18.208570",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 8,
+                  "createdAt": "2023-02-28T13:38:15.085646",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "WTF Test",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-10"
+                }
+              ],
+              "transactionsList": [
+                {
+                  "id": 1,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "100.10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+100.10"
+                },
+                {
+                  "id": 6,
+                  "createdAt": "2023-02-28T10:43:47.225581",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 7,
+                  "createdAt": "2023-02-28T10:46:18.208570",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 8,
+                  "createdAt": "2023-02-28T13:38:15.085646",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "WTF Test",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-10"
+                }
+              ],
+              "saldoLabel": "CHF 160.10",
+              "accountLabel": "Sparkonto von Max",
+              "kontostandLabel": "Kontostand: 160.10 CHF",
+              "paymentAccountDescription": "Der Betrag wird dem Konto 'Sparkonto' überwiesen"
+            }
+          ],
+          "accountsList": [
+            {
+              "id": 2,
+              "type": "TASCHENGELD",
+              "displayName": "Taschengeld",
+              "transactions": [
+                {
+                  "id": 2,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 6 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 3,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 13 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 4,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "20",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Lego Ninjago",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-20"
+                }
+              ],
+              "transactionsList": [
+                {
+                  "id": 2,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 6 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 3,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 13 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 4,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "20",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Lego Ninjago",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-20"
+                }
+              ],
+              "saldoLabel": "CHF 0",
+              "accountLabel": "Taschengeld von Max",
+              "kontostandLabel": "Kontostand: 0 CHF",
+              "paymentAccountDescription": "Der Betrag wird dem Konto 'Taschengeld' überwiesen"
+            },
+            {
+              "id": 1,
+              "type": "SPAREN",
+              "saldo": 160,
+              "displayName": "Sparkonto",
+              "transactions": [
+                {
+                  "id": 1,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "100.10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+100.10"
+                },
+                {
+                  "id": 6,
+                  "createdAt": "2023-02-28T10:43:47.225581",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 7,
+                  "createdAt": "2023-02-28T10:46:18.208570",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 8,
+                  "createdAt": "2023-02-28T13:38:15.085646",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "WTF Test",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-10"
+                }
+              ],
+              "transactionsList": [
+                {
+                  "id": 1,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "100.10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+100.10"
+                },
+                {
+                  "id": 6,
+                  "createdAt": "2023-02-28T10:43:47.225581",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 7,
+                  "createdAt": "2023-02-28T10:46:18.208570",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 8,
+                  "createdAt": "2023-02-28T13:38:15.085646",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "WTF Test",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-10"
+                }
+              ],
+              "saldoLabel": "CHF 160.10",
+              "accountLabel": "Sparkonto von Max",
+              "kontostandLabel": "Kontostand: 160.10 CHF",
+              "paymentAccountDescription": "Der Betrag wird dem Konto 'Sparkonto' überwiesen"
+            }
+          ],
+          "sumOfAccountsLabel": "CHF 160",
+          "accountsLabel": "Konten von Max",
+          "paymentLabel": "Zahlung an Max",
+          "amoutnLabel": "Betrag",
+          "messageLabel": "Mitteilung"
+        }
+      ],
+      "membersDescription": "2 Mitglieder",
+      "membersTitle": "Mitglieder von Mustermanns"
+    },
+    {
+      "id": 2,
+      "name": "PatentKindGroup",
+      "members": [
+        {
+          "id": 1,
+          "username": "max",
+          "firstname": "Max",
+          "lastname": "Mustermann",
+          "sumOfAccountsLabel": "CHF 0",
+          "accountsLabel": "Konten von Max",
+          "paymentLabel": "Zahlung an Max",
+          "amoutnLabel": "Betrag",
+          "messageLabel": "Mitteilung"
+        }
+      ],
+      "membersDescription": "1 Mitglieder",
+      "membersTitle": "Mitglieder von PatentKindGroup"
+    }
+  ],
+  "groupsList": [
+    {
+      "id": 1,
+      "name": "Mustermanns",
+      "members": [
+        {
+          "id": 2,
+          "username": "pauli",
+          "firstname": "Paul",
+          "lastname": "Mustermann",
+          "accounts": [
+            {
+              "id": 3,
+              "type": "SPAREN",
+              "saldo": 300,
+              "displayName": "Sparkonto",
+              "transactions": [
+                {
+                  "id": 5,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "50",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+50"
+                },
+                {
+                  "id": 9,
+                  "createdAt": "2023-04-03T13:39:45.761281",
+                  "amount": "250",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Geburtstagsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "300",
+                  "chartLabel": "+250"
+                }
+              ],
+              "transactionsList": [
+                {
+                  "id": 5,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "50",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+50"
+                },
+                {
+                  "id": 9,
+                  "createdAt": "2023-04-03T13:39:45.761281",
+                  "amount": "250",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Geburtstagsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "300",
+                  "chartLabel": "+250"
+                }
+              ],
+              "saldoLabel": "CHF 300",
+              "accountLabel": "Sparkonto von Paul",
+              "kontostandLabel": "Kontostand: 300 CHF",
+              "paymentAccountDescription": "Der Betrag wird dem Konto 'Sparkonto' überwiesen"
+            }
+          ],
+          "accountsList": [
+            {
+              "id": 3,
+              "type": "SPAREN",
+              "saldo": 300,
+              "displayName": "Sparkonto",
+              "transactions": [
+                {
+                  "id": 5,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "50",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+50"
+                },
+                {
+                  "id": 9,
+                  "createdAt": "2023-04-03T13:39:45.761281",
+                  "amount": "250",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Geburtstagsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "300",
+                  "chartLabel": "+250"
+                }
+              ],
+              "transactionsList": [
+                {
+                  "id": 5,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "50",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+50"
+                },
+                {
+                  "id": 9,
+                  "createdAt": "2023-04-03T13:39:45.761281",
+                  "amount": "250",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Geburtstagsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "300",
+                  "chartLabel": "+250"
+                }
+              ],
+              "saldoLabel": "CHF 300",
+              "accountLabel": "Sparkonto von Paul",
+              "kontostandLabel": "Kontostand: 300 CHF",
+              "paymentAccountDescription": "Der Betrag wird dem Konto 'Sparkonto' überwiesen"
+            }
+          ],
+          "sumOfAccountsLabel": "CHF 300",
+          "accountsLabel": "Konten von Paul",
+          "paymentLabel": "Zahlung an Paul",
+          "amoutnLabel": "Betrag",
+          "messageLabel": "Mitteilung"
+        },
+        {
+          "id": 1,
+          "username": "max",
+          "firstname": "Max",
+          "lastname": "Mustermann",
+          "accounts": [
+            {
+              "id": 2,
+              "type": "TASCHENGELD",
+              "displayName": "Taschengeld",
+              "transactions": [
+                {
+                  "id": 2,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 6 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 3,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 13 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 4,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "20",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Lego Ninjago",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-20"
+                }
+              ],
+              "transactionsList": [
+                {
+                  "id": 2,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 6 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 3,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 13 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 4,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "20",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Lego Ninjago",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-20"
+                }
+              ],
+              "saldoLabel": "CHF 0",
+              "accountLabel": "Taschengeld von Max",
+              "kontostandLabel": "Kontostand: 0 CHF",
+              "paymentAccountDescription": "Der Betrag wird dem Konto 'Taschengeld' überwiesen"
+            },
+            {
+              "id": 1,
+              "type": "SPAREN",
+              "saldo": 160,
+              "displayName": "Sparkonto",
+              "transactions": [
+                {
+                  "id": 1,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "100.10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+100.10"
+                },
+                {
+                  "id": 6,
+                  "createdAt": "2023-02-28T10:43:47.225581",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 7,
+                  "createdAt": "2023-02-28T10:46:18.208570",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 8,
+                  "createdAt": "2023-02-28T13:38:15.085646",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "WTF Test",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-10"
+                }
+              ],
+              "transactionsList": [
+                {
+                  "id": 1,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "100.10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+100.10"
+                },
+                {
+                  "id": 6,
+                  "createdAt": "2023-02-28T10:43:47.225581",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 7,
+                  "createdAt": "2023-02-28T10:46:18.208570",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 8,
+                  "createdAt": "2023-02-28T13:38:15.085646",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "WTF Test",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-10"
+                }
+              ],
+              "saldoLabel": "CHF 160.10",
+              "accountLabel": "Sparkonto von Max",
+              "kontostandLabel": "Kontostand: 160.10 CHF",
+              "paymentAccountDescription": "Der Betrag wird dem Konto 'Sparkonto' überwiesen"
+            }
+          ],
+          "accountsList": [
+            {
+              "id": 2,
+              "type": "TASCHENGELD",
+              "displayName": "Taschengeld",
+              "transactions": [
+                {
+                  "id": 2,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 6 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 3,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 13 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 4,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "20",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Lego Ninjago",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-20"
+                }
+              ],
+              "transactionsList": [
+                {
+                  "id": 2,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 6 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 3,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Taschengeld 13 Nov 2022",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+10"
+                },
+                {
+                  "id": 4,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "20",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Lego Ninjago",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-20"
+                }
+              ],
+              "saldoLabel": "CHF 0",
+              "accountLabel": "Taschengeld von Max",
+              "kontostandLabel": "Kontostand: 0 CHF",
+              "paymentAccountDescription": "Der Betrag wird dem Konto 'Taschengeld' überwiesen"
+            },
+            {
+              "id": 1,
+              "type": "SPAREN",
+              "saldo": 160,
+              "displayName": "Sparkonto",
+              "transactions": [
+                {
+                  "id": 1,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "100.10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+100.10"
+                },
+                {
+                  "id": 6,
+                  "createdAt": "2023-02-28T10:43:47.225581",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 7,
+                  "createdAt": "2023-02-28T10:46:18.208570",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 8,
+                  "createdAt": "2023-02-28T13:38:15.085646",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "WTF Test",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-10"
+                }
+              ],
+              "transactionsList": [
+                {
+                  "id": 1,
+                  "createdAt": "2023-02-28T10:14:12.413401",
+                  "amount": "100.10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": false,
+                  "message": "Weihnachtsgeld",
+                  "status": "OK",
+                  "resultingSaldo": "0",
+                  "chartLabel": "+100.10"
+                },
+                {
+                  "id": 6,
+                  "createdAt": "2023-02-28T10:43:47.225581",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 7,
+                  "createdAt": "2023-02-28T10:46:18.208570",
+                  "amount": "25",
+                  "username": "pauli",
+                  "userFirstname": "Paul",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "Monatsgeld",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-25"
+                },
+                {
+                  "id": 8,
+                  "createdAt": "2023-02-28T13:38:15.085646",
+                  "amount": "10",
+                  "username": "max",
+                  "userFirstname": "Max",
+                  "userLastname": "Mustermann",
+                  "debit": true,
+                  "message": "WTF Test",
+                  "status": "processed",
+                  "resultingSaldo": "0",
+                  "chartLabel": "-10"
+                }
+              ],
+              "saldoLabel": "CHF 160.10",
+              "accountLabel": "Sparkonto von Max",
+              "kontostandLabel": "Kontostand: 160.10 CHF",
+              "paymentAccountDescription": "Der Betrag wird dem Konto 'Sparkonto' überwiesen"
+            }
+          ],
+          "sumOfAccountsLabel": "CHF 160",
+          "accountsLabel": "Konten von Max",
+          "paymentLabel": "Zahlung an Max",
+          "amoutnLabel": "Betrag",
+          "messageLabel": "Mitteilung"
+        }
+      ],
+      "membersDescription": "2 Mitglieder",
+      "membersTitle": "Mitglieder von Mustermanns"
+    },
+    {
+      "id": 2,
+      "name": "PatentKindGroup",
+      "members": [
+        {
+          "id": 1,
+          "username": "max",
+          "firstname": "Max",
+          "lastname": "Mustermann",
+          "sumOfAccountsLabel": "CHF 0",
+          "accountsLabel": "Konten von Max",
+          "paymentLabel": "Zahlung an Max",
+          "amoutnLabel": "Betrag",
+          "messageLabel": "Mitteilung"
+        }
+      ],
+      "membersDescription": "1 Mitglieder",
+      "membersTitle": "Mitglieder von PatentKindGroup"
+    }
+  ],
+  "groupLabel": "Gruppen von Max"
+}
