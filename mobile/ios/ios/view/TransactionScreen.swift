@@ -15,20 +15,19 @@ struct TransactionScreen: View {
     
     let facade = Facade()
     
-    let account: StartScreen.Account
+    let account: SharedAccountDto
     
     var body: some View {
-        Text(account.kontostandLabel).font(.title)
-            List {
-                ForEach(account.transactions, id: \.self) {
-                    transaction in
-                    HStack {
-                        Text (transaction.message)
-                        Spacer()
-                        Text (String(transaction.amount))
-                    }
+        TabView {
+            TransactionListView(account: account)
+                .tabItem {
+                    Label("Transactions", systemImage: "list.dash")
                 }
-            }.navigationTitle(account.accountLabel)
+            TransactionChartView(account: account)
+                .tabItem {
+                    Label("Chart", systemImage: "square.and.pencil")
+                }
+        }.foregroundColor(Color.white)
         
     }
 }

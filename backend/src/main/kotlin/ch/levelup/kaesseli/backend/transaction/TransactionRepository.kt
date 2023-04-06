@@ -8,6 +8,6 @@ import java.util.*
 @Repository
 interface TransactionRepository : JpaRepository<Transaction, Long> {
 
-    fun getTransactionsByAccount(account: Account): Optional<Set<Transaction>>
-    fun getTransactionsByAccount(account: Optional<Account>): Set<Transaction>?
+    fun getTransactionsByAccountOrderByCreatedAt(account: Account): Optional<Set<Transaction>>
+    fun getTransactionsByAccountOrderByCreatedAt(account: Optional<Account>): Set<Transaction>?
 }

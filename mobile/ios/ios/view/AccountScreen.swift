@@ -11,15 +11,16 @@ import common
 
 struct AccountScreen: View {
     
-    let member: StartScreen.Member
+    let member: SharedUserGroupMemberDto
     
     var body: some View {
         Text(member.accountsLabel).font(.title)
         List {
-            ForEach(member.accounts ?? [], id: \.self) {
-                account in NavigationLink(destination: TransactionScreen(account: account),
-                    label: { AccountView(account: account) })
-            }.listRowBackground(Color.blue)
+            ForEach(member.accountsList, id: \.self) {
+                SharedAccountDto in NavigationLink(
+                    destination: TransactionScreen(account: SharedAccountDto),
+                    label: { AccountView(account: SharedAccountDto) })
+            }.listRowBackground(Color(.systemBlue))
         }.navigationTitle(member.firstname)
     }
 }

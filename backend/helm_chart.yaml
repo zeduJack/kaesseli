@@ -16,7 +16,7 @@ spec:
         "kubernetes.io/os": linux
       containers:
         - name: kaesseli-api
-          image: kaesseliacr.azurecr.io/kaesseli-api:v5
+          image: kaesseliacr.azurecr.io/kaesseli-api:v10
           env:
             - name: FIREBASE_TOKEN
               valueFrom:
