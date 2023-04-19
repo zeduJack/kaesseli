@@ -1,8 +1,6 @@
 package ch.levelup.kaesseli.android.screens
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -14,7 +12,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ch.levelup.kaesseli.android.components.KsH1
 import ch.levelup.kaesseli.android.components.KsHeaderRow
-import ch.levelup.kaesseli.android.ui.theme.CristalBlue
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.Store
 import ch.levelup.kaesseli.transaction.TransactionNetworkThunks

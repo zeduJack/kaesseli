@@ -9,10 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ch.levelup.kaesseli.ScreenNavigation
 import ch.levelup.kaesseli.account.AccountActions
-import ch.levelup.kaesseli.android.components.KsH1
-import ch.levelup.kaesseli.android.components.KsHeaderRow
 import ch.levelup.kaesseli.android.components.KsListItem
-import ch.levelup.kaesseli.android.components.KsPlusButton
 import ch.levelup.kaesseli.android.listModifier
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
@@ -25,10 +22,6 @@ fun MemberScreen(
     appState: AppState
 ) {
     Column(modifier = Modifier.padding(16.dp)) {
-        KsHeaderRow {
-            KsH1(text = appState.selectedMember.accountsLabel)
-            KsPlusButton(onClick = {  })
-        }
 
         LazyColumn(modifier = listModifier) {
             items(appState.selectedMember.accounts.toList()) { account: AccountDto ->

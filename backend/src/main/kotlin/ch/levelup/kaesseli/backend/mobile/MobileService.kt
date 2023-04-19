@@ -47,6 +47,7 @@ class MobileService(
                 userUserGroup.userGroup.userUserGroups.map { userUserGroup ->
                     val member = mapUserGroupMemberDto(userUserGroup.user)
                     member.accounts = getAccountsForUserWithinGroup(userUserGroup)
+                    member.accountsList = member.accounts.toList()
                     member.sumOfAccountsLabel = getSumOfAccounts(member.accounts)
                     member.accountsLabel = "Konten von ${member.firstname}"
                     member.debitLabel = "Zahlung von ${member.firstname}"
@@ -61,6 +62,7 @@ class MobileService(
                 uGroup.membersTitle = "Mitglieder von ${uGroup.name}"
                 //  uGroup.accounts = getAccountsForUserWithinGroup(userUserGroup);
                 logedInUser.groups.add(uGroup)
+                logedInUser.groupsList = logedInUser.groups.toList()
             }
 
             return Optional.of(logedInUser)
@@ -100,7 +102,8 @@ class MobileService(
             account = account,
             debit = newTransactionDto.debit,
             status = "recived",
-            message = newTransactionDto.message
+            message = newTransactionDto.message,
+            resultingSaldo = BigDecimal(0)
         )
         val transResponseEntity = transactionService.addTransaction(transaction)
         if(transResponseEntity.statusCode == HttpStatus.OK){
@@ -127,6 +130,7 @@ class MobileService(
             }
             account.updatedAt = LocalDateTime.now()
             accountRepository.save(account)
+            trans.resultingSaldo = account.saldo
             transactionService.setTransProcessed(trans)
         }
     }
@@ -147,6 +151,7 @@ class MobileService(
             dboAccounts.get().forEach { accountDbo ->
                 val accountDto = mapAccount(accountDbo)
                 accountDto.transactions = getTransactionsForAccount(accountDbo)
+                accountDto.transactionsList = accountDto.transactions.toList()
                 accountDto.saldoLabel = "CHF ${accountDbo.saldo}"
                 accountDto.accountLabel =
                     "${accountDbo.displayName} von ${userUserGroup.user.firstname}"
@@ -182,7 +187,9 @@ class MobileService(
         userLastname = transaction.user.lastname,
         debit = transaction.debit,
         message = transaction.message,
-        status = transaction.status
+        status = transaction.status,
+        resultingSaldo = transaction.resultingSaldo.toString(),
+        chartLabel = if (transaction.debit) "-" + transaction.amount else "+" + transaction.amount
     )
 
     private fun mapUserDto(user: User) = LogedInUserDto(

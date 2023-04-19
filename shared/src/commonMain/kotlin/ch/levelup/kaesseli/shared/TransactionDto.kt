@@ -12,6 +12,8 @@ data class TransactionDto(
     val userLastname: String,
     val debit: Boolean,
     val message: String,
-    val status: String
+    val status: String,
+    val resultingSaldo: String,
+    val chartLabel: String
 ) {
 }

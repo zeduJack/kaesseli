@@ -1,19 +1,23 @@
 package ch.levelup.kaesseli.android.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import ch.levelup.kaesseli.ScreenNavigation
-import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.android.screens.*
+import ch.levelup.kaesseli.state.AppState
 
 @Composable
 fun Navigation(
     navController: NavHostController,
     startDestination: String,
-    appState: AppState
+    appState: AppState,
 ) {
+
+    val floatingActionButtonFunction = remember { mutableStateOf({})}
 
     NavHost(navController = navController, startDestination = startDestination) {
         composable(route = ScreenNavigation.MainScreen.route) {
@@ -34,9 +38,9 @@ fun Navigation(
                 MemberScreen(appState)
             }
         }
-        composable(route = ScreenNavigation.StartScreen.route) {
+        composable(route = ScreenNavigation.GroupsScreen.route) {
             LayoutScreen(appState = appState) {
-                StartScreen(appState = appState)
+                GroupsScreen(appState = appState)
             }
         }
         composable(route = ScreenNavigation.GroupMembersScreen.route) {
@@ -45,8 +49,8 @@ fun Navigation(
             }
         }
         composable(route = ScreenNavigation.AccountScreeen.route) {
-            LayoutScreen(appState = appState) {
-                AccountScreen(appState)
+            LayoutScreen(appState = appState, onFloatingActionButtonClick = {floatingActionButtonFunction.value()}) {
+                AccountScreen(appState, floatingActionButtonFunction)
             }
         }
         composable(route = ScreenNavigation.RegisterScreen.route) {
@@ -61,10 +65,19 @@ fun Navigation(
             )
         }
         composable(route = ScreenNavigation.CreditScreen.route) {
-            CreditScreen(appState = appState)
+            LayoutScreen(appState = appState) {
+                CreditScreen(appState = appState)
+            }
         }
         composable(route = ScreenNavigation.DebitScreen.route) {
-            DebitScreen(appState = appState)
+            LayoutScreen(appState = appState) {
+                DebitScreen(appState = appState)
+            }
+        }
+        composable(route = ScreenNavigation.ProfileScreen.route) {
+            LayoutScreen(appState = appState) {
+                ProfileScreen()
+            }
         }
     }
 }
