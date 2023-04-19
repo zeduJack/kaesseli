@@ -11,6 +11,7 @@ data class AccountDto(
     // add transactions
 ){
     var transactions: MutableSet<TransactionDto> = mutableSetOf()
+    var transactionsList: List<TransactionDto> = listOf()
     var saldoLabel: String = ""
     var accountLabel = ""
     var kontostandLabel = ""

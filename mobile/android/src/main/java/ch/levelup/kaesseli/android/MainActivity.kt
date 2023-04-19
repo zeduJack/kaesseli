@@ -1,5 +1,7 @@
 package ch.levelup.kaesseli.android
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
@@ -11,16 +13,23 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navOptions
 import ch.levelup.kaesseli.ScreenNavigation
 import ch.levelup.kaesseli.android.navigation.Navigation
 import ch.levelup.kaesseli.android.ui.theme.JetpackComposeTestTheme
+import ch.levelup.kaesseli.login.LoginActions
+import ch.levelup.kaesseli.login.LoginInput
 import ch.levelup.kaesseli.navigation.NavigationActions
+import ch.levelup.kaesseli.scaffold.ScafffoldActions
+import ch.levelup.kaesseli.shared.LogedInUserDto
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.Store
+import ch.levelup.kaesseli.user.UserNetworkThunks
 import org.reduxkotlin.StoreSubscription
 
 class MainActivity : AppCompatActivity() {
+
+    val loggedInUserKey = "logged-in-user"
+
     private lateinit var unsubscribe: StoreSubscription
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,44 +41,54 @@ class MainActivity : AppCompatActivity() {
             HandleBack(navController)
 
             var startDestination by remember { mutableStateOf(ScreenNavigation.LoginScreen.route) }
-
-            startDestination = setStartDestination(startDestination)
+            val loggedInUser = getLoggedInUser()
+            if (loggedInUser != null && loggedInUser.isNotEmpty()) {
+                Store.instance.dispatch(
+                    LoginActions.ChangeLogin(
+                        LoginInput(
+                            username = loggedInUser,
+                            true
+                        )
+                    )
+                )
+                Store.instance.dispatch(UserNetworkThunks.logInUser())
+                startDestination = ScreenNavigation.GroupsScreen.route
+            }
 
             SetTheme(navController, startDestination, state)
 
             unsubscribe = Store.instance.subscribe {
-                handleNavigation(navController)
+                if (handleNavigation(navController)) {
+                    handleScaffold()
+                }
                 state.value = Store.instance.state
+                saveLoggedInUser(Store.instance.state.logedInUser)
             }
         }
     }
 
-    private fun handleNavigation(navController: NavHostController) {
+    private fun handleScaffold() {
+        Store.instance.dispatch(ScafffoldActions.SetTobBarTitle(Store.instance.state))
+    }
+
+    private fun handleNavigation(navController: NavHostController): Boolean {
+        var routeChanged = false
         if (currentRouteNotEqualDestionationRoute(navController)) {
+            routeChanged = true
             if (navigateBack()) {
-                navController.navigate(
-                    route = Store.instance.state.navigation.route,
-                    navOptions { popUpTo(navController.backQueue[navController.backQueue.size - 3].destination.id) })
+                navController.popBackStack()
             } else {
                 navController.navigate(route = Store.instance.state.navigation.route)
             }
         }
-    }
-
-    @Composable
-    private fun setStartDestination(currentStartDestination: String): String {
-        var startDestination = currentStartDestination
-        if (false) {
-            startDestination = ScreenNavigation.RegisterScreen.route
-        }
-        return startDestination
+        return routeChanged
     }
 
     @Composable
     private fun SetTheme(
         navController: NavHostController,
         startDestination: String,
-        state: MutableState<AppState>
+        state: MutableState<AppState>,
     ) {
         JetpackComposeTestTheme {
             // A surface container using the 'background' color from the theme
@@ -106,6 +125,18 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         unsubscribe()
+    }
+
+    private fun saveLoggedInUser(logedInUser: LogedInUserDto) {
+        val sharedPreferences: SharedPreferences = getPreferences(Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString(loggedInUserKey, logedInUser.email)
+        editor.apply()
+    }
+
+    private fun getLoggedInUser(): String? {
+        val sharedPreferences: SharedPreferences = getPreferences(Context.MODE_PRIVATE)
+        return sharedPreferences.getString(loggedInUserKey, "")
     }
 }
 

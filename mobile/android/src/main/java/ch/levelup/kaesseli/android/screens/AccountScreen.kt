@@ -10,6 +10,7 @@ import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -20,7 +21,7 @@ import ch.levelup.kaesseli.ScreenNavigation
 import ch.levelup.kaesseli.android.components.KsH1
 import ch.levelup.kaesseli.android.components.KsHeaderRow
 import ch.levelup.kaesseli.android.components.KsMinusButton
-import ch.levelup.kaesseli.android.components.KsPlusButton
+
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
 import ch.levelup.kaesseli.state.AppState
@@ -29,7 +30,7 @@ import ch.levelup.kaesseli.transaction.TransactionDto
 import ch.levelup.kaesseli.transaction.TransactionNetworkThunks
 
 @Composable
-fun AccountScreen(appState: AppState) {
+fun AccountScreen(appState: AppState, floatingActionButtonAction: MutableState<() -> Unit>) {
 
     LaunchedEffect(true) {
         Store.instance.dispatch(TransactionNetworkThunks.getTransactions())
@@ -38,9 +39,6 @@ fun AccountScreen(appState: AppState) {
     Column(modifier = Modifier.padding(16.dp)) {
 
         KsHeaderRow {
-            KsH1(text = appState.selectedAccount.accountLabel)
-        }
-        KsHeaderRow {
             KsMinusButton(onClick = {
                 Store.instance.dispatch(
                     NavigationActions.SetNavigation(
@@ -48,13 +46,11 @@ fun AccountScreen(appState: AppState) {
                     )
                 )
             })
-            KsPlusButton(onClick = {
-                Store.instance.dispatch(
-                    NavigationActions.SetNavigation(
-                        Navigation(ScreenNavigation.CreditScreen.route)
-                    )
-                )
-            })
+        }
+
+        floatingActionButtonAction.value = {
+            Store.instance.dispatch(NavigationActions.SetNavigation(
+                Navigation(ScreenNavigation.CreditScreen.route)))
         }
 
         Text(

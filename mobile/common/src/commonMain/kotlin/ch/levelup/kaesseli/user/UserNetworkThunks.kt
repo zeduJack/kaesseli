@@ -10,6 +10,7 @@ import ch.levelup.kaesseli.login.LoginActions
 import ch.levelup.kaesseli.login.LoginInput
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
+import ch.levelup.kaesseli.scaffold.ScafffoldActions
 import ch.levelup.kaesseli.shared.LogedInUserDto
 import ch.levelup.kaesseli.state.AppState
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -53,7 +54,8 @@ object UserNetworkThunks {
                         dispatch(UserActions.SetUser(response!!.response!!))
                         dispatch(LoginActions.ChangeLogin(LoginInput(username = "", isDirty = false)))
                     }
-                    dispatch(NavigationActions.SetNavigation(Navigation(route = ScreenNavigation.StartScreen.route)))
+                    dispatch(NavigationActions.SetNavigation(Navigation(route = ScreenNavigation.GroupsScreen.route)))
+                    dispatch(ScafffoldActions.SetTobBarTitle(getState()))
                 }
             }
         }
