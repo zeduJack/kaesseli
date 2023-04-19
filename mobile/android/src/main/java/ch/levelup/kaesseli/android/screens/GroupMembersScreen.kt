@@ -25,15 +25,8 @@ import ch.levelup.kaesseli.state.CreateUserGroup
 import ch.levelup.kaesseli.state.Store
 
 @Composable
-fun GroupMembersScreen(
-    appState: AppState
-) {
+fun GroupMembersScreen(appState: AppState) {
     Column(modifier = Modifier.padding(16.dp)) {
-        KsHeaderRow {
-            KsH1(text = appState.selectedUserGroup.membersTitle)
-            KsPlusButton(onClick = { Store.instance.dispatch(CreateUserGroup(userGroupName = "Neues Mitglied")) })
-        }
-
         val context = LocalContext.current
 
         LazyColumn(modifier = listModifier) {
@@ -49,7 +42,7 @@ fun GroupMembersScreen(
 }
 
 private fun setSelectedMember(selectedMember: UserGroupMemberDto, context: Context){
-    Toast.makeText(context, selectedMember.firstname, Toast.LENGTH_LONG).show()
+    //Toast.makeText(context, selectedMember.firstname, Toast.LENGTH_LONG).show()
     Store.instance.dispatch(SelectedMemberActions.SetSelectedMember(selectedMember))
     Store.instance.dispatch(NavigationActions.SetNavigation(Navigation(ScreenNavigation.MemberScreen.route)))
 }

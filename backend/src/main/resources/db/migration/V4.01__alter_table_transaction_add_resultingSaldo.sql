@@ -1,0 +1,2 @@
+ALTER TABLE transaction
+ADD COLUMN resulting_saldo DECIMAL NOT NULL DEFAULT 0;
