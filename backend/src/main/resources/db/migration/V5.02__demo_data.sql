@@ -8,7 +8,8 @@ INSERT INTO "user" (id, firstname, lastname, username, email, token, version) VA
 
 INSERT INTO "usergroup" (id, name, version) VALUES
 (3, 'Familie Schwzyer', 1),
-(4, 'Grossikässeli', 1);
+(4, 'Grossikässeli', 1),
+(5, 'Patenkind', 1);
 
 INSERT INTO "userusergroup" (id, usergroup_id, user_id, version) VALUES
 (4,  3, 3, 1),
@@ -21,8 +22,8 @@ INSERT INTO "userusergroup" (id, usergroup_id, user_id, version) VALUES
 (11, 4, 8, 1),
 (12, 4, 5, 1),
 (13, 4, 6, 1),
-(14, 2, 2, 1, 1),
-(15, 2, 5, 2, 1);
+(14, 5, 2, 1),
+(15, 5, 5, 1);
 
 INSERT INTO "userusergrouprole" (id, usergroup_id, user_id, role_id, version) VALUES
 (4,  3, 3, 1, 1),
@@ -34,14 +35,17 @@ INSERT INTO "userusergrouprole" (id, usergroup_id, user_id, role_id, version) VA
 (10, 4, 7, 2, 1),
 (11, 4, 8, 2, 1),
 (12, 4, 5, 3, 1),
-(13, 4, 6, 3, 1);
+(13, 4, 6, 3, 1),
+(14, 5, 2, 1, 1),
+(15, 5, 5, 2, 1);
 
 INSERT INTO "account" (id, saldo, type, display_name, user_usergroup_id) VALUES
 (4, 27.70, 'TASCHENGELD', 'Sackgäld', 4),
 (5, 49, 'TASCHENGELD', 'Sackgäld', 5),
 (6, 0.10, 'TASCHENGELD', 'Kinogäld', 5),
 (7, 30, 'SPAREN', 'Sparsoili', 8),
-(8, 30, 'SPAREN', 'Sparbüechli', 9);
+(8, 30, 'SPAREN', 'Sparbüechli', 9),
+(9, 50, 'TASCHENGELD', 'Kässeli', 14);
 
 INSERT INTO "transaction" (amount, user_id, account_id, debit, status, message) VALUES
 (50, 5, 4, false, 'OK', 'Wiehnachtsgeld'),
@@ -58,4 +62,5 @@ INSERT INTO "transaction" (amount, user_id, account_id, debit, status, message) 
 (10, 8, 7, false, 'OK', 'Füers Sparsoili'),
 (10, 8, 8, false, 'OK', 'En liebä Gruess'),
 (10, 8, 8, false, 'OK', 'Vo dGrosseletere'),
-(10, 8, 8, false, 'OK', 'Füers Sparbüechli');
+(10, 8, 8, false, 'OK', 'Füers Sparbüechli'),
+(50, 5, 9, false, 'OK', 'Zum Geburi');
