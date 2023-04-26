@@ -4,7 +4,7 @@ import ch.levelup.kaesseli.user.UserActions
 
 fun welcomeMessageReducer(state: WelcomeMessage, action: Any) =
     when (action) {
-        is UserActions.SetUser -> updateMessage(action.user.firstname)
+        is UserActions.SetUserData -> updateMessage(action.user.firstname)
         else -> state
     }
 

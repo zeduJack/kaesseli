@@ -4,6 +4,6 @@ import ch.levelup.kaesseli.shared.LogedInUserDto
 
 fun userReducer(state: LogedInUserDto, action: Any) =
     when (action) {
-        is UserActions.SetUser -> action.user
+        is UserActions.SetUserData -> action.user
         else -> state
     }

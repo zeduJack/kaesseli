@@ -18,22 +18,25 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ch.levelup.kaesseli.ScreenNavigation
-import ch.levelup.kaesseli.android.components.KsH1
 import ch.levelup.kaesseli.android.components.KsHeaderRow
 import ch.levelup.kaesseli.android.components.KsMinusButton
-
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.Store
 import ch.levelup.kaesseli.transaction.TransactionDto
 import ch.levelup.kaesseli.transaction.TransactionNetworkThunks
+import ch.levelup.kaesseli.user.UserNetworkThunks
 
 @Composable
 fun AccountScreen(appState: AppState, floatingActionButtonAction: MutableState<() -> Unit>) {
 
     LaunchedEffect(true) {
         Store.instance.dispatch(TransactionNetworkThunks.getTransactions())
+    }
+
+    LaunchedEffect(true) {
+        Store.instance.dispatch(UserNetworkThunks.loadUserData())
     }
 
     Column(modifier = Modifier.padding(16.dp)) {
