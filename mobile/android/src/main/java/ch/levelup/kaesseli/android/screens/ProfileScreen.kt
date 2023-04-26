@@ -29,7 +29,7 @@ fun ProfileScreen() {
 
 fun logOut() {
     Store.instance.dispatch(
-        UserActions.SetUser(
+        UserActions.SetUserData(
             LogedInUserDto()
         )
     )

@@ -28,7 +28,7 @@ open class UserRepository {
         }
     }
 
-    suspend fun logInUser(email: String): GatewayResponse<LogedInUserDto, GenericError> {
+    suspend fun loadUserData(email: String): GatewayResponse<LogedInUserDto, GenericError> {
         try {
             val token = Store.instance.getState().token
             val response = client.get("$baseUrl/api/mobile/logedInUser/$email?token=$token")

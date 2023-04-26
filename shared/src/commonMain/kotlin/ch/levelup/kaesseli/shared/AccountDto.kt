@@ -4,12 +4,15 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class AccountDto(
-    val id: Long = -1L,
+    val id: Long = INITIAL_ID,
     val type: String = "",
     val saldo: Long = 0L,
     val displayName: String = ""
     // add transactions
 ){
+    companion object {
+        const val INITIAL_ID: Long = -1L
+    }
     var transactions: MutableSet<TransactionDto> = mutableSetOf()
     var transactionsList: List<TransactionDto> = listOf()
     var saldoLabel: String = ""
