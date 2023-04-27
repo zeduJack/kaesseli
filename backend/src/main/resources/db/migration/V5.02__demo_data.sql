@@ -41,7 +41,7 @@ INSERT INTO "userusergrouprole" (id, usergroup_id, user_id, role_id, version) VA
 
 INSERT INTO "account" (id, saldo, type, display_name, user_usergroup_id) VALUES
 (4, 27.70, 'TASCHENGELD', 'Sackgäld', 4),
-(5, 49, 'TASCHENGELD', 'Sackgäld', 5),
+(5, 47, 'TASCHENGELD', 'Sackgäld', 5),
 (6, 0.10, 'TASCHENGELD', 'Kinogäld', 5),
 (7, 30, 'SPAREN', 'Sparsoili', 8),
 (8, 30, 'SPAREN', 'Sparbüechli', 9),
@@ -53,9 +53,9 @@ INSERT INTO "transaction" (amount, user_id, account_id, debit, status, message) 
 (10, 6, 4, false, 'OK', 'Taschengeld'),
 (50, 5, 5, false, 'OK', 'Wiehnachtsgeld'),
 (8, 6, 5, false, 'OK', 'Taschengeld'),
-(2, 6, 6, true, 'OK', 'Kinogäld'),
+(2, 6, 6, false, 'OK', 'Kinogäld'),
 (11, 6, 6, false, 'OK', 'Fürs Kino'),
-(11, 6, 5, false, 'OK', 'Fürs Kino'),
+(11, 6, 5, true, 'OK', 'Fürs Kino'),
 (12.90, 6, 6, true, 'OK', 'Die drei ???'),
 (10, 8, 7, false, 'OK', 'Vo dGrosseletere'),
 (10, 8, 7, false, 'OK', 'Zum Spare'),
