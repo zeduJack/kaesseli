@@ -1,5 +1,6 @@
 package ch.levelup.kaesseli.state
 
+import ch.levelup.kaesseli.permissions.permissionsReducer
 import ch.levelup.kaesseli.account.accountReducer
 import ch.levelup.kaesseli.errorMessage.errorMessageReducer
 import ch.levelup.kaesseli.fetchingData.fetchinDatakReducer
@@ -27,5 +28,6 @@ fun rootReducer(state: AppState, action: Any) = AppState(
     selectedMember = memberReducer(state.selectedMember, action),
     selectedAccount = accountReducer(state.selectedAccount, action),
     currentAccountTransactions = transactionReducer(state.currentAccountTransactions, action),
-    token = tokenReducer(state.token, action)
+    token = tokenReducer(state.token, action),
+    permissions = permissionsReducer(state.permissions, action)
 )

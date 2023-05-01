@@ -7,6 +7,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -17,6 +18,7 @@ import androidx.compose.ui.unit.sp
 import ch.levelup.kaesseli.ScreenNavigation
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
+import ch.levelup.kaesseli.permissions.PermissionsNetworkThunks
 import ch.levelup.kaesseli.state.AppState
 import ch.levelup.kaesseli.state.Store
 
@@ -26,34 +28,43 @@ fun LayoutScreen(
     onFloatingActionButtonClick: (() -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
+    LaunchedEffect(true) {
+        Store.instance.dispatch(PermissionsNetworkThunks.getPermissions())
+    }
     Scaffold(
         topBar = {
-            TopAppBar(title = {
-                Row(
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(5.dp, 5.dp, 5.dp, 5.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(text = appState.scaffold.topBar.title)
-                }
-            },
-                backgroundColor = MaterialTheme.colors.primary)
+            TopAppBar(
+                title = {
+                    Row(
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(5.dp, 5.dp, 5.dp, 5.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(text = appState.scaffold.topBar.title)
+                    }
+                },
+                backgroundColor = MaterialTheme.colors.primary
+            )
         },
         floatingActionButtonPosition = FabPosition.End,
         floatingActionButton = {
-            FloatingActionButton(onClick = {
-                if (onFloatingActionButtonClick != null) {
-                    onFloatingActionButtonClick()
+            if (appState.permissions.executeTranactionsAllowed) {
+                FloatingActionButton(onClick = {
+                    if (onFloatingActionButtonClick != null) {
+                        onFloatingActionButtonClick()
+                    }
+                }) {
+                    Icon(imageVector = Icons.Default.Add, contentDescription = "fab icon")
                 }
-            }) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "fab icon")
             }
         },
         content = { padding ->
-            Column(modifier = Modifier
-                .padding(padding)) {
+            Column(
+                modifier = Modifier
+                    .padding(padding)
+            ) {
                 Row(modifier = Modifier.fillMaxWidth()) {
                     if (appState.fetchingData) {
                         LinearProgressIndicator(modifier = Modifier.fillMaxWidth())

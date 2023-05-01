@@ -4,6 +4,7 @@ import ch.levelup.kaesseli.backend.account.Account
 import ch.levelup.kaesseli.backend.account.AccountRepository
 import ch.levelup.kaesseli.backend.common.Role
 import ch.levelup.kaesseli.backend.common.UserUserGroup
+import ch.levelup.kaesseli.backend.common.UserUserGroupRoleReporitory
 import ch.levelup.kaesseli.backend.firebase.FirebaseService
 import ch.levelup.kaesseli.backend.transaction.Transaction
 import ch.levelup.kaesseli.backend.transaction.TransactionRepository
@@ -11,6 +12,7 @@ import ch.levelup.kaesseli.backend.transaction.TransactionService
 import ch.levelup.kaesseli.backend.user.User
 import ch.levelup.kaesseli.backend.user.UserRepository
 import ch.levelup.kaesseli.backend.usergroup.UserGroup
+import ch.levelup.kaesseli.backend.usergroup.UserGroupRepository
 import ch.levelup.kaesseli.shared.*
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -26,7 +28,11 @@ class MobileService(
     private val accountRepository: AccountRepository,
     private val transActionsRepository: TransactionRepository,
     private val transactionService: TransactionService,
-    private val firebaseService: FirebaseService
+    private val firebaseService: FirebaseService,
+    //private val userService: UserService,
+    //private val userGroupService: UserGroupService,
+    private val userGroupRepository: UserGroupRepository,
+    private val userUserGroupRoleReporitory: UserUserGroupRoleReporitory
 ) {
 
     fun getLogedInUserByEmail(email: String): Optional<LogedInUserDto> {
@@ -106,26 +112,55 @@ class MobileService(
             resultingSaldo = BigDecimal(0)
         )
         val transResponseEntity = transactionService.addTransaction(transaction)
-        if(transResponseEntity.statusCode == HttpStatus.OK){
-            var trans = transResponseEntity.body;
+        if (transResponseEntity.statusCode == HttpStatus.OK) {
+            val trans = transResponseEntity.body
             if (trans != null) {
                 performeTransactionOnAccount(trans, account)
             }
         }
 
         val token = account.userUserGroup.user.token
-        if(token != null && token != "") {
+        if (token != "") {
             val text = user.firstname + " has send you " + amount
             firebaseService.pushMessage(token, text, text)
         }
         return ResponseEntity.ok().build()
     }
 
-    private fun performeTransactionOnAccount(trans: Transaction, account: Account){
-        if(trans.status == "recived"){
-            if(trans.debit){
+    fun getPermissions(loggedInUserId: Long, selectedGroupId: Long, selectedUserId: Long): PermissionsDto {
+
+        var executeTransactionsAllowed = false
+        var seeOtherGroupMembersAllowed = false
+
+        val loggedInUser = userRepository.findById(loggedInUserId)
+        val selectedUserGroup = userGroupRepository.findById(selectedGroupId)
+        val selectedUser = userRepository.findById(selectedUserId)
+
+        if (loggedInUser.isPresent && selectedUserGroup.isPresent) {
+            val relation =
+                userUserGroupRoleReporitory.getUserUserGroupRoleByUserAndUsergroup(
+                    loggedInUser.get(),
+                    selectedUserGroup.get()
+                )
+            if (!relation.isEmpty()) {
+                val role = relation.get(0).role
+
+                if (role.name == "ADULT") {
+                    executeTransactionsAllowed = true
+                }
+                if (role.name != "CHILD") {
+                    seeOtherGroupMembersAllowed = true
+                }
+            }
+        }
+        return PermissionsDto(executeTransactionsAllowed, seeOtherGroupMembersAllowed)
+    }
+
+    private fun performeTransactionOnAccount(trans: Transaction, account: Account) {
+        if (trans.status == "recived") {
+            if (trans.debit) {
                 account.saldo -= trans.amount
-            }else {
+            } else {
                 account.saldo += trans.amount
             }
             account.updatedAt = LocalDateTime.now()

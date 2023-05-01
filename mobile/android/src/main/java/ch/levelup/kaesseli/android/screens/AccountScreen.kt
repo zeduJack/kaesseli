@@ -41,19 +41,25 @@ fun AccountScreen(appState: AppState, floatingActionButtonAction: MutableState<(
 
     Column(modifier = Modifier.padding(16.dp)) {
 
-        KsHeaderRow {
-            KsMinusButton(onClick = {
-                Store.instance.dispatch(
-                    NavigationActions.SetNavigation(
-                        Navigation(ScreenNavigation.DebitScreen.route)
+        if (appState.permissions.executeTranactionsAllowed) {
+            KsHeaderRow {
+                KsMinusButton(onClick = {
+                    Store.instance.dispatch(
+                        NavigationActions.SetNavigation(
+                            Navigation(ScreenNavigation.DebitScreen.route)
+                        )
                     )
-                )
-            })
+                })
+            }
         }
 
+
         floatingActionButtonAction.value = {
-            Store.instance.dispatch(NavigationActions.SetNavigation(
-                Navigation(ScreenNavigation.CreditScreen.route)))
+            Store.instance.dispatch(
+                NavigationActions.SetNavigation(
+                    Navigation(ScreenNavigation.CreditScreen.route)
+                )
+            )
         }
 
         Text(
@@ -75,8 +81,10 @@ fun AccountScreen(appState: AppState, floatingActionButtonAction: MutableState<(
         LazyColumn(modifier = listModifier) {
             items(appState.currentAccountTransactions.toList()) { transaction: TransactionDto ->
                 Row {
-                    Text(transaction.message,
-                        Modifier.weight(column1Weight))
+                    Text(
+                        transaction.message,
+                        Modifier.weight(column1Weight)
+                    )
                     Text(
                         text = (if (transaction.debit) "- " else "+ ") + transaction.amount.toString(),
                         textAlign = TextAlign.Right,
