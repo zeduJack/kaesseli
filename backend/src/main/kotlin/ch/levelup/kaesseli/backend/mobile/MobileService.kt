@@ -123,7 +123,13 @@ class MobileService(
 
         val token = account.userUserGroup.user.token
         if (token != "") {
-            val text = user.firstname + " has send you " + amount
+            var text: String
+            if(transaction.debit){
+                text = "Du hast " + amount + " CHF bei " + user.username + " bezogen"
+            } else {
+                text = user.firstname + " hat dir " + amount + " CHF geschickt"
+            }
+
             firebaseService.pushMessage(token, text, text)
         }
         return ResponseEntity.ok().build()
