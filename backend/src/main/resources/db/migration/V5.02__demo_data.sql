@@ -7,7 +7,7 @@ INSERT INTO "user" (id, firstname, lastname, username, email, token, version) VA
 (8, 'Johan', 'Schwyzer', 'hans', 'opi@mail.ch', '', 1);
 
 INSERT INTO "usergroup" (id, name, version) VALUES
-(3, 'Familie Schwzyer', 1),
+(3, 'Familie Schwyzer', 1),
 (4, 'Grossikässeli', 1),
 (5, 'Patenkind', 1);
 

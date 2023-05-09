@@ -11,6 +11,7 @@ import ch.levelup.kaesseli.login.LoginActions
 import ch.levelup.kaesseli.login.LoginInput
 import ch.levelup.kaesseli.navigation.Navigation
 import ch.levelup.kaesseli.navigation.NavigationActions
+import ch.levelup.kaesseli.permissions.PermissionsNetworkThunks
 import ch.levelup.kaesseli.scaffold.ScafffoldActions
 import ch.levelup.kaesseli.selectedMember.SelectedMemberActions
 import ch.levelup.kaesseli.selectedUserGroup.UserGroupActions
@@ -60,6 +61,7 @@ object UserNetworkThunks {
                         dispatch(LoginActions.ChangeLogin(LoginInput(username = "",
                             isDirty = false)))
                     }
+                    dispatch(PermissionsNetworkThunks.getPermissions())
                     dispatch(NavigationActions.SetNavigation(Navigation(route = ScreenNavigation.GroupsScreen.route)))
                     dispatch(ScafffoldActions.SetTobBarTitle(getState()))
                 }
