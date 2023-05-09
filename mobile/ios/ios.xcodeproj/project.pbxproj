@@ -15,9 +15,12 @@
 		8A04F174299133A400522CA8 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04F173299133A400522CA8 /* GroupView.swift */; };
 		8A04F17629913A0B00522CA8 /* GroupMembersScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A04F17529913A0B00522CA8 /* GroupMembersScreen.swift */; };
 		8A3AE1B029AC8BD5009AF08B /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3AE1AF29AC8BD5009AF08B /* AccountView.swift */; };
+		8A44F20A29EF25E3008648D0 /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A44F20929EF25E3008648D0 /* TransactionListView.swift */; };
+		8A44F20C29EF2869008648D0 /* TransactionChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A44F20B29EF2869008648D0 /* TransactionChartView.swift */; };
 		8A4CC420296D9CD40034DB31 /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4CC41F296D9CD40034DB31 /* StartScreen.swift */; };
 		8A7E0B32299D082E00B6F18C /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7E0B31299D082E00B6F18C /* AccountScreen.swift */; };
 		8A7E0B34299D1AD000B6F18C /* MemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7E0B33299D1AD000B6F18C /* MemberView.swift */; };
+		8A93BE102A013A77001B7B21 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93BE0F2A013A77001B7B21 /* Colors.swift */; };
 		8A9CAD7C29A38053009D37F4 /* TransactionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CAD7B29A38053009D37F4 /* TransactionScreen.swift */; };
 		8AB8F6F629AC110200759EA2 /* start.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AB8F6F529AC110200759EA2 /* start.json */; };
 		8AEEA7AB29AC0D6D00AED179 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEEA7AA29AC0D6D00AED179 /* Helper.swift */; };
@@ -36,9 +39,12 @@
 		8A04F173299133A400522CA8 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		8A04F17529913A0B00522CA8 /* GroupMembersScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMembersScreen.swift; sourceTree = "<group>"; };
 		8A3AE1AF29AC8BD5009AF08B /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		8A44F20929EF25E3008648D0 /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
+		8A44F20B29EF2869008648D0 /* TransactionChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionChartView.swift; sourceTree = "<group>"; };
 		8A4CC41F296D9CD40034DB31 /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		8A7E0B31299D082E00B6F18C /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
 		8A7E0B33299D1AD000B6F18C /* MemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberView.swift; sourceTree = "<group>"; };
+		8A93BE0F2A013A77001B7B21 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		8A9CAD7B29A38053009D37F4 /* TransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionScreen.swift; sourceTree = "<group>"; };
 		8AB8F6F529AC110200759EA2 /* start.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = start.json; sourceTree = "<group>"; };
 		8AEEA7AA29AC0D6D00AED179 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -94,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				8AB8F6F529AC110200759EA2 /* start.json */,
+				8A93BE0F2A013A77001B7B21 /* Colors.swift */,
 				8AEEA7AA29AC0D6D00AED179 /* Helper.swift */,
 				8A4CC41E296D9C960034DB31 /* view */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
@@ -113,8 +120,10 @@
 				8A04F17529913A0B00522CA8 /* GroupMembersScreen.swift */,
 				8A7E0B33299D1AD000B6F18C /* MemberView.swift */,
 				8A7E0B31299D082E00B6F18C /* AccountScreen.swift */,
-				8A9CAD7B29A38053009D37F4 /* TransactionScreen.swift */,
 				8A3AE1AF29AC8BD5009AF08B /* AccountView.swift */,
+				8A9CAD7B29A38053009D37F4 /* TransactionScreen.swift */,
+				8A44F20929EF25E3008648D0 /* TransactionListView.swift */,
+				8A44F20B29EF2869008648D0 /* TransactionChartView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -233,6 +242,9 @@
 				7555FF83242A565900829871 /* LoginScreen.swift in Sources */,
 				8AEEA7AB29AC0D6D00AED179 /* Helper.swift in Sources */,
 				8A7E0B32299D082E00B6F18C /* AccountScreen.swift in Sources */,
+				8A93BE102A013A77001B7B21 /* Colors.swift in Sources */,
+				8A44F20C29EF2869008648D0 /* TransactionChartView.swift in Sources */,
+				8A44F20A29EF25E3008648D0 /* TransactionListView.swift in Sources */,
 				8A04F174299133A400522CA8 /* GroupView.swift in Sources */,
 				8A4CC420296D9CD40034DB31 /* StartScreen.swift in Sources */,
 			);
@@ -362,6 +374,7 @@
 			baseConfigurationReference = 7B768C7F8835DF119E7F2C7B /* Pods-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ios/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
@@ -385,6 +398,7 @@
 			baseConfigurationReference = 59ED51C21B9AC6092381C258 /* Pods-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ios/Preview Content\"";
 				ENABLE_PREVIEWS = YES;

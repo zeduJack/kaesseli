@@ -19,7 +19,7 @@ class TransactionService(
 
     fun getTransactionsByAccount(accountId: Long): Stream<TransactionDto>? {
         val account = accountService.getAccountDboById(accountId)
-        return transactionRepository.getTransactionsByAccount(account)
+        return transactionRepository.getTransactionsByAccountOrderByCreatedAt(account)
             ?.stream()
             ?.map { transaction -> mapTransactionDto(transaction) }
     }
@@ -66,7 +66,7 @@ class TransactionService(
 
     fun setTransProcessed(trans: Transaction): ResponseEntity<Transaction>{
 
-        if(trans?.id != null && trans.status == "recived"){
+        if(trans?.id != null && trans.status == "received"){
             trans.status = "processed"
             trans.updatedAt =  LocalDateTime.now()
             return putTransaction(trans.id, trans)

@@ -52,8 +52,9 @@ class MobileService(
 
                 userUserGroup.userGroup.userUserGroups.map { userUserGroup ->
                     val member = mapUserGroupMemberDto(userUserGroup.user)
-                    member.accounts = getAccountsForUserWithinGroup(userUserGroup)
-                    member.accountsList = member.accounts.toList()
+                    val accounts = getAccountsForUserWithinGroup(userUserGroup)
+                    member.accounts = accounts
+                    member.accountsList = accounts.toList()
                     member.sumOfAccountsLabel = getSumOfAccounts(member.accounts)
                     member.accountsLabel = "Konten von ${member.firstname}"
                     member.debitLabel = "Zahlung von ${member.firstname}"
@@ -63,6 +64,7 @@ class MobileService(
                     members.add(member)
                 }
                 uGroup.members.addAll(members)
+                uGroup.membersList = members.toList()
 
                 uGroup.membersDescription = "${members.size} Mitglieder"
                 uGroup.membersTitle = "Mitglieder von ${uGroup.name}"
@@ -107,7 +109,7 @@ class MobileService(
             user = user,
             account = account,
             debit = newTransactionDto.debit,
-            status = "recived",
+            status = "received",
             message = newTransactionDto.message,
             resultingSaldo = BigDecimal(0)
         )
@@ -157,7 +159,7 @@ class MobileService(
     }
 
     private fun performeTransactionOnAccount(trans: Transaction, account: Account) {
-        if (trans.status == "recived") {
+        if (trans.status == "received") {
             if (trans.debit) {
                 account.saldo -= trans.amount
             } else {
@@ -206,7 +208,7 @@ class MobileService(
     private fun getTransactionsForAccount(account: Account): MutableSet<TransactionDto> {
         val transactions: MutableSet<TransactionDto> = mutableSetOf()
 
-        val transactionsDbo = transActionsRepository.getTransactionsByAccount(account)
+        val transactionsDbo = transActionsRepository.getTransactionsByAccountOrderByCreatedAt(account)
         transactions.addAll(transactionsDbo.get().map { transactionDbo ->
             mapTransactionDto(transactionDbo)
         })

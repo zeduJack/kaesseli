@@ -11,16 +11,20 @@ import common
 
 struct MemberView: View {
     
-    let member: StartScreen.Member
+    let member: SharedUserGroupMemberDto
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             HStack {
                 Label("", systemImage: "person.crop.circle")
+                Text(member.sumOfAccountsLabel)
                 Spacer()
                 Text(member.firstname)
+                    .accessibilityAddTraits(.isHeader)
+                    .font(.headline)
+                    .font(.caption)
             }
-            Text(member.sumOfAccountsLabel)
+            
         }
     }
 }

@@ -11,19 +11,19 @@ import common
 
 struct GroupMembersScreen: View {
     
-    let userGroup: StartScreen.Group
+    let userGroup: SharedLogedInUserUserGroupDto
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                List  {
-                    ForEach(userGroup.members, id: \.self) {
-                        member in NavigationLink(
-                            destination: AccountScreen(member: member),
+                List {
+                    ForEach(userGroup.membersList, id: \.self) {
+                        SharedUserGroupMemberDto in NavigationLink(
+                            destination: AccountScreen(member: SharedUserGroupMemberDto),
                             label: {
-                                MemberView(member: member)
+                                MemberView(member: SharedUserGroupMemberDto)
                             })
-                    }.listRowBackground(Color.blue)
+                    }.listRowBackground(Color(.systemBlue))
                     
                 }.navigationTitle(userGroup.name)
             }
@@ -31,10 +31,3 @@ struct GroupMembersScreen: View {
             .foregroundColor(Color.white)
     }
 }
-
-/*
- struct GroupMembersScreen_Previews: PreviewProvider {
- static var previews: some View {
- // GroupMembersScreen()
- }
- }*/

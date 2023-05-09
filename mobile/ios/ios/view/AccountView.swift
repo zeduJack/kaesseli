@@ -11,10 +11,10 @@ import common
 
 struct AccountView: View {
     
-    let account: StartScreen.Account
+    let account: SharedAccountDto
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             HStack {
                 Label("", systemImage: "rectangle.badge.person.crop")
                 Text(account.displayName);
