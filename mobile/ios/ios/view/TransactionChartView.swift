@@ -45,6 +45,7 @@ struct TransactionChartView: View {
                 
                 PointMark(x : .value("Date", Bundle.main.dateFromString(date: item.createdAt)),
                           y : .value("Amount", Bundle.main.convertToDouble(resultingSaldo: item.resultingSaldo)))
+                .foregroundStyle(green)
                 .annotation {
                     Text(verbatim: item.chartLabel)
                         .font(.caption)
